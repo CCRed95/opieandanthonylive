@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>opieandanthonylive</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\opieandanthonylive.Data.Domain\opieandanthonylive.Data.Domain.csproj" />
+    <ProjectReference Include="..\..\opieandanthonylive.Data\opieandanthonylive.Data.csproj" />
+    <ProjectReference Include="..\opieandanthonylive.Data.API\opieandanthonylive.Data.API.csproj" />
+  </ItemGroup>
+
+</Project>

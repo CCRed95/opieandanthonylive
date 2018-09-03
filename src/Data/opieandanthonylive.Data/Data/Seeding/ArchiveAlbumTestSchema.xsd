@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ArchiveAlbumTestSchema"
+    targetNamespace="http://tempuri.org/ArchiveAlbumTestSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ArchiveAlbumTestSchema.xsd"
+    xmlns:mstns="http://tempuri.org/ArchiveAlbumTestSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="Archive" type="typedef_Archive">
+		
+	</xs:element>
+	
+	<xs:complexType name="typedef_Archive">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="ArchiveMediaFile" type="typedef_ArchiveMediaFile"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="typedef_ArchiveMediaFile">
+		<xs:attribute name="identifier" type="xs:string"/>
+		<xs:attribute name="size" type="xs:long"/>
+	</xs:complexType>
+</xs:schema>

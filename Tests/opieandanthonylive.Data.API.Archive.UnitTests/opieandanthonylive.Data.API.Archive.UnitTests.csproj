@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.10.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Ccr.Dnc.Core\Ccr.Dnc.Core.csproj" />
+    <ProjectReference Include="..\..\src\Ccr.Dnc.Data.EntityFrameworkCore\Ccr.Dnc.Data.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\src\Data\APIs\opieandanthonylive.Data.API.Archive\opieandanthonylive.Data.API.Archive.csproj" />
+    <ProjectReference Include="..\..\src\Data\APIs\opieandanthonylive.Data.API\opieandanthonylive.Data.API.csproj" />
+    <ProjectReference Include="..\..\src\Data\opieandanthonylive.Data.Domain\opieandanthonylive.Data.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Data\opieandanthonylive.Data\opieandanthonylive.Data.csproj" />
+  </ItemGroup>
+
+</Project>

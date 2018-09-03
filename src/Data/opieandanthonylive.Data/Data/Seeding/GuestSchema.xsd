@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema id="GuestSchema"
+    targetNamespace="http://tempuri.org/GuestSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns:p="http://tempuri.org/GuestSchema.xsd"
+    xmlns:mstns="http://tempuri.org/GuestSchema.xsd"
+				xmlns:cplx="http://www.w3.org/TR/xmlschema-2"
+    xmlns="http://www.w3.org/2001/XMLSchema">
+
+	<complexType name="typedef_Gender">
+		<attribute name="GenderID" type="int"/>
+		<attribute name="Abbreviation">
+			<simpleType>
+				
+			</simpleType>
+		</attribute>
+		<attribute name="GenderName">
+			<simpleType>
+				<restriction base="string">
+					<maxLength value="20"/>
+					<pattern value="\A[A-Z]{1}[a-z]*\Z"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<element name="Genders">
+		<complexType>
+			<sequence>
+				<element name="Gender" type="mstns:typedef_Gender"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+
+	<complexType name="typedef_TableSeedConfiguration">
+		<attribute name="TableEntity" type="QName"/>
+	</complexType>
+	
+	<complexType name="typedef_DBSeedConfiguration">
+		<sequence minOccurs="0" maxOccurs="unbounded">
+			<element name="TableSeedConfiguration" type="mstns:typedef_TableSeedConfiguration"/>
+		</sequence>
+		
+	</complexType>
+
+
+	<element name="DBSeedConfiguration" type="mstns:typedef_DBSeedConfiguration">
+		
+	</element>
+
+	<simpleType name="FirstNameFragment" id="FirstNameFragment">
+		<restriction base="string">
+			<pattern value="\A[A-z][A-z]*\Z"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MiddleInitial" id="MiddleInitial">
+		<restriction base="string">
+			<pattern value="\A[A-Z].\Z"/>
+		</restriction> 
+	</simpleType>
+
+	<simpleType name="LastNameFragment" id="LastNameFragment">
+		<restriction base="string">
+			<pattern value="\A[A-z][A-z.]*\Z"/>
+		</restriction>
+	</simpleType>
+
+	<!--<simpleType name="NameComposite">
+		<union>
+			<simpleType>
+				<union >
+					
+				</union>
+			</simpleType>
+			<union memberTypes="mstns:FirstNameFragment mstns:LastNameFragment"/>
+		</union>
+		
+	</simpleType>-->
+
+	<complexType name="Guest">
+		<attribute name="GuestID" type="int"/>
+		<attribute name="LegacyGuestID" type="int" use="optional"/>
+		<!--<attribute name="FullName" use="required" type="NameComposite">-->
+
+	</complexType>
+
+	<complexType name="typedef_ContentCreator">
+		<attribute name="ContentCreatorID" type="int"/>
+		<attribute name="ContentCreatorName" type="string">
+			
+		</attribute>
+	</complexType>
+	
+</schema>

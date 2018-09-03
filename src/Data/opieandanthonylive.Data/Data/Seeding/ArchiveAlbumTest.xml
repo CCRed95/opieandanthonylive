@@ -1,0 +1,2138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<files xmlns="http://opieandanthonylive.com/TestSchema" 
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation=
+					"http://opieandanthonylive.com/ArchiveAlbumTest
+					 http://opieandanthonylive.com/ArchiveAlbumTestSchema">
+	<file name="O&amp;A-2012-01-02.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515577007</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-02.mp3" source="original">
+		<mtime>1515477612</mtime>
+		<size>294984690</size>
+		<md5>e40ebd0a5978a4e4c97f4b8cde0288b5</md5>
+		<crc32>729b1e62</crc32>
+		<sha1>184da9a0aca250ec8753ba3b6ff1596f5567d2c4</sha1>
+		<format>VBR MP3</format>
+		<length>15592.62</length>
+		<height>600</height>
+		<width>600</width>
+		<album>January 2012</album>
+		<artist>Opie &amp; Anthony</artist>
+		<title>O&amp;A 01-02-12 (WO) CF128kS</title>
+		<track>2</track>
+		<genre>Talk Radio</genre>
+	</file>
+	<file name="O&amp;A-2012-01-02.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515549832</mtime>
+		<size>135433653</size>
+		<md5>f69d73ee3580452bb28eb3a45610b1d1</md5>
+		<crc32>bbf135af</crc32>
+		<sha1>a7c00cc20a0b5c104e7990e5ba94a90fa34cf56d</sha1>
+		<length>15533.45</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-02.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515561513</mtime>
+		<size>6280</size>
+		<md5>b46fc17fd635fcfc4d05cd0ec6957d36</md5>
+		<crc32>0f3feb2e</crc32>
+		<sha1>cb710aecbd3034d2046a74b55b4a3032b7b559ab</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-02_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515570199</mtime>
+		<size>180522</size>
+		<md5>895bc48c0dc94aeec3668fd8bf4a8cb2</md5>
+		<crc32>1c70d073</crc32>
+		<sha1>f67e3ec87f7c47a11c1a3e720f70a55d4b85549b</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-03.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-03.mp3</original>
+		<mtime>1515580083</mtime>
+		<size>2661552</size>
+		<md5>e3b306c7ccd2bebe61044c49fc617a50</md5>
+		<crc32>cc7adf13</crc32>
+		<sha1>47a47272fc0d686c6a10d9f2128b1fe0aa43f14f</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-03.mp3" source="original">
+		<mtime>1515478617</mtime>
+		<size>171402598</size>
+		<md5>435c74ad72067cc74dcc068899464e00</md5>
+		<crc32>dcbe2e65</crc32>
+		<sha1>3598fe559307c25201c4dee8ebeb0efe49567e1f</sha1>
+		<format>VBR MP3</format>
+		<length>14283.51</length>
+		<height>0</height>
+		<width>0</width>
+		<title>2012-01-03-O&amp;A-CF96k+SH</title>
+		<artist>Opie and Anthony</artist>
+		<album>O&amp;A</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="O&amp;A-2012-01-03.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-03.mp3</original>
+		<mtime>1515556070</mtime>
+		<size>118999039</size>
+		<md5>279678647575b4c2e2470e0090db0870</md5>
+		<crc32>99149521</crc32>
+		<sha1>6f5c84c1bd1b278a1559b035626a864f97e64a5b</sha1>
+		<length>14283.5</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-03.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-03.mp3</original>
+		<mtime>1515561873</mtime>
+		<size>12421</size>
+		<md5>3df725646b3855fc6de84fb76256d9ff</md5>
+		<crc32>8a7bb6e7</crc32>
+		<sha1>8d8ce0db5ed236aa65adcdfabf1353ab6881a17a</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-03_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-03.mp3</original>
+		<mtime>1515570377</mtime>
+		<size>215573</size>
+		<md5>5054e2d260f1b2577164af8b10bd3c0a</md5>
+		<crc32>6d78dd0d</crc32>
+		<sha1>c523fcbe2c5c99d046f91d730a392c28697e89ac</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-04.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-04.mp3</original>
+		<mtime>1515586074</mtime>
+		<size>2625072</size>
+		<md5>26c1d06a2cb48799cdb9056f6abd5ca4</md5>
+		<crc32>eec726fc</crc32>
+		<sha1>0fd93f5403155c7324d78a327fced1fff86cf0c8</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-04.mp3" source="original">
+		<mtime>1515479693</mtime>
+		<size>171137350</size>
+		<md5>937ab903d70906c80f1ef9fc64a00b46</md5>
+		<crc32>7b81e21a</crc32>
+		<sha1>7cd5526e8e38f778f84fe0e372363ad5832272b8</sha1>
+		<format>VBR MP3</format>
+		<length>14261.41</length>
+		<height>0</height>
+		<width>0</width>
+		<title>2012-01-04-O&amp;A-CF96k+SH</title>
+		<artist>Opie and Anthony</artist>
+		<album>O&amp;A</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="O&amp;A-2012-01-04.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-04.mp3</original>
+		<mtime>1515555156</mtime>
+		<size>118910105</size>
+		<md5>8e426ee0b3f8edc2fe1f223540cde945</md5>
+		<crc32>1a8255d6</crc32>
+		<sha1>129af05c3d23608705da0aa2635c2faabc6301da</sha1>
+		<length>14096.09</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-04.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-04.mp3</original>
+		<mtime>1515564377</mtime>
+		<size>11797</size>
+		<md5>5cbefe2d5992509b3ac790f4bbde3f92</md5>
+		<crc32>227afcc4</crc32>
+		<sha1>6f484f02dd24795c7b1b4ebf49342f6be7f5a750</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-04_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-04.mp3</original>
+		<mtime>1515570842</mtime>
+		<size>196176</size>
+		<md5>020080ec6e841422a46e36a3e9e69429</md5>
+		<crc32>4e3f3c3e</crc32>
+		<sha1>8ca2774d577a1530553bbba1cb46024bfc7a97b8</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-05.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-05.mp3</original>
+		<mtime>1515574383</mtime>
+		<size>2692408</size>
+		<md5>0a831a4629b702d2f52e758cde7e58ee</md5>
+		<crc32>27d2d741</crc32>
+		<sha1>ec7358a938956860cee9cb791c66ef826ef02eed</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-05.mp3" source="original">
+		<mtime>1515480743</mtime>
+		<size>172083440</size>
+		<md5>0685f6fcb2877316ec9160151c99fc7b</md5>
+		<crc32>fe1b29b2</crc32>
+		<sha1>9005fa03e3b02f28d9c0c5c439da0057f0afe73e</sha1>
+		<format>VBR MP3</format>
+		<length>14340.29</length>
+		<height>0</height>
+		<width>0</width>
+		<title>2012-01-05-O&amp;A-CF96k+SH</title>
+		<artist>Opie and Anthony</artist>
+		<album>O&amp;A</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="O&amp;A-2012-01-05.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-05.mp3</original>
+		<mtime>1515550253</mtime>
+		<size>120021436</size>
+		<md5>1a3b9a1003220d68d96b4028c22ff914</md5>
+		<crc32>2fa3ffab</crc32>
+		<sha1>467f29fc2e3c4be75ee59abcb921756626e362df</sha1>
+		<length>14340.28</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-05.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-05.mp3</original>
+		<mtime>1515565419</mtime>
+		<size>11076</size>
+		<md5>2bedea80f2e974c93349ef628de1427b</md5>
+		<crc32>167755c9</crc32>
+		<sha1>80aedb191daf6a8f9e463a41241b25f57099674d</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-05_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-05.mp3</original>
+		<mtime>1515572793</mtime>
+		<size>191049</size>
+		<md5>0675eff6180b84da2d289c34ecd454bd</md5>
+		<crc32>2abd8277</crc32>
+		<sha1>444effb522c5adf17fb3940d9285a9cbf43095ac</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-06.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515581697</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-06.mp3" source="original">
+		<mtime>1515481498</mtime>
+		<size>119541062</size>
+		<md5>766ed9d6108300100c41d83cc4441fa0</md5>
+		<crc32>2253f817</crc32>
+		<sha1>84e3d5e3396fa839860dfd3b8e1f9ddfd0f44956</sha1>
+		<format>VBR MP3</format>
+		<length>14942.3</length>
+		<height>0</height>
+		<width>0</width>
+		<title>2012-01-06 Fri (w/ AOAL)</title>
+		<album>The Opie &amp; Anthony Channel (XM 105/Sirius 206)</album>
+		<genre>Comedy</genre>
+		<artist>Opie &amp; Anthony</artist>
+	</file>
+	<file name="O&amp;A-2012-01-06.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515553715</mtime>
+		<size>130057697</size>
+		<md5>780d20c026752594bb0b6be0d61b3f53</md5>
+		<crc32>7f5e3066</crc32>
+		<sha1>52273257ea29eaaababce4cedcbbdd9d92efa702</sha1>
+		<length>14942.26</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-06.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515563456</mtime>
+		<size>6254</size>
+		<md5>dbf5b71c525f52b5d539c4dcbd389e94</md5>
+		<crc32>d492d4cd</crc32>
+		<sha1>e53434d4b1abd1a000910d11ad4d7e5375dd58df</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-06_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515573347</mtime>
+		<size>153776</size>
+		<md5>afa2408b21836834e04e57caee54db82</md5>
+		<crc32>884b4f17</crc32>
+		<sha1>4aa8c6f810b0fa405d230f4146c25388264fdaed</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-09.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-09.mp3</original>
+		<mtime>1515583168</mtime>
+		<size>2694416</size>
+		<md5>5173a42d7ebc65e5b7f51cbaaa7aca11</md5>
+		<crc32>bc7653ca</crc32>
+		<sha1>054ca0027f0ab679e967a2fc3033c6c338cac51b</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-09.mp3" source="original">
+		<mtime>1515482524</mtime>
+		<size>170663888</size>
+		<md5>a1b0dbf0dd91461a0ed54a72a84d59e3</md5>
+		<crc32>e14e00c3</crc32>
+		<sha1>bc1f7e9f95c2668e71f9dda431e3ac884d2a48b5</sha1>
+		<format>VBR MP3</format>
+		<length>14221.99</length>
+		<height>0</height>
+		<width>0</width>
+		<title>2012-01-09-O&amp;A-CF96k+SH</title>
+		<artist>Opie and Anthony</artist>
+		<album>O&amp;A</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="O&amp;A-2012-01-09.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-09.mp3</original>
+		<mtime>1515554675</mtime>
+		<size>111630938</size>
+		<md5>c92f1dfda5267b1b70c5187d49a592b2</md5>
+		<crc32>7923cce4</crc32>
+		<sha1>1ead9ee8f48db936ba7dc31a856e261c1a764830</sha1>
+		<length>14221.98</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-09.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-09.mp3</original>
+		<mtime>1515562323</mtime>
+		<size>12337</size>
+		<md5>ef20d6a4fccd878dcab72f7a98aa9b0b</md5>
+		<crc32>4e2769f4</crc32>
+		<sha1>6149dfaf3ceddf8a92a93c877d56e4073a373f69</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-09_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-09.mp3</original>
+		<mtime>1515572970</mtime>
+		<size>203051</size>
+		<md5>0393115229474b11c8b02ce2f841945d</md5>
+		<crc32>de389973</crc32>
+		<sha1>e0b8ca3c8c9cf3f6d2bcee75c70e560ed07406ff</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-10.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-10.mp3</original>
+		<mtime>1515583846</mtime>
+		<size>2683224</size>
+		<md5>d4b95a4e01d6d5010490a77ffff9c610</md5>
+		<crc32>64dcd21e</crc32>
+		<sha1>e08c9e4d82a6e38efdae045b7997c20dac28f0c4</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-10.mp3" source="original">
+		<mtime>1515483648</mtime>
+		<size>171201059</size>
+		<md5>4cc266afb7168559d6571cb16de6fa07</md5>
+		<crc32>51902d3b</crc32>
+		<sha1>e7a0afcbfc3c467814b3446faf00808d2fe158f0</sha1>
+		<format>VBR MP3</format>
+		<length>14266.74</length>
+		<height>0</height>
+		<width>0</width>
+		<title>2012-01-10-O&amp;A-CF96k+SH</title>
+		<artist>Opie and Anthony</artist>
+		<album>O&amp;A</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="O&amp;A-2012-01-10.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-10.mp3</original>
+		<mtime>1515555599</mtime>
+		<size>114701494</size>
+		<md5>58b5337500cc1ca304bfa170cc96ec80</md5>
+		<crc32>10d4fba0</crc32>
+		<sha1>58e56edb1ad25018ebdc979555877ba3fbfe7142</sha1>
+		<length>14266.73</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-10.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-10.mp3</original>
+		<mtime>1515561702</mtime>
+		<size>12753</size>
+		<md5>d5abb0ee030175169dbd39ab384a08e4</md5>
+		<crc32>f6ff17f6</crc32>
+		<sha1>951644459864ff54cc3ce8943837c69da3bad905</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-10_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-10.mp3</original>
+		<mtime>1515570666</mtime>
+		<size>211200</size>
+		<md5>4ed11f221d68de1836f9fc12cafbb899</md5>
+		<crc32>cf4747bb</crc32>
+		<sha1>eb2ba764e7c7782c1b6e66d473147717ceac433f</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-11.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515585392</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-11.mp3" source="original">
+		<mtime>1515484551</mtime>
+		<size>181583747</size>
+		<md5>102338294d9b83e177e5718a04e17553</md5>
+		<crc32>91975c16</crc32>
+		<sha1>353e755c87ec5c3554e3db20d09afc6abc7b371c</sha1>
+		<format>VBR MP3</format>
+		<length>15131.96</length>
+		<height>0</height>
+		<width>0</width>
+		<title>2012-01-11-O&amp;A-CF96k+SH</title>
+		<artist>Opie and Anthony</artist>
+		<album>O&amp;A</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="O&amp;A-2012-01-11.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515558350</mtime>
+		<size>121960035</size>
+		<md5>3d6ed4c74e557b5bcdc3bb28c86b5ad1</md5>
+		<crc32>2a92537d</crc32>
+		<sha1>f4914bb5f910b0d66d1d9e77e9081051b02643aa</sha1>
+		<length>15131.95</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-11.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515562789</mtime>
+		<size>12192</size>
+		<md5>20e8f94fd5834fe19f3b821bb845fc4b</md5>
+		<crc32>76fa4238</crc32>
+		<sha1>cccd455a5d19d22da64f0b2b895c92f37595c825</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-11_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515571514</mtime>
+		<size>203850</size>
+		<md5>57373b931308aa158a35dad9f9b880c2</md5>
+		<crc32>6451e1b6</crc32>
+		<sha1>6e85a8c7a7f4bcdf1184102a9e4ffe90ccea0b44</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-23.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-23.mp3</original>
+		<mtime>1515584899</mtime>
+		<size>2157240</size>
+		<md5>cd7c8b130e3251dd88f51fcf69a8e4bf</md5>
+		<crc32>1e4e5850</crc32>
+		<sha1>2122c1813fa8b11075fbe3d4532877c0dc5a51ab</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-23.mp3" source="original">
+		<mtime>1515470028</mtime>
+		<size>92543424</size>
+		<md5>a61ed3e5dd7d709a366c50dc45190185</md5>
+		<crc32>d5e340b2</crc32>
+		<sha1>abdc2822350bf878ab07db5c44c211887f55037c</sha1>
+		<format>VBR MP3</format>
+		<length>11563.58</length>
+		<height>259</height>
+		<width>458</width>
+		<artist>Twitter.com\SternGeek</artist>
+		<title>The Opie &amp; Anthony Show 1-23-2012</title>
+		<album>The Opie &amp; Anthony Show</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="O&amp;A-2012-01-23.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-23.mp3</original>
+		<mtime>1515557171</mtime>
+		<size>67242180</size>
+		<md5>44227e8dd331d6914a3ecb1f3c5bdcf6</md5>
+		<crc32>9074c1b7</crc32>
+		<sha1>b8c91c1db96d2db103b6972ee0da6e97735547a3</sha1>
+		<length>11563.56</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-23.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-23.mp3</original>
+		<mtime>1515560358</mtime>
+		<size>10900</size>
+		<md5>198c884845204c2ea10cb26dedf36655</md5>
+		<crc32>6ed7768c</crc32>
+		<sha1>be5acbafb7ee93690f037425863dc97cbe43babd</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-23_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-23.mp3</original>
+		<mtime>1515572106</mtime>
+		<size>276382</size>
+		<md5>a95b8ccdb57a22beadb562e71d085e6f</md5>
+		<crc32>15359532</crc32>
+		<sha1>8667688668a51ffadf0b61ace6c2ce2fc5215f70</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-24.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515584382</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-24.mp3" source="original">
+		<mtime>1515471100</mtime>
+		<size>233005633</size>
+		<md5>102959f02eed1e7e5edf6c96bf3cc876</md5>
+		<crc32>3468134f</crc32>
+		<sha1>ef74ff64c16fe85e90870c1bd56ead571b245769</sha1>
+		<format>VBR MP3</format>
+		<length>14562.38</length>
+		<height>0</height>
+		<width>0</width>
+		<artist>Opie &amp; Anthony</artist>
+		<album>The Opie &amp; Anthony Channel (XM 105/Sirius 206)</album>
+		<genre>Comedy</genre>
+		<title>2012-01-24 Tue (w/ AOAL)</title>
+	</file>
+	<file name="O&amp;A-2012-01-24.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515556815</mtime>
+		<size>140857197</size>
+		<md5>10cb84a287d92f93e2c7981be362f6c8</md5>
+		<crc32>94a0e568</crc32>
+		<sha1>be34a5ae07a1d75d61a00f1fc97873d535902042</sha1>
+		<length>14595.87</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-24.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515562976</mtime>
+		<size>10690</size>
+		<md5>657b87143349f3228002cdaed6b7e956</md5>
+		<crc32>f9e4991d</crc32>
+		<sha1>266e7fd5f6644ff6384f5da5f6997eed94d7c355</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-24_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515573167</mtime>
+		<size>213725</size>
+		<md5>c28d96b163bf886e32a23ce3370f9650</md5>
+		<crc32>5970c72d</crc32>
+		<sha1>bfd2d5296311cb5d7c46b136decd0ce9b178d066</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-25.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515577985</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-25.mp3" source="original">
+		<mtime>1515472639</mtime>
+		<size>234017449</size>
+		<md5>82bfccb7823a086d46481566bb74a74c</md5>
+		<crc32>ef82befa</crc32>
+		<sha1>05c7f0c0f717d2c9d3a845024632f42f5ff5db52</sha1>
+		<format>VBR MP3</format>
+		<length>14625.63</length>
+		<height>0</height>
+		<width>0</width>
+		<artist>Opie &amp; Anthony</artist>
+		<album>The Opie &amp; Anthony Channel (XM 105/Sirius 206)</album>
+		<genre>Comedy</genre>
+		<title>2012-01-25 Wed (w/ AOAL)</title>
+	</file>
+	<file name="O&amp;A-2012-01-25.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515553110</mtime>
+		<size>141884841</size>
+		<md5>f0b1274693a5b54b54ccd9b82418b4ae</md5>
+		<crc32>6920d233</crc32>
+		<sha1>9357bdc728a70a4e8216e15e2b70220a6b6b3b18</sha1>
+		<length>14659.27</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-25.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515565962</mtime>
+		<size>10629</size>
+		<md5>eb9e8e165bb3ef73008648980ef72f9d</md5>
+		<crc32>6711d26c</crc32>
+		<sha1>8eb932b50a7ea977db806cdcd767b669c114e7ff</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-25_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515571829</mtime>
+		<size>213344</size>
+		<md5>99ed2485e800d274bc5470bc30b9f84e</md5>
+		<crc32>8deb467d</crc32>
+		<sha1>11ac211f7acbcd4f7b9fcf0381f0885a5c510ad3</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-26-P1.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-26-P1.mp3</original>
+		<mtime>1515577432</mtime>
+		<size>2340096</size>
+		<md5>9fa8b7c73c0fca7e381ec2bed56d09c3</md5>
+		<crc32>2e1e9bea</crc32>
+		<sha1>6cc52becc59f6e005c129c6c37b48bb7c69b0715</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-26-P1.mp3" source="original">
+		<mtime>1515473227</mtime>
+		<size>93062400</size>
+		<md5>7d055482bf1a1a762e6fa2e54a7dc3be</md5>
+		<crc32>792d6be7</crc32>
+		<sha1>b99a98f00f805f78921789eafed71d6289a303d3</sha1>
+		<format>VBR MP3</format>
+		<length>11628.45</length>
+		<height>259</height>
+		<width>458</width>
+		<artist>Twitter.com\SternGeek</artist>
+		<genre>Comedy</genre>
+		<title>The Opie &amp; Anthony Show 1-26-2012</title>
+		<album>The Opie &amp; Anthony Show</album>
+	</file>
+	<file name="O&amp;A-2012-01-26-P1.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-26-P1.mp3</original>
+		<mtime>1515558686</mtime>
+		<size>68055964</size>
+		<md5>c7c932e75f3e32e309ce6fe8bc988f2d</md5>
+		<crc32>0191e880</crc32>
+		<sha1>07e5a1c2851f0834934ec9d51a2963e33792c15b</sha1>
+		<length>11628.43</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-26-P1.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-26-P1.mp3</original>
+		<mtime>1515568641</mtime>
+		<size>8724</size>
+		<md5>978aa65304f3da124ddf71bb612cf721</md5>
+		<crc32>2552658c</crc32>
+		<sha1>7d72a23f92ff3f9313fec9c7d6467f769abbfcb4</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-26-P1_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-26-P1.mp3</original>
+		<mtime>1515573799</mtime>
+		<size>237099</size>
+		<md5>e01c67bc4db471f61e84421075f02556</md5>
+		<crc32>c43cf931</crc32>
+		<sha1>fabdf84fded9a9c3c662786b2a64169e2bb62ed0</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-26-P2.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-26-P2.mp3</original>
+		<mtime>1515576430</mtime>
+		<size>507792</size>
+		<md5>31f75896addcef117dee7b7689002233</md5>
+		<crc32>dafc7038</crc32>
+		<sha1>387f172e872c3ddb0c23e01e653a1bb6c1f6d4ae</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-26-P2.mp3" source="original">
+		<mtime>1515473352</mtime>
+		<size>22573952</size>
+		<md5>746091a4a45bc48039f82603c84f68db</md5>
+		<crc32>5d876e8b</crc32>
+		<sha1>ee7702c8cf7ad9c56ca6dd1a5b417f79a0656866</sha1>
+		<format>VBR MP3</format>
+		<length>2819.44</length>
+		<height>158</height>
+		<width>280</width>
+		<album>After O&amp;A Live</album>
+		<artist>Twitter.com\SternGeek</artist>
+		<genre>Comedy</genre>
+		<title>After O&amp;A Live 1-26-2012</title>
+	</file>
+	<file name="O&amp;A-2012-01-26-P2.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-26-P2.mp3</original>
+		<mtime>1515559005</mtime>
+		<size>16076243</size>
+		<md5>da74d55b4f50c2f4af5678f108afbb4f</md5>
+		<crc32>68ca8d50</crc32>
+		<sha1>4ef33556531e7ba645699f929547077c40f0d695</sha1>
+		<length>2819.42</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-26-P2.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-26-P2.mp3</original>
+		<mtime>1515569284</mtime>
+		<size>10432</size>
+		<md5>a0159a6d7e95b296e4e5363d5a46b22f</md5>
+		<crc32>17f60e17</crc32>
+		<sha1>dd843fa77186be1ea4b4ec5da34e3b31195dcffb</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-26-P2_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-26-P2.mp3</original>
+		<mtime>1515573377</mtime>
+		<size>266264</size>
+		<md5>694e8a32c3d7c297fe3f858b4319cd2f</md5>
+		<crc32>48db0c6f</crc32>
+		<sha1>cebe828d792eb43591e47784b66936d0bf31de51</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-27.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515582484</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-27.mp3" source="original">
+		<mtime>1515474739</mtime>
+		<size>235210797</size>
+		<md5>61cccca2299df17c13d5636daa3495a7</md5>
+		<crc32>928bd3ad</crc32>
+		<sha1>6d8b9795a0f6044a80bfde1c2200a30605e4c12b</sha1>
+		<format>VBR MP3</format>
+		<length>14700.63</length>
+		<height>0</height>
+		<width>0</width>
+		<title>2012-01-27 Fri (w/ AOAL)</title>
+		<artist>Opie &amp; Anthony</artist>
+		<album>The Opie &amp; Anthony Channel (XM 105/Sirius 206)</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="O&amp;A-2012-01-27.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515559953</mtime>
+		<size>138320882</size>
+		<md5>8eb30b1df751ed981ed8053504244351</md5>
+		<crc32>0e801c95</crc32>
+		<sha1>e691649aa5fb3b31c5039d9987fffe950104a42a</sha1>
+		<length>14700.62</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-27.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515563760</mtime>
+		<size>9975</size>
+		<md5>b102ef4a3bea6c70085eb069c970b22f</md5>
+		<crc32>5d67b8fe</crc32>
+		<sha1>a6da7f996d9ddb5697be55c77016f4b64de7c811</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-27_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515571122</mtime>
+		<size>186261</size>
+		<md5>0de68a11293e666be50e3aa386859a1a</md5>
+		<crc32>1f6394a9</crc32>
+		<sha1>6b131d3a686c1fd1c14bc59dea8fbd6ace275863</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-30.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-30.mp3</original>
+		<mtime>1515575738</mtime>
+		<size>2305408</size>
+		<md5>62f1088cf78268bd5393d5974cd7097e</md5>
+		<crc32>a4b9a16a</crc32>
+		<sha1>32264dde672f2806db8749a5ba46c8d0c0377dc4</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-30.mp3" source="original">
+		<mtime>1515475318</mtime>
+		<size>94444416</size>
+		<md5>08f53d5cb7a5de74f7462542beb92563</md5>
+		<crc32>a8ba138d</crc32>
+		<sha1>7ff273b2a820d1f0d18cadfb8f76d93db596e238</sha1>
+		<format>VBR MP3</format>
+		<length>11801.2</length>
+		<height>259</height>
+		<width>458</width>
+		<artist>Twitter.com\SternGeek</artist>
+		<genre>Comedy</genre>
+		<title>The Opie &amp; Anthony Show 1-30-2012</title>
+		<album>The Opie &amp; Anthony Show</album>
+	</file>
+	<file name="O&amp;A-2012-01-30.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-30.mp3</original>
+		<mtime>1515559324</mtime>
+		<size>67430501</size>
+		<md5>2169710a5a7f62a0bd625db5e4b45325</md5>
+		<crc32>e7a7659f</crc32>
+		<sha1>af6a7fb5f149c08432d3704b369dd135f6932c11</sha1>
+		<length>11801.18</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-30.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-30.mp3</original>
+		<mtime>1515564766</mtime>
+		<size>10997</size>
+		<md5>82beabd4c0aee397cdc65072f64c5fe3</md5>
+		<crc32>4a0d39b8</crc32>
+		<sha1>6913033b26429bb9a7333742e12ade53749327ac</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-30_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-30.mp3</original>
+		<mtime>1515571257</mtime>
+		<size>253322</size>
+		<md5>fd9181cbebd68e924e69bd4e75b17a81</md5>
+		<crc32>6d0690b7</crc32>
+		<sha1>e40d5cf9ae78ca781ae74010ce48d9785343466e</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-31.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-31.mp3</original>
+		<mtime>1515575280</mtime>
+		<size>1924944</size>
+		<md5>59062d496897a4d7fdc331540a4da08a</md5>
+		<crc32>647a80ec</crc32>
+		<sha1>034544e8e4aeae3c1aad712828295174ba098ca4</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-31.mp3" source="original">
+		<mtime>1515475808</mtime>
+		<size>84202268</size>
+		<md5>d613293378a5e4ce0eecb00f72509264</md5>
+		<crc32>3491259e</crc32>
+		<sha1>5a256612d57b554dea53f507a9708a11e72783f1</sha1>
+		<format>VBR MP3</format>
+		<length>10525</length>
+		<height>0</height>
+		<width>0</width>
+		<artist>Opie And Anthony</artist>
+		<genre>Radio</genre>
+		<title>2012 01 31 O&amp;A Show</title>
+	</file>
+	<file name="O&amp;A-2012-01-31.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>O&amp;A-2012-01-31.mp3</original>
+		<mtime>1515558919</mtime>
+		<size>61802091</size>
+		<md5>6ac2313ef158287dd65061477543de8c</md5>
+		<crc32>c32ba8f1</crc32>
+		<sha1>953b1e921d54390d8b01aa3678628e57d1576008</sha1>
+		<length>10524.98</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="O&amp;A-2012-01-31.png" source="derivative">
+		<format>PNG</format>
+		<original>O&amp;A-2012-01-31.mp3</original>
+		<mtime>1515562495</mtime>
+		<size>11248</size>
+		<md5>b38c9e1adc6ae41d7713654d65b28ae1</md5>
+		<crc32>f1d7fb70</crc32>
+		<sha1>c67b7e8f2961e1b62c50a127c441c9d256956cfb</sha1>
+	</file>
+	<file name="O&amp;A-2012-01-31_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>O&amp;A-2012-01-31.mp3</original>
+		<mtime>1515571954</mtime>
+		<size>268951</size>
+		<md5>95fb1fba09034bec5b66f34d48d4583c</md5>
+		<crc32>cbaa235a</crc32>
+		<sha1>90f1e6b17b9f0e0175796bfdea33795a93837bc3</sha1>
+	</file>
+	<file name="OA-2012-01-12.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-12.mp3</original>
+		<mtime>1515576364</mtime>
+		<size>2745776</size>
+		<md5>dace328749ef6dfb1d6b82f3a7a0fa14</md5>
+		<crc32>94cc6e23</crc32>
+		<sha1>4f4593e053b6532f8dd33b0a28bd518e6687f0bf</sha1>
+	</file>
+	<file name="OA-2012-01-12.mp3" source="original">
+		<format>VBR MP3</format>
+		<length>14076.77</length>
+		<height>0</height>
+		<width>0</width>
+		<title>O&amp;A-2012-01-12</title>
+		<mtime>1515543693</mtime>
+		<size>168921395</size>
+		<md5>804135ba35c80c9b58ede990362967e6</md5>
+		<crc32>2aa68599</crc32>
+		<sha1>f300cb7904ae7ec13d8f15f41dde28cdcc97e7f5</sha1>
+		<artist>Opie and Anthony</artist>
+		<album>O&amp;A</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="OA-2012-01-12.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>OA-2012-01-12.mp3</original>
+		<mtime>1515554187</mtime>
+		<size>110092133</size>
+		<md5>0c4bdf8739972611b25b3bbf5110c32f</md5>
+		<crc32>3d3b86d1</crc32>
+		<sha1>21cc28bb57cbddc7ab4d0426019d25d5dfab1fe1</sha1>
+		<length>14076.76</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="OA-2012-01-12.png" source="derivative">
+		<format>PNG</format>
+		<original>OA-2012-01-12.mp3</original>
+		<mtime>1515564032</mtime>
+		<size>12937</size>
+		<md5>ab1eaccef5aa6a2de161b06a73c9f92f</md5>
+		<crc32>9f6e6fe9</crc32>
+		<sha1>1db886943c92e3738bb266261ff9917a94ce1444</sha1>
+	</file>
+	<file name="OA-2012-01-12_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>OA-2012-01-12.mp3</original>
+		<mtime>1515573541</mtime>
+		<size>201721</size>
+		<md5>76da905464c9880ec89e5f7ddf8f96a7</md5>
+		<crc32>97aad4b6</crc32>
+		<sha1>bbaf022ce4e9c7586577003834b450046dcd9884</sha1>
+	</file>
+	<file name="OA-2012-01-13.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-13.mp3</original>
+		<mtime>1515581362</mtime>
+		<size>2588168</size>
+		<md5>44ee3f7b03b43b77125627c0f99d95d4</md5>
+		<crc32>2008e954</crc32>
+		<sha1>bb64b5b165f70236df9e7389dd5d80c707da61a7</sha1>
+	</file>
+	<file name="OA-2012-01-13.mp3" source="original">
+		<format>VBR MP3</format>
+		<length>13932.14</length>
+		<height>259</height>
+		<width>458</width>
+		<title>O&amp;A-2012-01-13</title>
+		<mtime>1515544080</mtime>
+		<size>111491277</size>
+		<md5>5c15f4df85641bc08384a08db760e666</md5>
+		<crc32>e272b1a1</crc32>
+		<sha1>f8fc7f01c7ca53e83fd7dcc979a0df3bc27664c1</sha1>
+		<album>The Opie &amp; Anthony Show</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="OA-2012-01-13.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>OA-2012-01-13.mp3</original>
+		<mtime>1515551289</mtime>
+		<size>83089209</size>
+		<md5>6cc4aa36bd7208af11d185f809c0e83a</md5>
+		<crc32>f7d4900c</crc32>
+		<sha1>79727c6689977f61cbdb778dae587faee52a115b</sha1>
+		<length>13932.12</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="OA-2012-01-13.png" source="derivative">
+		<format>PNG</format>
+		<original>OA-2012-01-13.mp3</original>
+		<mtime>1515569533</mtime>
+		<size>9888</size>
+		<md5>eb55dea483c0e40c1d8aa679bd351565</md5>
+		<crc32>718948fd</crc32>
+		<sha1>2bb06889daf2083a8e615ba8a9d09302aca61df9</sha1>
+	</file>
+	<file name="OA-2012-01-13_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>OA-2012-01-13.mp3</original>
+		<mtime>1515573688</mtime>
+		<size>278711</size>
+		<md5>ce45a857d3857d32f41533652e262f37</md5>
+		<crc32>29d79755</crc32>
+		<sha1>ecd5e5302dee9817b7bdaba3a9cf4ca73397b85e</sha1>
+	</file>
+	<file name="OA-2012-01-16.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515580767</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="OA-2012-01-16.mp3" source="original">
+		<format>VBR MP3</format>
+		<length>15371.6</length>
+		<height>600</height>
+		<width>600</width>
+		<title>O&amp;A-2012-01-16</title>
+		<mtime>1515544823</mtime>
+		<size>290081314</size>
+		<md5>31bc81b456b44d0c60163538cb3fdb73</md5>
+		<crc32>488ff2c3</crc32>
+		<sha1>c6af35d79529db1cbf667471256181ea0088290c</sha1>
+		<album>January 2012</album>
+		<artist>Opie &amp; Anthony</artist>
+		<track>16</track>
+		<genre>Talk Radio</genre>
+	</file>
+	<file name="OA-2012-01-16.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515552483</mtime>
+		<size>135692559</size>
+		<md5>abf50f2121653295d38dd7512db61a7c</md5>
+		<crc32>6ecf3efb</crc32>
+		<sha1>662f08a0fce9cc9069cc1c7ddc5806e32d9242fb</sha1>
+		<length>15371.57</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="OA-2012-01-16.png" source="derivative">
+		<format>PNG</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515567829</mtime>
+		<size>6374</size>
+		<md5>0675c03479bff6b71ba0db9b69a8e787</md5>
+		<crc32>6963ddf6</crc32>
+		<sha1>0a636b68a844ef777b0b6020405e87605247640e</sha1>
+	</file>
+	<file name="OA-2012-01-16_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515572502</mtime>
+		<size>170323</size>
+		<md5>836f085a0c08cf7d8df6b427ec0c8c6e</md5>
+		<crc32>02ab7799</crc32>
+		<sha1>14f0eb755929db9614a9d820ebf050a0298bb547</sha1>
+	</file>
+	<file name="OA-2012-01-17.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515579377</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="OA-2012-01-17.mp3" source="original">
+		<format>VBR MP3</format>
+		<length>14467.62</length>
+		<height>0</height>
+		<width>0</width>
+		<title>O&amp;A-2012-01-17</title>
+		<mtime>1515545139</mtime>
+		<size>115742203</size>
+		<md5>7f267c0addaf17ed0a4daf2fcb037d7b</md5>
+		<crc32>873b0423</crc32>
+		<sha1>16eda71dc7678cf781472167b1b3a3b402fa1ad0</sha1>
+	</file>
+	<file name="OA-2012-01-17.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515551622</mtime>
+		<size>84037342</size>
+		<md5>4d4b48c028cfbef7d49a5f9871b7483a</md5>
+		<crc32>fa66cc26</crc32>
+		<sha1>69eef47385b38406c081e9c1fee82eb30fce931b</sha1>
+		<length>14467.61</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="OA-2012-01-17.png" source="derivative">
+		<format>PNG</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515568842</mtime>
+		<size>10400</size>
+		<md5>f6c671fc0020be0367d04bd3bf720c3c</md5>
+		<crc32>1d8d9c29</crc32>
+		<sha1>5f7f2bca365207593407e7c6e9034e6e9d590faa</sha1>
+	</file>
+	<file name="OA-2012-01-17_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515572638</mtime>
+		<size>245133</size>
+		<md5>384f569746655be1ef542ca96a1813d7</md5>
+		<crc32>7dc011db</crc32>
+		<sha1>cfc933679551fbae36014a70c9f2dbcc30bf0a55</sha1>
+	</file>
+	<file name="OA-2012-01-18.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515574892</mtime>
+		<size>65</size>
+		<md5>54d5f3336947666a99c0f54906a0cba5</md5>
+		<crc32>03e4b101</crc32>
+		<sha1>042e9daed6de7b3004abb37cfa647aaaa1b964e8</sha1>
+	</file>
+	<file name="OA-2012-01-18.mp3" source="original">
+		<format>VBR MP3</format>
+		<length>14693.36</length>
+		<height>0</height>
+		<width>0</width>
+		<title>O&amp;A-2012-01-18</title>
+		<mtime>1515545724</mtime>
+		<size>235094579</size>
+		<md5>3f9ebbb054b78f2a22f6c8a5fab1edae</md5>
+		<crc32>ef1795b6</crc32>
+		<sha1>7ca3b155beb5f5c0a23ffdc337ed3844cbbf2020</sha1>
+		<artist>Opie &amp; Anthony</artist>
+		<album>The Opie &amp; Anthony Channel (XM 105/Sirius 206)</album>
+		<genre>Comedy</genre>
+	</file>
+	<file name="OA-2012-01-18.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515557836</mtime>
+		<size>135376025</size>
+		<md5>4698d80e369ee1798a60cb2e1e7a5d5c</md5>
+		<crc32>5239e67e</crc32>
+		<sha1>cf891f83eb7105e34ae7e874963cd00a614337bc</sha1>
+		<length>14693.36</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="OA-2012-01-18.png" source="derivative">
+		<format>PNG</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515569173</mtime>
+		<size>10981</size>
+		<md5>f597d14bf45fa2f6b416227e0900ae11</md5>
+		<crc32>5401d2f2</crc32>
+		<sha1>b8859965f0a2adcbc8b5b123560885019535f8b6</sha1>
+	</file>
+	<file name="OA-2012-01-18_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515569869</mtime>
+		<size>186412</size>
+		<md5>1f6fee48102176c098e14e95b8da3ec6</md5>
+		<crc32>a6aa00a8</crc32>
+		<sha1>ee879b7cd8ef380d23e9473b3a33ab64d002208b</sha1>
+	</file>
+	<file name="OA-2012-01-19.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-19.mp3</original>
+		<mtime>1515579001</mtime>
+		<size>2771448</size>
+		<md5>75cd980b58c8c4237494771e5efaa12e</md5>
+		<crc32>c41d071c</crc32>
+		<sha1>1e3e78a0199bd92c2815e4e6f96dadebc7899511</sha1>
+	</file>
+	<file name="OA-2012-01-19.mp3" source="original">
+		<format>VBR MP3</format>
+		<length>14241.42</length>
+		<height>0</height>
+		<width>0</width>
+		<title>O&amp;A-2012-01-19</title>
+		<mtime>1515546008</mtime>
+		<size>113932624</size>
+		<md5>760f51653c5a8f706239d98b7e6c7f42</md5>
+		<crc32>1ace9874</crc32>
+		<sha1>ef1a377eff80f459b51b1226bcdddc3e53638fcf</sha1>
+		<artist>Opie And Anthony</artist>
+		<genre>Radio</genre>
+	</file>
+	<file name="OA-2012-01-19.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>OA-2012-01-19.mp3</original>
+		<mtime>1515550896</mtime>
+		<size>84054126</size>
+		<md5>149f1e376e18a05a761921c80a6d8afe</md5>
+		<crc32>7d23b021</crc32>
+		<sha1>b683ebdc7892ffbb2891303f52416b6d3ef8fe28</sha1>
+		<length>14241.41</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="OA-2012-01-19.png" source="derivative">
+		<format>PNG</format>
+		<original>OA-2012-01-19.mp3</original>
+		<mtime>1515568115</mtime>
+		<size>11705</size>
+		<md5>1f80bcc08ef9dfa620ab42e11985d9d3</md5>
+		<crc32>06687eae</crc32>
+		<sha1>450008450c8cf0f0eaa8c57899634471e8064331</sha1>
+	</file>
+	<file name="OA-2012-01-19_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>OA-2012-01-19.mp3</original>
+		<mtime>1515570511</mtime>
+		<size>262853</size>
+		<md5>03dd6516adae554c17df575a4f2a072a</md5>
+		<crc32>d4f53f10</crc32>
+		<sha1>feaf7f72111e0c1aa0f4e19a2cee46a2852f6474</sha1>
+	</file>
+	<file name="OA-2012-01-20.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-20.mp3</original>
+		<mtime>1515578396</mtime>
+		<size>2323264</size>
+		<md5>4e7eae3e63372647f69f44f84f5377f8</md5>
+		<crc32>7cd833f4</crc32>
+		<sha1>cee9f3887b63325fc79c01f1d38f0b26edaa9641</sha1>
+	</file>
+	<file name="OA-2012-01-20.mp3" source="original">
+		<format>VBR MP3</format>
+		<length>11699.87</length>
+		<height>259</height>
+		<width>458</width>
+		<title>O&amp;A-2012-01-20</title>
+		<mtime>1515546242</mtime>
+		<size>93633792</size>
+		<md5>edbe427f3c8b88690d0365e154f14aef</md5>
+		<crc32>f01bd2ea</crc32>
+		<sha1>39e5c06b81778e7f73907473b270e87bc71fb2f5</sha1>
+		<artist>Twitter.com\SternGeek</artist>
+		<genre>Comedy</genre>
+		<album>The Opie &amp; Anthony Show</album>
+	</file>
+	<file name="OA-2012-01-20.ogg" source="derivative">
+		<format>Ogg Vorbis</format>
+		<original>OA-2012-01-20.mp3</original>
+		<mtime>1515550536</mtime>
+		<size>67547808</size>
+		<md5>62b0e2e4b7c41521709dd2b2da06287d</md5>
+		<crc32>6845f17c</crc32>
+		<sha1>2e5140c696ac3ef053dddeac0135c34962ba6963</sha1>
+		<length>11699.86</length>
+		<height>0</height>
+		<width>0</width>
+	</file>
+	<file name="OA-2012-01-20.png" source="derivative">
+		<format>PNG</format>
+		<original>OA-2012-01-20.mp3</original>
+		<mtime>1515562104</mtime>
+		<size>10178</size>
+		<md5>02acb5bf853b77d9fc08e7da609807c1</md5>
+		<crc32>bef9dd28</crc32>
+		<sha1>4e2dc4daa1cb9f840865248aaddebb2611f3d405</sha1>
+	</file>
+	<file name="OA-2012-01-20_spectrogram.png" source="derivative">
+		<format>Spectrogram</format>
+		<original>OA-2012-01-20.mp3</original>
+		<mtime>1515573249</mtime>
+		<size>243443</size>
+		<md5>b4c4709052c3053edbdcb4fd582bf318</md5>
+		<crc32>d7ae9fd4</crc32>
+		<sha1>ffcfff89160dbb67aa0a8f4266755dde17fd9b75</sha1>
+	</file>
+	<file name="OA-2012-01_archive.torrent" source="metadata">
+		<btih>7c268077409739e53ef2010e5194c00ea50004a4</btih>
+		<mtime>1515587555</mtime>
+		<size>113863</size>
+		<md5>fde14803bb7e5d1446d4391f16c39b28</md5>
+		<crc32>b8cd07c5</crc32>
+		<sha1>0218c2ce24b83577a37f477b3d277ef5037c3c9f</sha1>
+		<format>Archive BitTorrent</format>
+	</file>
+	<file name="OA-2012-01_files.xml" source="original">
+		<format>Metadata</format>
+		<md5>465f46a25aea9542726d6b6164b2a88d</md5>
+	</file>
+	<file name="OA-2012-01_meta.sqlite" source="original">
+		<mtime>1515484564</mtime>
+		<size>43008</size>
+		<format>Metadata</format>
+		<md5>ae2193efd585e3a6cd7f8baa12c9e618</md5>
+		<crc32>a5c9b7a9</crc32>
+		<sha1>4091fb55df7001b2cba69de2f2b53020d69d0be9</sha1>
+	</file>
+	<file name="OA-2012-01_meta.xml" source="original">
+		<mtime>1515586079</mtime>
+		<size>874</size>
+		<format>Metadata</format>
+		<md5>ea284374fae6f5fc0f671b2185d1dc8d</md5>
+		<crc32>1a0ff4b0</crc32>
+		<sha1>11f6f384b798e77242eb0b28805a06fdd6514845</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-02.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515576805</mtime>
+		<size>733184</size>
+		<md5>358c2d19bb9b78dcdcfab94b4fc276e0</md5>
+		<crc32>4a4a974e</crc32>
+		<sha1>09bf6964e6838af290e3cfe9350598e3241e5195</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-03.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-03.mp3</original>
+		<mtime>1515579664</mtime>
+		<size>680760</size>
+		<md5>7eba78d9a046cbecfa06d59376ddf087</md5>
+		<crc32>f9e9b2c5</crc32>
+		<sha1>86df0f414bd6570a6d450401044e605e39ea18bb</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-04.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-04.mp3</original>
+		<mtime>1515585689</mtime>
+		<size>648856</size>
+		<md5>4fbc52d6dca7ab982718a30dee0400a5</md5>
+		<crc32>55557cc2</crc32>
+		<sha1>d3873e1b64309aa37bb794b7380d3899c3f27965</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-05.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-05.mp3</original>
+		<mtime>1515574036</mtime>
+		<size>686904</size>
+		<md5>069c9928de57e0ab58f0f95898fa9867</md5>
+		<crc32>dfbfc40c</crc32>
+		<sha1>103957a0c4539abaeadad7759854c82fe9a31fc2</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-06.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515581511</mtime>
+		<size>772728</size>
+		<md5>6f39baa4939cda978eef5380a55f96a4</md5>
+		<crc32>d6802515</crc32>
+		<sha1>828e1ec5c20c6403ddbb9d2a0a9198720dfb8434</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-09.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-09.mp3</original>
+		<mtime>1515582768</mtime>
+		<size>669544</size>
+		<md5>28f67604c613683635b58656816287a5</md5>
+		<crc32>1a0838c4</crc32>
+		<sha1>2172bfaaa0188b3c99a64be9888dda4dd4e6a90d</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-10.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-10.mp3</original>
+		<mtime>1515583426</mtime>
+		<size>679768</size>
+		<md5>c20d302a3b7f36521ece548b0091b52e</md5>
+		<crc32>310d94bd</crc32>
+		<sha1>de61885dccd6d4eaadd171e9a6d0926145fdefe6</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-11.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515585174</mtime>
+		<size>669576</size>
+		<md5>fe58b2e51031d05973b926151dd12ba3</md5>
+		<crc32>dbbd409c</crc32>
+		<sha1>ffdcb589c03c71cccaaa08ff986e1e0931f71fc0</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-23.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-23.mp3</original>
+		<mtime>1515584581</mtime>
+		<size>674960</size>
+		<md5>f1f932e36db196e09e7b39e4249a5aa7</md5>
+		<crc32>d32b89ca</crc32>
+		<sha1>9e869eb1747c3b016e48e792beda031407ea80b1</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-24.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515584167</mtime>
+		<size>659992</size>
+		<md5>946b9e20a12e29b0c1c229754888825f</md5>
+		<crc32>b3a30625</crc32>
+		<sha1>478684ee0e87f4526ee00207295daa5af658a610</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-25.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515577800</mtime>
+		<size>672176</size>
+		<md5>23b7125ce35c1f341bd45740fd34f07a</md5>
+		<crc32>7451776f</crc32>
+		<sha1>af83bafeac64505f0d1cece770d239301ef52a4f</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-26-P1.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-26-P1.mp3</original>
+		<mtime>1515577145</mtime>
+		<size>769016</size>
+		<md5>213b7c03f8d7ba2147495e606e552723</md5>
+		<crc32>3aa3209a</crc32>
+		<sha1>ca5bc478ba7bc9b49fd6bfc8ad2cccf0e0d8853d</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-27.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515582263</mtime>
+		<size>678880</size>
+		<md5>d8182b50fc54e16920ccf34f58e6ed00</md5>
+		<crc32>b0b37743</crc32>
+		<sha1>06c43f90730c38e02104c0e75fe4621569353fc6</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-30.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-30.mp3</original>
+		<mtime>1515575455</mtime>
+		<size>690936</size>
+		<md5>3568e7611c91fa63894c791ba623a5f7</md5>
+		<crc32>6f5b5826</crc32>
+		<sha1>66040bca6e3fedd6922d9ba79e638c7a0be24c2f</sha1>
+	</file>
+	<file name="_HOUR_00_O&amp;A-2012-01-31.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-31.mp3</original>
+		<mtime>1515575047</mtime>
+		<size>661928</size>
+		<md5>e19274bcf82ccc2a528f5cec4677be4a</md5>
+		<crc32>64f092e6</crc32>
+		<sha1>fe301affdf92f63aa705e905165d925e4302a2b2</sha1>
+	</file>
+	<file name="_HOUR_00_OA-2012-01-12.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-12.mp3</original>
+		<mtime>1515576021</mtime>
+		<size>673784</size>
+		<md5>83ea577935f183016c5fff35a8549e75</md5>
+		<crc32>8b9226eb</crc32>
+		<sha1>8b000185b091618063c478e737d07261691613eb</sha1>
+	</file>
+	<file name="_HOUR_00_OA-2012-01-13.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-13.mp3</original>
+		<mtime>1515580974</mtime>
+		<size>663264</size>
+		<md5>418730e74ad870a9f223e32ca6c626b8</md5>
+		<crc32>0235dc8e</crc32>
+		<sha1>8b7a2d1d64aa5da6d92a1ee9332e84edd7a5dedd</sha1>
+	</file>
+	<file name="_HOUR_00_OA-2012-01-16.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515580545</mtime>
+		<size>778880</size>
+		<md5>17109bf82f6cf39edb02a6a3cd68e820</md5>
+		<crc32>25681832</crc32>
+		<sha1>7dbe5f0392ca2ef39641b8f5ee864c69bff6d4f1</sha1>
+	</file>
+	<file name="_HOUR_00_OA-2012-01-17.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515579213</mtime>
+		<size>681984</size>
+		<md5>d7c7cb22bc9cd4961ec7f2240454be4f</md5>
+		<crc32>93dae3cc</crc32>
+		<sha1>d8637940af193de202d3a54b44f3bfff5519aa5c</sha1>
+	</file>
+	<file name="_HOUR_00_OA-2012-01-18.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515574699</mtime>
+		<size>678984</size>
+		<md5>cbe394d8d847fb23ada04f27d1e2c37a</md5>
+		<crc32>e73286ab</crc32>
+		<sha1>ecc868f8672b84972861badbb455550f29bdb745</sha1>
+	</file>
+	<file name="_HOUR_00_OA-2012-01-19.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-19.mp3</original>
+		<mtime>1515578594</mtime>
+		<size>686520</size>
+		<md5>40aa1f3a315e7ee98c369fb121f0c682</md5>
+		<crc32>8771b0a2</crc32>
+		<sha1>a0cd2242319cd088b29e9b2b512a495be0de83fd</sha1>
+	</file>
+	<file name="_HOUR_00_OA-2012-01-20.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-20.mp3</original>
+		<mtime>1515578101</mtime>
+		<size>727888</size>
+		<md5>239f139a901c18ab41f9d7ee0b4b8740</md5>
+		<crc32>5b12f965</crc32>
+		<sha1>1fc7c42a89110282bb55727f1bbff0b250be9e85</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-02.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515576864</mtime>
+		<size>781296</size>
+		<md5>6dbe5345455fb7b3809d70f990c235b2</md5>
+		<crc32>e00e3794</crc32>
+		<sha1>2ae57a30fbebbfac498c26c6a27dcd509b0d326c</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-03.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-03.mp3</original>
+		<mtime>1515579720</mtime>
+		<size>673784</size>
+		<md5>381de285e52412c1c437ee32d61c5989</md5>
+		<crc32>d6d9c6ed</crc32>
+		<sha1>ef05f07568b656b12059b6581e070c165ccb26c4</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-04.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-04.mp3</original>
+		<mtime>1515585747</mtime>
+		<size>643944</size>
+		<md5>b8b14b507e5b1576213b9a519af54e7c</md5>
+		<crc32>6224a6b9</crc32>
+		<sha1>61496c4c4d6939414e8ee0d450c9489dacb5e581</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-05.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-05.mp3</original>
+		<mtime>1515574092</mtime>
+		<size>666040</size>
+		<md5>83d47aad520ed1a26a3171d3809fd49b</md5>
+		<crc32>b9c1603d</crc32>
+		<sha1>e7131b64d6aa152832a2ae52f4e086ae58c7c825</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-06.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515581565</mtime>
+		<size>780976</size>
+		<md5>ffa2f654881cb09133b666dd4617f917</md5>
+		<crc32>16beea3f</crc32>
+		<sha1>5bd1b90789a3daac100ca4a74a185b4c96223290</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-09.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-09.mp3</original>
+		<mtime>1515582863</mtime>
+		<size>656640</size>
+		<md5>9508b4785a20ab1be60a5be24dd763be</md5>
+		<crc32>242e3401</crc32>
+		<sha1>5dc24e51ce9872697d1927b331a44878713a63ee</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-10.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-10.mp3</original>
+		<mtime>1515583484</mtime>
+		<size>666968</size>
+		<md5>4fd307bf964f12e492d9505ac56074b8</md5>
+		<crc32>3f8a3a79</crc32>
+		<sha1>9190de71b2c55cb493cb7eb1fe468b9183a31db3</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-11.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515585232</mtime>
+		<size>683608</size>
+		<md5>01d544133b52d3e1b89e90c8344dfdf0</md5>
+		<crc32>fc16e695</crc32>
+		<sha1>b2a7c036720535ec1ee15cdcad15db2bfcb02e18</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-23.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-23.mp3</original>
+		<mtime>1515584647</mtime>
+		<size>659608</size>
+		<md5>c90e8702719918dead35e57e1f4dfa9d</md5>
+		<crc32>5d8c8e5d</crc32>
+		<sha1>b5ee0d91f460182a04588ce71fb08bcf4ab7fa3b</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-24.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515584222</mtime>
+		<size>660184</size>
+		<md5>a23d423095c8b553676bc19b89e775e3</md5>
+		<crc32>9b75c7c6</crc32>
+		<sha1>9ae2635534ea633f55109b338d9e324394030548</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-25.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515577856</mtime>
+		<size>699088</size>
+		<md5>8f73a7151a454dd62a5f275504451fc3</md5>
+		<crc32>0648d5f3</crc32>
+		<sha1>1d638138044a73e00853969e106fba1986af60d5</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-26-P1.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-26-P1.mp3</original>
+		<mtime>1515577198</mtime>
+		<size>747080</size>
+		<md5>8a51b4d4e7afbbd230a2cd41d90d1bce</md5>
+		<crc32>64583602</crc32>
+		<sha1>38e9bebedd19bc81bfd602f7c20be05f2022c1d8</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-27.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515582332</mtime>
+		<size>700216</size>
+		<md5>809948bb283b897d2ee8575a6c05d948</md5>
+		<crc32>26f1839e</crc32>
+		<sha1>52d25fbb04e9460ee3f027462d278fff909e86ac</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-30.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-30.mp3</original>
+		<mtime>1515575511</mtime>
+		<size>695440</size>
+		<md5>db62ca7d3ed3d5de4c1ce4f51b5d246a</md5>
+		<crc32>c60d3a34</crc32>
+		<sha1>b645bb6319c6532fd35cc59e72178b980c4a233f</sha1>
+	</file>
+	<file name="_HOUR_01_O&amp;A-2012-01-31.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-31.mp3</original>
+		<mtime>1515575096</mtime>
+		<size>651472</size>
+		<md5>0f55394df0275d0ef3f9801b1f0cd2a5</md5>
+		<crc32>5a096e0c</crc32>
+		<sha1>caf673661e8101e8a6e8e7a25599bf2280738d62</sha1>
+	</file>
+	<file name="_HOUR_01_OA-2012-01-12.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-12.mp3</original>
+		<mtime>1515576073</mtime>
+		<size>709928</size>
+		<md5>8480b0a74f34ae1c60478a3f168dfafe</md5>
+		<crc32>8320c8e3</crc32>
+		<sha1>b76c1fcb5f5a2ebcadd1ba1cd8eda7d684ef05b3</sha1>
+	</file>
+	<file name="_HOUR_01_OA-2012-01-13.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-13.mp3</original>
+		<mtime>1515581033</mtime>
+		<size>667936</size>
+		<md5>4e74835d6039a115a0199f7c9b296e68</md5>
+		<crc32>a6e5d808</crc32>
+		<sha1>b86fa091138e6dff6d1349e8cce806db8094240b</sha1>
+	</file>
+	<file name="_HOUR_01_OA-2012-01-16.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515580618</mtime>
+		<size>778792</size>
+		<md5>55992ccd595560ca389b7c27de906aa5</md5>
+		<crc32>c600cb27</crc32>
+		<sha1>1146800b52ba7e19b9b6f4cd7a438f858cf2018b</sha1>
+	</file>
+	<file name="_HOUR_01_OA-2012-01-17.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515579268</mtime>
+		<size>684096</size>
+		<md5>e4983826986dfdd696792f0f0084cbae</md5>
+		<crc32>45502d30</crc32>
+		<sha1>595a40a2ed20375ddad1a84fa60a616407dd468b</sha1>
+	</file>
+	<file name="_HOUR_01_OA-2012-01-18.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515574764</mtime>
+		<size>658496</size>
+		<md5>78d1595f40fd62ed72d2dd61fc140c16</md5>
+		<crc32>02b8b918</crc32>
+		<sha1>86829473959c701ace80f7b15bc0e80fb06a28c9</sha1>
+	</file>
+	<file name="_HOUR_01_OA-2012-01-19.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-19.mp3</original>
+		<mtime>1515578662</mtime>
+		<size>734080</size>
+		<md5>a2663ff92f571be77568558c915f52b0</md5>
+		<crc32>6e52135a</crc32>
+		<sha1>e944c47542071d4a2f4c06fc37bb5f30d7696cc6</sha1>
+	</file>
+	<file name="_HOUR_01_OA-2012-01-20.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-20.mp3</original>
+		<mtime>1515578154</mtime>
+		<size>715440</size>
+		<md5>4791a8306bd7720d9167532048ace278</md5>
+		<crc32>c981bdf0</crc32>
+		<sha1>fd8c85c58a7d7f9ae8940758c02eb16f7b5c0ff8</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-02.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515576926</mtime>
+		<size>803384</size>
+		<md5>4ee99da03fbc2230181961c24918dd24</md5>
+		<crc32>f6a297bd</crc32>
+		<sha1>aad5ea62b625c2eba75854e9e353f3f182fcf72e</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-03.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-03.mp3</original>
+		<mtime>1515579780</mtime>
+		<size>660712</size>
+		<md5>9ec182f06bc2e6a30d434d8e53606a6e</md5>
+		<crc32>5c99d1be</crc32>
+		<sha1>7eb3f2ea712643371fb07a28f2ea3b63e36cef75</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-04.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-04.mp3</original>
+		<mtime>1515585802</mtime>
+		<size>706896</size>
+		<md5>85bf98e99f547544cca3adaab7be04f0</md5>
+		<crc32>d42cdf76</crc32>
+		<sha1>7104daa4ffbccfd171db585b867a3cb780d4c692</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-05.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-05.mp3</original>
+		<mtime>1515574144</mtime>
+		<size>681432</size>
+		<md5>b10946d19ef140ecea514ac482d5bbc7</md5>
+		<crc32>088dcd5a</crc32>
+		<sha1>563dd4e133e0fc4db134d5fed3fb823f20a1fa69</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-06.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515581628</mtime>
+		<size>770760</size>
+		<md5>613ade251160a53480d69d3083d5792d</md5>
+		<crc32>7cea9f94</crc32>
+		<sha1>1900feee82c2b2cdced95c1dd54d259a5403914e</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-09.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-09.mp3</original>
+		<mtime>1515582916</mtime>
+		<size>713944</size>
+		<md5>1a1fd277e8cbde994210c408d879d7b9</md5>
+		<crc32>51235dda</crc32>
+		<sha1>70d2fe35e2860d470a5399e366abe735aed7be97</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-10.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-10.mp3</original>
+		<mtime>1515583544</mtime>
+		<size>685648</size>
+		<md5>9bac3c7bc26909e8981c80db731b3769</md5>
+		<crc32>c5c142a6</crc32>
+		<sha1>36885bed04ad26e53549396d71678d3638ce4ce3</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-11.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515585292</mtime>
+		<size>683096</size>
+		<md5>294db5c4def0c5ad3c7631abc2eead0c</md5>
+		<crc32>2abbb888</crc32>
+		<sha1>7deb8e446710a3829fdbe72b1f3a13f908a6fc7f</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-23.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-23.mp3</original>
+		<mtime>1515584714</mtime>
+		<size>683296</size>
+		<md5>f9af68296e0b261ccf3eeee9b2a00d2c</md5>
+		<crc32>8b703638</crc32>
+		<sha1>05df9995fdf311c6fb9da8b69a98cb9b75a21485</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-24.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515584281</mtime>
+		<size>675520</size>
+		<md5>8066a697998e39e98824e29d230bf5db</md5>
+		<crc32>23ce2744</crc32>
+		<sha1>5a5c4d908efe5cf31666e80883d43533284c1218</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-25.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515577914</mtime>
+		<size>721104</size>
+		<md5>e5ba17196dfd05a099b3eb0a39d3ea17</md5>
+		<crc32>44855ad6</crc32>
+		<sha1>8efc341aae57b18cc22d9d9a4ab9657684f8f91b</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-26-P1.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-26-P1.mp3</original>
+		<mtime>1515577253</mtime>
+		<size>671176</size>
+		<md5>7b94fe58e3dbdc862303b92a1813861a</md5>
+		<crc32>1a157dad</crc32>
+		<sha1>f22d73427ee62be84af422709ebe67d5e1568d26</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-27.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515582402</mtime>
+		<size>732968</size>
+		<md5>be800f8627459457294b69a0448d0fa5</md5>
+		<crc32>cdfd3258</crc32>
+		<sha1>e907b23e24b6fc15f44ea416a75e6346eab9bc28</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-30.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-30.mp3</original>
+		<mtime>1515575566</mtime>
+		<size>722488</size>
+		<md5>b8023f3733e946893146e8fe07c3695f</md5>
+		<crc32>1875d827</crc32>
+		<sha1>a0e971d500c91738e738cd7ea63cad1e0290dbd5</sha1>
+	</file>
+	<file name="_HOUR_02_O&amp;A-2012-01-31.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-31.mp3</original>
+		<mtime>1515575144</mtime>
+		<size>612128</size>
+		<md5>1c7e4e0e2084b44edde27e70ffd4d63d</md5>
+		<crc32>794b2a33</crc32>
+		<sha1>cf9a5a1bbe0cea72577be380f244005c57ee60d0</sha1>
+	</file>
+	<file name="_HOUR_02_OA-2012-01-12.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-12.mp3</original>
+		<mtime>1515576129</mtime>
+		<size>723536</size>
+		<md5>6782ff0d61d4093954f221e93faba1c4</md5>
+		<crc32>ec299a4a</crc32>
+		<sha1>4eef338ea5d703437c376f70271514e161899a05</sha1>
+	</file>
+	<file name="_HOUR_02_OA-2012-01-13.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-13.mp3</original>
+		<mtime>1515581104</mtime>
+		<size>669352</size>
+		<md5>2dc7c701cdc647aac1b741eddfe56791</md5>
+		<crc32>4f1a5cfe</crc32>
+		<sha1>31285ac4a277f018a4a3a65407b0164939c8bf9e</sha1>
+	</file>
+	<file name="_HOUR_02_OA-2012-01-16.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515580679</mtime>
+		<size>752864</size>
+		<md5>bb9febad741989e3dbd7850b6924c80e</md5>
+		<crc32>9588b2fb</crc32>
+		<sha1>69713990051cad4969f068b6d10d03b9af2c6609</sha1>
+	</file>
+	<file name="_HOUR_02_OA-2012-01-17.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515579318</mtime>
+		<size>666488</size>
+		<md5>48cf2917c0056da6f11b95835c45fbb6</md5>
+		<crc32>0e2d15b0</crc32>
+		<sha1>1b3e9c5d82f25d18ed446b67ba2f9ccaa4798a86</sha1>
+	</file>
+	<file name="_HOUR_02_OA-2012-01-18.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515574824</mtime>
+		<size>681096</size>
+		<md5>4ae742b9f887252df7fc6b4d8984d551</md5>
+		<crc32>36c55ccf</crc32>
+		<sha1>e26db054c17404879001e7411766679b628772f2</sha1>
+	</file>
+	<file name="_HOUR_02_OA-2012-01-19.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-19.mp3</original>
+		<mtime>1515578729</mtime>
+		<size>710408</size>
+		<md5>8c68affb07c7a8bbb255971bae584be8</md5>
+		<crc32>c47a738b</crc32>
+		<sha1>6af66f53bfb6fe56c425b4d98474753f1437daf3</sha1>
+	</file>
+	<file name="_HOUR_02_OA-2012-01-20.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-20.mp3</original>
+		<mtime>1515578210</mtime>
+		<size>705688</size>
+		<md5>6d8afba56a0ad1b3b274f42369b7c5b1</md5>
+		<crc32>ddb28512</crc32>
+		<sha1>1792998670e330f5ea689cc9302c8a1e89a54d6a</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-02.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515576985</mtime>
+		<size>794304</size>
+		<md5>677c67563049bcf5304c2d7ca3fec6d9</md5>
+		<crc32>44435199</crc32>
+		<sha1>73b293b40a4edbb4baec68b4fbb70de6b9882d35</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-03.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-03.mp3</original>
+		<mtime>1515579844</mtime>
+		<size>646432</size>
+		<md5>6f1558ff57b7ed15e1d524e84f7335e1</md5>
+		<crc32>116ecc65</crc32>
+		<sha1>ae082d53c1da3bf0c0d0e615a3ef1ce93a2426f4</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-04.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-04.mp3</original>
+		<mtime>1515585853</mtime>
+		<size>622640</size>
+		<md5>39d9415e557b4e3194a195c7b9b18cee</md5>
+		<crc32>d8976435</crc32>
+		<sha1>57d602799f1e023fb57deb8d6fc458605f68fb26</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-05.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-05.mp3</original>
+		<mtime>1515574193</mtime>
+		<size>657288</size>
+		<md5>1f9382ad47054882aed322452c77a989</md5>
+		<crc32>03040cc3</crc32>
+		<sha1>7e496a2b39d96dd520edda2206b1c191fd9eb503</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-06.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515581683</mtime>
+		<size>762112</size>
+		<md5>46aa927035e8a08b9dd0ae170b5a6c92</md5>
+		<crc32>7e8671cc</crc32>
+		<sha1>dbcdb1d97b98f8432ce6a3c82f40c06e617bc5a9</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-09.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-09.mp3</original>
+		<mtime>1515582974</mtime>
+		<size>654600</size>
+		<md5>4e7ab264e5b35d4f06e7b7de7ea6c427</md5>
+		<crc32>86f4e129</crc32>
+		<sha1>73fda33dca1311afa4353deef1c413299bf23f08</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-10.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-10.mp3</original>
+		<mtime>1515583608</mtime>
+		<size>648776</size>
+		<md5>4c73841be9a269bed099faee7f97edd9</md5>
+		<crc32>54258817</crc32>
+		<sha1>7b0066fb92c8259500b5b797573ba4af68ceb378</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-11.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515585377</mtime>
+		<size>682720</size>
+		<md5>3420210cb40f8ccafeaf17c64b760075</md5>
+		<crc32>998969af</crc32>
+		<sha1>efd2c2b3273ac1f228352b33a3a872c5b5727c45</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-23.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-23.mp3</original>
+		<mtime>1515584731</mtime>
+		<size>138080</size>
+		<md5>25016865815ea8788d97c2ea1d6261b8</md5>
+		<crc32>c12eae43</crc32>
+		<sha1>281a35681291cef28afaf0e2e536373dba028703</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-24.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515584356</mtime>
+		<size>654568</size>
+		<md5>3a88d10d216c0b7404037ac166a5450a</md5>
+		<crc32>14f79b23</crc32>
+		<sha1>2600ebb065b272a6aa0553d6f425ee4c19f07aad</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-25.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515577976</mtime>
+		<size>657632</size>
+		<md5>fdf705ff1237fd5f3a57f652b51249ce</md5>
+		<crc32>55099924</crc32>
+		<sha1>0fab764a2aaedaf9bd1abc216acdbe2082c776c2</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-26-P1.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-26-P1.mp3</original>
+		<mtime>1515577271</mtime>
+		<size>152272</size>
+		<md5>38ecf331ad939b765e205f6eb0c01cce</md5>
+		<crc32>ea25b534</crc32>
+		<sha1>7bb8565d5363524625cde5558805acb670b78cd8</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-27.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515582473</mtime>
+		<size>702816</size>
+		<md5>b8d401767d44a2ce2095d4a7fd3793ec</md5>
+		<crc32>98f70ab4</crc32>
+		<sha1>a3db34468d968e1464e938950524009bc7c0c916</sha1>
+	</file>
+	<file name="_HOUR_03_O&amp;A-2012-01-30.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-30.mp3</original>
+		<mtime>1515575586</mtime>
+		<size>194440</size>
+		<md5>48978ee3e91879e64b8718a8af734b18</md5>
+		<crc32>860db279</crc32>
+		<sha1>f83706af3158a4c0f5032293ab924db0a2cddc6c</sha1>
+	</file>
+	<file name="_HOUR_03_OA-2012-01-12.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-12.mp3</original>
+		<mtime>1515576183</mtime>
+		<size>639656</size>
+		<md5>c6d653fa44183bfbe89e31a396799e6f</md5>
+		<crc32>378cd6c6</crc32>
+		<sha1>71d88d042b17e35f995afb6ca85f06b21e65e271</sha1>
+	</file>
+	<file name="_HOUR_03_OA-2012-01-13.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-13.mp3</original>
+		<mtime>1515581158</mtime>
+		<size>589216</size>
+		<md5>658378c02c4aea034994b6407440351b</md5>
+		<crc32>a38ecfae</crc32>
+		<sha1>64efe5b5db5b12bbfed515620d869f9c80dca224</sha1>
+	</file>
+	<file name="_HOUR_03_OA-2012-01-16.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515580746</mtime>
+		<size>713232</size>
+		<md5>49b1541f022a6a1296b7e89ce4a18bb2</md5>
+		<crc32>e0ef201d</crc32>
+		<sha1>051ceb1fe275a81091bca399c4887b0405364438</sha1>
+	</file>
+	<file name="_HOUR_03_OA-2012-01-17.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515579371</mtime>
+		<size>661680</size>
+		<md5>c7d3fef0aed09c1434d32c23a77df5ce</md5>
+		<crc32>2855708a</crc32>
+		<sha1>7980aff0d8626a4930f6860fe5a88f61b8d45be4</sha1>
+	</file>
+	<file name="_HOUR_03_OA-2012-01-18.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515574884</mtime>
+		<size>683792</size>
+		<md5>f802abd6517c6a0a8548e9c621e90f99</md5>
+		<crc32>e813c1a9</crc32>
+		<sha1>d7c64cff24bce4a4fb8a314727ac485c431dd026</sha1>
+	</file>
+	<file name="_HOUR_03_OA-2012-01-19.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-19.mp3</original>
+		<mtime>1515578793</mtime>
+		<size>642768</size>
+		<md5>de3966582bedb6e2d6c2186e62a7969c</md5>
+		<crc32>3c81c0f6</crc32>
+		<sha1>b8d19d98ffff257ebfd10e3f30a25e78896f14fe</sha1>
+	</file>
+	<file name="_HOUR_03_OA-2012-01-20.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-20.mp3</original>
+		<mtime>1515578226</mtime>
+		<size>175736</size>
+		<md5>86c9238ff407460f1c70111ebbb70cd2</md5>
+		<crc32>58fb3037</crc32>
+		<sha1>e67346cfcd776c3a7439bc047b07915685f2f55e</sha1>
+	</file>
+	<file name="_HOUR_04_O&amp;A-2012-01-02.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-02.mp3</original>
+		<mtime>1515577006</mtime>
+		<size>247440</size>
+		<md5>41f0d7fd353730f749bcc8b16aab968c</md5>
+		<crc32>403367d0</crc32>
+		<sha1>6cdf9cbc27f196be086e8d95708db00c67325a46</sha1>
+	</file>
+	<file name="_HOUR_04_O&amp;A-2012-01-06.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-06.mp3</original>
+		<mtime>1515581697</mtime>
+		<size>119464</size>
+		<md5>1079e048c66dab7cc0146c23b2fff2de</md5>
+		<crc32>61591703</crc32>
+		<sha1>a6b91f82781f373bf283740d99f01bf0995d34ea</sha1>
+	</file>
+	<file name="_HOUR_04_O&amp;A-2012-01-11.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-11.mp3</original>
+		<mtime>1515585392</mtime>
+		<size>135352</size>
+		<md5>775f4dbf799cb31efcce8165aa1f6277</md5>
+		<crc32>d2d3e188</crc32>
+		<sha1>e08bc2e43c70da587164fd5fc1aac3ddfd2cac11</sha1>
+	</file>
+	<file name="_HOUR_04_O&amp;A-2012-01-24.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-24.mp3</original>
+		<mtime>1515584381</mtime>
+		<size>35120</size>
+		<md5>7ba7e57491fa7eb5bdcbbd6bbd55d2ab</md5>
+		<crc32>820b45c0</crc32>
+		<sha1>0fa808a3aab4da49ba63d9b35c9ec3eb2d69b490</sha1>
+	</file>
+	<file name="_HOUR_04_O&amp;A-2012-01-25.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-25.mp3</original>
+		<mtime>1515577984</mtime>
+		<size>42712</size>
+		<md5>14474555e35e6e15d04b5aa9cd15bb19</md5>
+		<crc32>4260fac9</crc32>
+		<sha1>edcee89a4cd1575c4c1534eb9e59758d4a8c8202</sha1>
+	</file>
+	<file name="_HOUR_04_O&amp;A-2012-01-27.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>O&amp;A-2012-01-27.mp3</original>
+		<mtime>1515582484</mtime>
+		<size>58664</size>
+		<md5>a021c349c67aff8b842b4f8d9fcf3ceb</md5>
+		<crc32>ea377caa</crc32>
+		<sha1>25dc1eaa103d3979fabc5c4e23d28a0a39074091</sha1>
+	</file>
+	<file name="_HOUR_04_OA-2012-01-16.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-16.mp3</original>
+		<mtime>1515580766</mtime>
+		<size>195568</size>
+		<md5>1567dfe8b3f9618cc1a7c5252d106fc6</md5>
+		<crc32>e2b51c12</crc32>
+		<sha1>823f72268557425bfcce8d802d5eefe982b8bf26</sha1>
+	</file>
+	<file name="_HOUR_04_OA-2012-01-17.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-17.mp3</original>
+		<mtime>1515579377</mtime>
+		<size>13576</size>
+		<md5>4e830b7c725ed14ceeb8eba2dfdb3814</md5>
+		<crc32>e5faea58</crc32>
+		<sha1>15b7ed426d43f1d2d1271b69f5a1f99059f7da51</sha1>
+	</file>
+	<file name="_HOUR_04_OA-2012-01-18.afpk" source="derivative">
+		<format>Columbia Peaks</format>
+		<original>OA-2012-01-18.mp3</original>
+		<mtime>1515574892</mtime>
+		<size>52920</size>
+		<md5>ebf34c5a0553ece496430bcd4833fbb6</md5>
+		<crc32>998466e9</crc32>
+		<sha1>d76ccf01617dc04104894323cafccff4acb8396f</sha1>
+	</file>
+</files>

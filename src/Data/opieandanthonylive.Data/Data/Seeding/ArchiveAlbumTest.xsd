@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://opieandanthonylive.com/ArchiveAlbumTestSchema"
+           xmlns="http://opieandanthonylive.com/ArchiveAlbumTestSchema"
+					 elementFormDefault="qualified"
+					 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vs="http://schemas.microsoft.com/Visual-Studio-Intellisense"
+           vs:friendlyname="Custom Intellisense Forms Controls"
+					 vs:ishtmlschema="false"
+					 vs:iscasesensitive="false"
+					 vs:requireattributequotes="true">
+	<!--<xs:complexType name="typedef_ArchiveAlbum">
+		<xs:
+	</xs:complexType>-->
+	
+	<xs:element name="files">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="file">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:choice maxOccurs="unbounded">
+								<xs:element name="format" type="xs:string" />
+								<xs:element name="original" type="xs:string" />
+								<xs:element name="mtime" type="xs:unsignedInt" />
+								<xs:element name="size" type="xs:unsignedInt" />
+								<xs:element name="md5" type="xs:string" />
+								<xs:element name="crc32" type="xs:string" />
+								<xs:element name="sha1" type="xs:string" />
+								<xs:element name="length" type="xs:decimal" />
+								<xs:element name="height" type="xs:unsignedShort" />
+								<xs:element name="width" type="xs:unsignedShort" />
+								<xs:element name="album" type="xs:string" />
+								<xs:element name="artist" type="xs:string" />
+								<xs:element name="title" type="xs:string" />
+								<xs:element name="track" type="xs:unsignedByte" />
+								<xs:element name="genre" type="xs:string" />
+								<xs:element name="btih" type="xs:string" />
+							</xs:choice>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required" />
+						<xs:attribute name="source" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
