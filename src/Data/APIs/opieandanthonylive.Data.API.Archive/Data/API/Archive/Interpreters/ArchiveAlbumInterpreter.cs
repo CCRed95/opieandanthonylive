@@ -3,7 +3,7 @@ using opieandanthonylive.Data.Domain.Archive.Responses;
 
 namespace opieandanthonylive.Data.API.Archive.Interpreters
 {
-  public static class ArchiveAlbumMaterializer
+  public class ArchiveAlbumInterpreter
   {
     public static ArchiveAlbum CreateArchiveAlbum(
       Doc doc)
@@ -15,8 +15,7 @@ namespace opieandanthonylive.Data.API.Archive.Interpreters
         doc.Date,
         doc.Date.Year,
         doc.Date.Month,
-        ArchiveFileMaterializer.ScrapeArchiveFiles);
+        ArchiveFileInterpreter.ScrapeArchiveFiles);
     }
   }
-
 }

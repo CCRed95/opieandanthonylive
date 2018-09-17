@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using AngleSharp;
-using opieandanthonylive.Common;
+using opieandanthonylive.Data.Api.Common;
+using opieandanthonylive.Data.API.Audible.Scraping;
 using opieandanthonylive.Data.API.Infrastructure;
 using opieandanthonylive.Data.Domain.Audible;
 
@@ -13,7 +12,7 @@ namespace opieandanthonylive.Data.API.Audible
   {
     private const string domainPrefix = "https://";
     private const string domainName = "audible";
-    private const string domainSuffix = ".org";
+    private const string domainSuffix = ".com";
 
     public static readonly string domain =
       $"{domainPrefix}{domainName}{domainSuffix}";
@@ -50,55 +49,46 @@ namespace opieandanthonylive.Data.API.Audible
 
       var currentUrl = url;
 
+      var audibleSearchResultScraper = new AudibleSearchResultScraper();
+
       while (currentUrl != null)
       {
-        var document = context
+        using (var document = context
           .OpenAsync(currentUrl)
           .GetAwaiter()
-          .GetResult();
+          .GetResult())
+        {
+          var items = document
+            .QuerySelector("#center-3")
+            .QuerySelector(".bc-list")
+            .QuerySelectorAll("li");
 
-        var items = document
-          .QuerySelector(".adbl-search-results")
-          .QuerySelectorAll(".adbl-result-item")
-          .Select(
-            t => t.QuerySelector(".adbl-prod-result"));
+          foreach (var item in items)
+          {
+            var audibleMediaItem = audibleSearchResultScraper.Scrape(item);
 
-        throw new NotImplementedException();
+            yield return audibleMediaItem;
+          }
+          
+          var nextLink = document
+            ?.QuerySelector(".linkListWrapper")
+            ?.QuerySelector(".pagingElements")
+            ?.QuerySelector(".nextButton")
+            ?.QuerySelector("button");
 
-        //var parsedItemMetadata = items
-        //  .Select(AudibleItemMetadataScraper.Scrape)
-        //  .ToArray();
+          if (nextLink != null)
+          {
+            var nextLinkRelative = nextLink
+              .GetAttribute("data-url");
 
-        //yield return parsedItemMetadata;
-
-        //var index = document
-        //  .QuerySelector(".adbl-pagination-bottom")
-        //  .QuerySelector(".adbl-page-index");
-
-        //var nextLink = index
-        //  .QuerySelector(".adbl-page-next");
-
-        //var a = nextLink
-        //  .QuerySelector("a");
-
-        //if (a != null)
-        //{
-        //  var relativeLink = nextLink
-        //    .QuerySelector("a")
-        //    .GetAttribute("href");
-
-        //  currentUrl = "https://www.audible.com" + relativeLink;
-        //}
-        //else
-        //{
-        //  currentUrl = null;
-        //}
-
-
+            currentUrl = "https://www.audible.com" + nextLinkRelative;
+          }
+          else
+          {
+            currentUrl = null;
+          }
+        }
       }
-
-      throw new NotImplementedException();
-
     }
   }
 }

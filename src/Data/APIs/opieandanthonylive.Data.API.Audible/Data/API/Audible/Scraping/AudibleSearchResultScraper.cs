@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using AngleSharp.Dom;
 using Ccr.Dnc.Core.Extensions;
-using opieandanthonylive.Common.Scraping;
+using opieandanthonylive.Data.API.Common.Scraping;
 using opieandanthonylive.Data.Domain.Audible;
 
 namespace opieandanthonylive.Data.API.Audible.Scraping
@@ -13,26 +13,29 @@ namespace opieandanthonylive.Data.API.Audible.Scraping
     : SearchResultScraper<AudibleMediaItem>
   {
     private static readonly Regex _ratingsCountRegex = new Regex(
-      @"\((?<count>[\d]*) rating[s]?\)");
+      @"(?<count>[\d]*) rating[s]?");
+
+    private static readonly Regex _ratingsAverageRegex = new Regex(
+      @"(?<rating>[0-9.]*) out of 5 stars");
 
 
     private static readonly Dictionary<string, MetadataRouterBase> metadataSelectorMapping
       = new Dictionary<string, MetadataRouterBase>
       {
-        ["By"] = new MetadataRouter<string>(
+        ["authorLabel"] = new MetadataRouter<string>(
           span => span.QuerySelector("a").TextContent.Trim(),
           t => t.By),
 
-        ["Narrated By"] = new MetadataRouter<string>(
+        ["narratorLabel"] = new MetadataRouter<string>(
           span => span.QuerySelector("a").TextContent.Trim(),
           t => t.NarratedBy),
 
-        ["Length: "] = new MetadataRouter<TimeSpan>(
+        ["runtimeLabel"] = new MetadataRouter<TimeSpan>(
           span => AudibleTimeSpanParser.Parse(span.TextContent),
           t => t.PlaybackLength),
 
-        ["Release Date:"] = new MetadataRouter<DateTime>(
-          span => DateTime.Parse(span.TextContent),
+        ["releaseDateLabel"] = new MetadataRouter<DateTime>(
+          span => DateTime.Parse(span.TextContent.Replace("Release date:", "").Trim()),
           t => t.ReleaseDate)
       };
 
@@ -41,13 +44,20 @@ namespace opieandanthonylive.Data.API.Audible.Scraping
       IElement node)
     {
       var metadataContainer = node
-        .QuerySelector(".adbl-prod-meta-data-cont");
+        .QuerySelector(".bc-row-responsive")
+        .QuerySelector(".bc-col-responsive")
+        .QuerySelector(".bc-row-responsive")
+        .Children[1]
+        .QuerySelector(".bc-row-responsive")
+        .QuerySelector(".bc-col-responsive")
+        .QuerySelector("span")
+        .QuerySelector("ul");
+
 
       var ratingsData = ReadRatingsData(metadataContainer);
 
       var audibleItemMetadata = new AudibleMediaItem
       {
-        ItemTypeClassification = ReadItemTypeClassification(metadataContainer),
         Title = ReadTitle(metadataContainer),
         FullShowMetadataUrl = ReadItemUrl(metadataContainer),
         NumberOfRatings = ratingsData.numberOfRatings,
@@ -55,35 +65,43 @@ namespace opieandanthonylive.Data.API.Audible.Scraping
       };
 
       metadataContainer
-        .QuerySelector(".adbl-prod-meta")
-        .QuerySelector("ul")
         .QuerySelectorAll("li")
-        .Where(t => t.Children.Length == 2)
         .ForEach(t =>
         {
-          var metadataKind = t.Children[0].TextContent;
-          var metadataMapping = metadataSelectorMapping[metadataKind];
-          var metadataValue = metadataMapping.ScrapeBase(t.Children[1]);
+          var metadataKinds = t
+            .ClassList
+            .ToList();
 
-          metadataMapping.ExecutePropertySetBase(audibleItemMetadata, metadataValue);
+          metadataKinds.Remove(
+            "bc-list-item");
+
+          if (metadataKinds.Count == 1)
+          {
+            var metadataKind = metadataKinds[0];
+
+            if (metadataKind != "ratingsLabel")
+            {
+              if (!metadataSelectorMapping.TryGetValue(metadataKind, out var metadataMapping))
+                throw new NotSupportedException(
+                  $"Cannot find key {metadataKind.Quote()} in the Metadata Selector Mapping " +
+                  $"dictionary, so it is not supported.");
+
+              var metadataValue = metadataMapping.ScrapeBase(t.Children[0]);
+
+              metadataMapping.ExecutePropertySetBase(
+                audibleItemMetadata,
+                metadataValue);
+            }
+          }
         });
-      
+
       return audibleItemMetadata;
     }
     
-
-    protected string ReadItemTypeClassification(
-      IElement metadataContainer)
-    {
-      return metadataContainer
-        .QuerySelector(".adbl-prod-type")
-        .TextContent
-        .Trim();
-    }
-
     protected string ReadTitle(
       IElement metadataContainer)
     {
+      return "";
       return metadataContainer
         .QuerySelector(".adbl-prod-title")
         .QuerySelector("a")
@@ -93,6 +111,7 @@ namespace opieandanthonylive.Data.API.Audible.Scraping
     protected string ReadItemUrl(
       IElement metadataContainer)
     {
+      return "";
       return metadataContainer
         .QuerySelector(".adbl-prod-title")
         .QuerySelector("a")
@@ -107,25 +126,31 @@ namespace opieandanthonylive.Data.API.Audible.Scraping
       var numberOfRatings = ReadRatingsCount(metadataContainer);
 
       var averageRating = numberOfRatings > 0
-        ? ReadAverageRating(metadataContainer) 
+        ? ReadAverageRating(metadataContainer)
         : null;
 
       return (numberOfRatings, averageRating);
     }
-    
+
     protected int ReadRatingsCount(
       IElement metadataContainer)
     {
-      var rating_disp = metadataContainer
-        .QuerySelector(".adbl-prod-rating")
-        .QuerySelector(".rating_disp");
+      var ratingsCountSpan = metadataContainer
+        ?.QuerySelectorAll(".bc-text")
+        ?.Last();
 
-      var ratingsCountText = rating_disp
+      if (ratingsCountSpan == null)
+        return 0;
+
+      var ratingsText = ratingsCountSpan
         .TextContent
         .Trim();
 
+      if (!_ratingsCountRegex.IsMatch(ratingsText))
+        return 0;
+
       var ratingsCountStr = _ratingsCountRegex
-        .Match(ratingsCountText)
+        .Match(ratingsText)
         .Groups["count"];
 
       return int.Parse(
@@ -135,15 +160,26 @@ namespace opieandanthonylive.Data.API.Audible.Scraping
     protected double? ReadAverageRating(
       IElement metadataContainer)
     {
-      var averageRatingsStr = metadataContainer
-        .QuerySelector(".adbl-prod-rating")
-        .QuerySelector(".rating_disp")
-        .QuerySelector(".boldrating")
+      var ratingsAverageSpan = metadataContainer
+        ?.QuerySelector(".ratingsLabel")
+        ?.QuerySelector(".bc-pub-offscreen");
+
+      if (ratingsAverageSpan == null)
+        return 0;
+      
+      var averageRatingsStr = ratingsAverageSpan
         .TextContent
         .Trim();
 
+      if (!_ratingsAverageRegex.IsMatch(averageRatingsStr))
+        return null;
+
+      var ratingsCountStr = _ratingsAverageRegex
+        .Match(averageRatingsStr)
+        .Groups["rating"];
+      
       return double.Parse(
-        averageRatingsStr);
+        ratingsCountStr.Value);
     }
   }
 }

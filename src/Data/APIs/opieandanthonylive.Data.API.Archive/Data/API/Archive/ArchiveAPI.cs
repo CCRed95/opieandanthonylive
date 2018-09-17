@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using opieandanthonylive.Common;
+using opieandanthonylive.Data.Api.Common;
 using opieandanthonylive.Data.API.Archive.Interpreters;
 using opieandanthonylive.Data.API.Infrastructure;
 using opieandanthonylive.Data.Domain.Archive;
@@ -70,7 +69,7 @@ namespace opieandanthonylive.Data.API.Archive
           .Response
           .Docs
           .Select(
-            ArchiveAlbumMaterializer.CreateArchiveAlbum);
+            ArchiveAlbumInterpreter.CreateArchiveAlbum);
 
         return archiveAlbums;
       }

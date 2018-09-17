@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AngleSharp;
-using opieandanthonylive.Common;
+using opieandanthonylive.Data.Api.Common;
 using opieandanthonylive.Data.API.Infrastructure;
-using opieandanthonylive.Data.API.Rundowns.DataSources;
-using opieandanthonylive.Data.API.Rundowns.Materializers;
 using opieandanthonylive.Data.Domain;
 
 namespace opieandanthonylive.Data.API.Rundowns
@@ -29,62 +29,65 @@ namespace opieandanthonylive.Data.API.Rundowns
                  domain));
     }
 
+    //public static string url
+    //    = "https://www.audible.com/" +
+    //      "search/" +
+    //      "ref=sr_sort_publication_date" +
+    //      "?searchAuthor=Opie+Anthony" +
+    //      "&searchRank=publication_date" +
+    //      "&field_language=9178177011" +
+    //      "&searchSize=20" +
+    //      "&searchRankSelect=-publication_date" +
+    //      "&searchsize=20";
+    //public static string url
+    //  = @"http://www.struff.com/vbulletin/archive/index.php/f-61.html";
+
     public override IEnumerable<ShowRundown> Query()
     {
-      foreach (var source in RundownDataSources.RundownDataSourceList)
+      var url = RequestBuilder
+        .Builder
+        .WithPath("vbulletin")
+        .WithPath("archive")
+        .WithPath("index.php")
+        .WithPath("f-61.html")
+        .Build();
+
+
+      var context = BrowsingContext
+        .New(
+          Configuration
+            .Default
+            .WithDefaultLoader());
+
+      using (var document = context
+        .OpenAsync(url)
+        .GetAwaiter()
+        .GetResult())
       {
-        var context = BrowsingContext
-          .New(
-            Configuration
-              .Default
-              .WithDefaultLoader());
-
-        using (var document = context
-          .OpenAsync(source.SourceStartPage)
-          .GetAwaiter()
-          .GetResult())
+        var showRundownItems = document
+          .QuerySelector("#content")
+          .Children
+          .First()
+          .Children;
+        
+        foreach (var showRundownItem in showRundownItems)
         {
-          var threads = document
-            .QuerySelector("#threads")
-            .QuerySelectorAll(".threadbit");
+          var showRundownLink = showRundownItem.QuerySelector("a");
 
-          foreach (var thread in threads)
-          {
-            var showRundown = ShowRundownMaterializer
-              .MaterializeThreadLevelShowMetadata(
-                thread);
+          var rundownUrl = showRundownLink.GetAttribute("href");
+          var title = showRundownLink.TextContent;
 
-            yield return showRundown;
-          }
-        }
-      }
-    }
-  }
-}
+          if (string.IsNullOrEmpty(rundownUrl))
+            continue;
 
-
-/*
-
-
-              //var showRundownLink = showRundownItem.QuerySelector("a");
-
-            //var rundownUrl = showRundownLink.GetAttribute("href");
-            //var title = showRundownLink.TextContent;
-
-            //if (string.IsNullOrEmpty(rundownUrl))
-            //  continue;
-
-            //throw new NotImplementedException();
-            //yield return ShowRundownDeferred
-            //  .ScrapeFromUrl(
-            //    rundownUrl);
-
-
-
-  
+          throw new NotImplementedException();
           //yield return ShowRundownDeferred
           //  .ScrapeFromUrl(
           //    rundownUrl);
+        }
+
+      }
+
       //var items = document
       //    .QuerySelector(".adbl-search-results")
       //    .QuerySelectorAll(".adbl-result-item")
@@ -123,6 +126,13 @@ namespace opieandanthonylive.Data.API.Rundowns
 
 
       //return new AudibleMediaItem[] { };
+    }
+
+  }
+}
+
+
+/*
  *  .WithPath("vbulletin/")
         .WithPath("archive/")
         .WithParameter("searchAuthor", "Opie+Anthony")
@@ -131,19 +141,4 @@ namespace opieandanthonylive.Data.API.Rundowns
         .WithParameter("searchSize", "20")
         .WithParameter("searchRankSelect", "-publication_date")
         .Build();
-
-  
-    //public static string url
-    //    = "https://www.audible.com/" +
-    //      "search/" +
-    //      "ref=sr_sort_publication_date" +
-    //      "?searchAuthor=Opie+Anthony" +
-    //      "&searchRank=publication_date" +
-    //      "&field_language=9178177011" +
-    //      "&searchSize=20" +
-    //      "&searchRankSelect=-publication_date" +
-    //      "&searchsize=20";
-    //public static string url
-    //  = @"http://www.struff.com/vbulletin/archive/index.php/f-61.html";
-
  */

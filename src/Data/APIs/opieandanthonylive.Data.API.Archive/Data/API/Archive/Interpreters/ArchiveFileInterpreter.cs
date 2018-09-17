@@ -11,7 +11,7 @@ using opieandanthonylive.Data.Domain.Archive;
 
 namespace opieandanthonylive.Data.API.Archive.Interpreters
 {
-  public class ArchiveFileMaterializer
+  public class ArchiveFileInterpreter
   {
     private const bool _ignoreCare = true;
 
@@ -32,7 +32,7 @@ namespace opieandanthonylive.Data.API.Archive.Interpreters
     private static readonly Regex _dateRegex = new Regex(
       @"(?<year>[0-9]*)-(?<month>[0-9]*)-(?<day>[0-9]*)");
 
-   
+
     public static IEnumerable<ArchiveFile> ScrapeArchiveFiles(
       ArchiveAlbum archiveAlbum)
     {
@@ -175,6 +175,16 @@ namespace opieandanthonylive.Data.API.Archive.Interpreters
       }
     }
 
+    /// <summary>
+    ///   Determines the <see cref="ArchiveFileTypeInfo"/> based on the <paramref name="fileName"/> 
+    ///   parameter's parsed out file extension.
+    /// </summary>
+    /// <param name="fileName">
+    ///   The file name as a <see cref="string"/>, including the file extension.
+    /// </param>
+    /// <returns>
+    ///   Returns the <see cref="ArchiveFileTypeInfo"/> indicating the file extensions type.
+    /// </returns>
     public static ArchiveFileTypeInfo DetermineArchiveFileType(
       string fileName)
     {
@@ -218,10 +228,20 @@ namespace opieandanthonylive.Data.API.Archive.Interpreters
       Gigabyte
     }
 
+    /// <summary>
+    ///   Identifies the <see cref="DataSizeUnit"/> that corresponds with the string label 
+    ///   passed through the <paramref name="labelString"/> parameter.
+    /// </summary>
+    /// <param name="labelString">
+    ///   The <see cref="string"/> label suffix that is the data unit.
+    /// </param>
+    /// <returns>
+    ///   Returns a <see cref="DataSizeUnit"/> enum instance indicating the data unit kind. 
+    /// </returns>
     private static DataSizeUnit LabelStringToDataSizeUnit(
       string labelString)
     {
-      switch (labelString.ToLower())
+      switch (labelString.ToLower().Trim())
       {
         case "b":
           return DataSizeUnit.Byte;
@@ -243,6 +263,7 @@ namespace opieandanthonylive.Data.API.Archive.Interpreters
             $"{labelString.Quote()} cannot be converted to a DataSizeUnit value.");
       }
     }
+
 
     public static double DetermineArchiveFileSizeBytes(
       string formattedSize)
@@ -314,6 +335,5 @@ namespace opieandanthonylive.Data.API.Archive.Interpreters
           throw new InvalidEnumArgumentException();
       }
     }
-
   }
 }
