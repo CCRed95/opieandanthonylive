@@ -1,14 +1,28 @@
 ﻿using System.Collections.Generic;
 using AngleSharp;
 using opieandanthonylive.Common;
+using opieandanthonylive.Data.API.Audible.Query;
 using opieandanthonylive.Data.API.Audible.Scraping;
 using opieandanthonylive.Data.API.Infrastructure;
 using opieandanthonylive.Data.Domain.Audible;
 
 namespace opieandanthonylive.Data.API.Audible
 {
+  //var url = RequestBuilder
+  //  .Builder
+  //  .WithPath("search/")
+  //  .WithPath("ref=sr_sort_publication_date")
+  //  .WithParameter("searchAuthor", "Opie+Anthony")
+  //  .WithParameter("searchRank", "publication_date")
+  //  .WithParameter("field_language", "9178177011")
+  //  .WithParameter("searchSize", "20")
+  //  .WithParameter("searchRankSelect", "-publication_date")
+  //  .Build();
+
   public class AudibleAPI
-    : APIBase<AudibleMediaItem>
+    : APIBase<
+      AudibleMediaItem,
+      AudibleQueryBuilder>
   {
     private const string domainPrefix = "https://";
     private const string domainName = "audible";
@@ -28,18 +42,12 @@ namespace opieandanthonylive.Data.API.Audible
                  domain));
     }
     
-    public override IEnumerable<AudibleMediaItem> Query()
+    public override IEnumerable<AudibleMediaItem> Query(
+      AudibleQueryBuilder queryBuilder)
     {
-      var url = RequestBuilder
-        .Builder
-        .WithPath("search/")
-        .WithPath("ref=sr_sort_publication_date")
-        .WithParameter("searchAuthor", "Opie+Anthony")
-        .WithParameter("searchRank", "publication_date")
-        .WithParameter("field_language", "9178177011")
-        .WithParameter("searchSize", "20")
-        .WithParameter("searchRankSelect", "-publication_date")
-        .Build();
+      var url = queryBuilder
+        .BuilldRequestUrl(
+          RequestBuilder);
 
       var context = BrowsingContext
         .New(

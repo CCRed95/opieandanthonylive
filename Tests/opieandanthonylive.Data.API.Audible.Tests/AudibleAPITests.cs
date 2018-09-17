@@ -1,8 +1,21 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using opieandanthonylive.Common.Query;
+using opieandanthonylive.Data.API.Audible.Query;
+using static opieandanthonylive.Data.API.Audible.Query.AudibleQueryField;
 
 namespace opieandanthonylive.Data.API.Audible.Tests
 {
+  /*
+   *.WithPath("search/")
+        .WithPath("ref=sr_sort_publication_date")
+        .WithParameter("searchAuthor", "Opie+Anthony")
+        .WithParameter("searchRank", "publication_date")
+        .WithParameter("field_language", "9178177011")
+        .WithParameter("searchSize", "20")
+        .WithParameter("searchRankSelect", "-publication_date")
+   */
+
   [TestClass]
   public class AudibleAPITests
   {
@@ -10,7 +23,22 @@ namespace opieandanthonylive.Data.API.Audible.Tests
     public void CanQueryFilesFromAudibleAPI()
     {
       var archiveAPI = new AudibleAPI();
-      var archiveAlbums = archiveAPI.Query().Take(5);
+
+      var queryBuilder = new AudibleQueryBuilder()
+        .WithSort(
+          Publication_Date,
+          SortDirection.Ascending)
+        .WithAuthor("Opie+Anthony")
+        .WithSearchRank(Publication_Date)
+        .WithFieldLanguage(AudibleFieldLanguage.English)
+        .WithSearchSize(20)
+        .WithSearchRankSelect(
+          Publication_Date,
+          SortDirection.Descending);
+
+      var archiveAlbums = archiveAPI
+        .Query(queryBuilder)
+        .Take(5);
 
 
       foreach (var archiveItem in archiveAlbums)

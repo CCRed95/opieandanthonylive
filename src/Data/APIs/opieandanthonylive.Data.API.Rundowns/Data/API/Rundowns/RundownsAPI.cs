@@ -4,12 +4,15 @@ using System.Linq;
 using AngleSharp;
 using opieandanthonylive.Common;
 using opieandanthonylive.Data.API.Infrastructure;
+using opieandanthonylive.Data.API.Rundowns.Query;
 using opieandanthonylive.Data.Domain;
 
 namespace opieandanthonylive.Data.API.Rundowns
 {
   public class RundownsAPI
-    : APIBase<ShowRundown>
+    : APIBase<
+      ShowRundown,
+      RundownQueryBuilder>
   {
     private const string domainPrefix = "https://";
     private const string domainName = "struff";
@@ -29,29 +32,21 @@ namespace opieandanthonylive.Data.API.Rundowns
                  domain));
     }
 
-    //public static string url
-    //    = "https://www.audible.com/" +
-    //      "search/" +
-    //      "ref=sr_sort_publication_date" +
-    //      "?searchAuthor=Opie+Anthony" +
-    //      "&searchRank=publication_date" +
-    //      "&field_language=9178177011" +
-    //      "&searchSize=20" +
-    //      "&searchRankSelect=-publication_date" +
-    //      "&searchsize=20";
-    //public static string url
-    //  = @"http://www.struff.com/vbulletin/archive/index.php/f-61.html";
 
-    public override IEnumerable<ShowRundown> Query()
+    //var url = RequestBuilder
+    //  .Builder
+    //  .WithPath("vbulletin")
+    //  .WithPath("archive")
+    //  .WithPath("index.php")
+    //  .WithPath("f-61.html")
+    //  .Build();
+
+    public override IEnumerable<ShowRundown> Query(
+      RundownQueryBuilder queryBuilder)
     {
-      var url = RequestBuilder
-        .Builder
-        .WithPath("vbulletin")
-        .WithPath("archive")
-        .WithPath("index.php")
-        .WithPath("f-61.html")
-        .Build();
-
+      var url = queryBuilder
+        .BuilldRequestUrl(
+          RequestBuilder);
 
       var context = BrowsingContext
         .New(
@@ -130,15 +125,3 @@ namespace opieandanthonylive.Data.API.Rundowns
 
   }
 }
-
-
-/*
- *  .WithPath("vbulletin/")
-        .WithPath("archive/")
-        .WithParameter("searchAuthor", "Opie+Anthony")
-        .WithParameter("searchRank", "publication_date")
-        .WithParameter("field_language", "9178177011")
-        .WithParameter("searchSize", "20")
-        .WithParameter("searchRankSelect", "-publication_date")
-        .Build();
- */
