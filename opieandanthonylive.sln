@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ccr.Dnc.Core", "src\Ccr.Dnc.Core\Ccr.Dnc.Core.csproj", "{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opieandanthonylive", "src\opieandanthonylive\opieandanthonylive.csproj", "{E8059186-5373-4376-868C-72EFD56CB7AE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data", "src\Data\opieandanthonylive.Data\opieandanthonylive.Data.csproj", "{D294FDD6-29AC-48A1-A440-81F0588BA3F0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Archive", "src\Data\APIs\opieandanthonylive.Data.API.Archive\opieandanthonylive.Data.API.Archive.csproj", "{C6C612D6-2E92-43C2-B9C5-A064763FFA6D}"
@@ -25,11 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ccr.Dnc.Data.EntityFramewor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3257750C-5901-458C-A39A-5DBE87C9F83D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opieandanthonylive.Data.API.Archive.Tests", "Tests\opieandanthonylive.Data.API.Archive.Tests\opieandanthonylive.Data.API.Archive.Tests.csproj", "{F1303347-84DB-4FE0-AF5D-6D095F1273AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Archive.Tests", "Tests\opieandanthonylive.Data.API.Archive.Tests\opieandanthonylive.Data.API.Archive.Tests.csproj", "{F1303347-84DB-4FE0-AF5D-6D095F1273AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opieandanthonylive.Data.API.Audible.Tests", "Tests\opieandanthonylive.Data.API.Audible.Tests\opieandanthonylive.Data.API.Audible.Tests.csproj", "{20103E93-53F0-406C-9434-3AE2B92E9EDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Audible.Tests", "Tests\opieandanthonylive.Data.API.Audible.Tests\opieandanthonylive.Data.API.Audible.Tests.csproj", "{20103E93-53F0-406C-9434-3AE2B92E9EDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opieandanthonylive.Data.API.Rundows.Tests", "Tests\opieandanthonylive.Data.API.Rundows.Tests\opieandanthonylive.Data.API.Rundows.Tests.csproj", "{36FFCDFF-44C3-408D-8C92-6C20796B7E48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Rundows.Tests", "Tests\opieandanthonylive.Data.API.Rundows.Tests\opieandanthonylive.Data.API.Rundows.Tests.csproj", "{36FFCDFF-44C3-408D-8C92-6C20796B7E48}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Patreon", "src\Data\APIs\opieandanthonylive.Data.API.Patreon\opieandanthonylive.Data.API.Patreon.csproj", "{0BBBBC58-C0EC-4E83-8522-DC928D4DAFD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opieandanthonylive", "src\opieandanthonylive\opieandanthonylive.csproj", "{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +43,6 @@ Global
 		{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8059186-5373-4376-868C-72EFD56CB7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8059186-5373-4376-868C-72EFD56CB7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8059186-5373-4376-868C-72EFD56CB7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8059186-5373-4376-868C-72EFD56CB7AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D294FDD6-29AC-48A1-A440-81F0588BA3F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D294FDD6-29AC-48A1-A440-81F0588BA3F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D294FDD6-29AC-48A1-A440-81F0588BA3F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -89,6 +87,14 @@ Global
 		{36FFCDFF-44C3-408D-8C92-6C20796B7E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36FFCDFF-44C3-408D-8C92-6C20796B7E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36FFCDFF-44C3-408D-8C92-6C20796B7E48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BBBBC58-C0EC-4E83-8522-DC928D4DAFD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BBBBC58-C0EC-4E83-8522-DC928D4DAFD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BBBBC58-C0EC-4E83-8522-DC928D4DAFD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BBBBC58-C0EC-4E83-8522-DC928D4DAFD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

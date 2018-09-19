@@ -10,13 +10,13 @@ namespace opieandanthonylive.Data.API.Rundows.Tests
     [TestMethod]
     public void CanQueryFilesFromRundownsAPI()
     {
-      var rundownsAPI = new RundownsAPI();
-      var rundownEntries = rundownsAPI.Query().Take(5);
+      //var rundownsAPI = new RundownsAPI();
+      //var rundownEntries = rundownsAPI.Query().Take(5);
 
-      foreach (var rundownEntry in rundownEntries)
-      {
+      //foreach (var rundownEntry in rundownEntries)
+      //{
 
-      }
+      //}
     }
   }
 }

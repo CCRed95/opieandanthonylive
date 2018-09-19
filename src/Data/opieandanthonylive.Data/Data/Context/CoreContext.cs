@@ -1,5 +1,4 @@
-﻿using AngleSharp;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using opieandanthonylive.Data.Domain;
 using opieandanthonylive.Data.Domain.Archive;
 using opieandanthonylive.Data.Domain.Audible;
@@ -37,6 +36,8 @@ namespace opieandanthonylive.Data.Context
     public DbSet<Host> Hosts { get; set; }
 
     public DbSet<Show> Shows { get; set; }
+
+    public DbSet<ShowMediaSegmentContentTag> ShowMediaSegmentContentTags { get; set; }
 
     public DbSet<ShowHost> ShowHosts { get; set; }
 
@@ -78,6 +79,7 @@ namespace opieandanthonylive.Data.Context
     {
       base.OnModelCreating(modelBuilder);
 
+
       modelBuilder.ApplyConfiguration(
         new ArchiveAlbumMap());
 
@@ -117,6 +119,9 @@ namespace opieandanthonylive.Data.Context
         new ShowMap());
 
       modelBuilder.ApplyConfiguration(
+        new ShowMediaSegmentContentTagMap());
+      
+      modelBuilder.ApplyConfiguration(
         new ShowHostMap());
 
       modelBuilder.ApplyConfiguration(
@@ -132,9 +137,10 @@ namespace opieandanthonylive.Data.Context
 
       modelBuilder.Entity<GuestAppearance>(builder =>
       {
-        builder.HasOne(t => t.ShowMediaEntry)
-                .WithMany(t => t.GuestAppearances)
-                .HasForeignKey(t => t.ShowMediaEntryID);
+        builder
+          .HasOne(t => t.ShowMediaEntry)
+          .WithMany(t => t.GuestAppearances)
+          .HasForeignKey(t => t.ShowMediaEntryID);
 
       });
 

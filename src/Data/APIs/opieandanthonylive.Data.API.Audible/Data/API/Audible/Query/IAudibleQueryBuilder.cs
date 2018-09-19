@@ -1,4 +1,4 @@
-﻿using opieandanthonylive.Common.Query;
+﻿using opieandanthonylive.Data.API.Common.Query;
 
 namespace opieandanthonylive.Data.API.Audible.Query
 {

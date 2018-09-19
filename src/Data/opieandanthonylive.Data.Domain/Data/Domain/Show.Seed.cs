@@ -43,5 +43,12 @@ namespace opieandanthonylive.Data.Domain
       6,
       "Tough Crowd with Colin Quinn",
       Host.Colin_Quinn);
+
+    public static Show Cumtown = new Show(
+      7,
+      "Cumtown",
+      Host.Nick_Mullen,
+      Host.Stavros_Halkias,
+      Host.Adam_Friedland);
   }
 }

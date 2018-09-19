@@ -72,5 +72,22 @@ namespace opieandanthonylive.Data.Domain
     public static Host Colin_Quinn = HostFactory.Create(
       Gender.Male,
       "@@iamcolinquinn");
+
+    
+    public static Host Nick_Mullen = HostFactory.Create(
+      Gender.Male,
+      "@nickmullen");
+
+    public static Host Stavros_Halkias = HostFactory.Create(
+      Gender.Male,
+      "@stavvybaby",
+      "https://www.stavvy.biz/");
+
+    public static Host Adam_Friedland = HostFactory.Create(
+      Gender.Male,
+      "@AdamFriedland",
+      "http://www.adamfriedland.com/");
+
+
   }
 }

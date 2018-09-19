@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Ccr.Dnc.Core\Ccr.Dnc.Core.csproj" />
+    <ProjectReference Include="..\..\..\Ccr.Dnc.Data.EntityFrameworkCore\Ccr.Dnc.Data.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\opieandanthonylive.Data.Domain\opieandanthonylive.Data.Domain.csproj" />
+    <ProjectReference Include="..\..\opieandanthonylive.Data\opieandanthonylive.Data.csproj" />
+    <ProjectReference Include="..\opieandanthonylive.Data.API\opieandanthonylive.Data.API.csproj" />
+  </ItemGroup>
+
+</Project>

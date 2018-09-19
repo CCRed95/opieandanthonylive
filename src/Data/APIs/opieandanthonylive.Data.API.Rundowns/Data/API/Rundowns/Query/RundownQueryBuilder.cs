@@ -1,4 +1,4 @@
-﻿using opieandanthonylive.Common.Query;
+﻿using opieandanthonylive.Data.API.Common.Query;
 using opieandanthonylive.Data.API.Infrastructure;
 
 namespace opieandanthonylive.Data.API.Rundowns.Query

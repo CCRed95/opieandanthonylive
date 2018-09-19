@@ -34,7 +34,7 @@ namespace opieandanthonylive.Data.Maps
         .IsRequired()
         .HasMaxLength(400);
 
-	    builder.Property(t => t.Url)
+	    builder.Property(t => t.EmbeddedContentSourceUrl)
 	      .IsOptional()
 	      .HasMaxLength(1000);
 

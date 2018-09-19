@@ -1,7 +1,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using opieandanthonylive.Common.Query;
 using opieandanthonylive.Data.API.Audible.Query;
+using opieandanthonylive.Data.API.Common.Query;
 using static opieandanthonylive.Data.API.Audible.Query.AudibleQueryField;
 
 namespace opieandanthonylive.Data.API.Audible.Tests

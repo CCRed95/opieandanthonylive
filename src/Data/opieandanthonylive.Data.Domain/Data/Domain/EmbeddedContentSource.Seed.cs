@@ -11,5 +11,11 @@ namespace opieandanthonylive.Data.Domain
 
     public static EmbeddedContentSource YouTube
       = EntityFactory.Create<EmbeddedContentSource>();
+
+    public static EmbeddedContentSource ShoutEngine
+      = EntityFactory.Create<EmbeddedContentSource>();
+
+    public static EmbeddedContentSource Patreon
+      = EntityFactory.Create<EmbeddedContentSource>();
   }
 }
