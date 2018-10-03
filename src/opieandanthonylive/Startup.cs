@@ -11,18 +11,16 @@ namespace opieandanthonylive {
 
   public class Startup {
 
-
     public IConfiguration Configuration { get; }
 
     public Startup(IConfiguration configuration) {
       Configuration = configuration;
     }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services) {
 
       services.AddDbContext<CoreContext>(
-        t => t.UseSqlServer(Configuration.GetConnectionString( "DefaultConnection"))); 
+        t => t.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
       services.AddScoped<IAudibleItemMetadataRepository, AudibleItemMetadataRepository>();
       services.AddScoped<IGuestRepository, GuestRepository>();
@@ -33,10 +31,9 @@ namespace opieandanthonylive {
       });
 
       services.AddMvc()
-          .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+        .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
     }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
       if (env.IsDevelopment()) {
         app.UseDeveloperExceptionPage();
@@ -61,14 +58,6 @@ namespace opieandanthonylive {
             name: "spa-fallback",
             defaults: new { controller = "Home", action = "Index" });
       });
-
-      using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-      using (var context = serviceScope.ServiceProvider.GetRequiredService<CoreContext>()) {
-        //foreach (var guest in context.Guests)
-        //  guest.HeadshotImagePath = guest.FirstName + " " + guest.LastName + ".jpg";
-
-        context.SaveChanges();
-      }
     }
   }
 }
