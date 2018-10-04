@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using opieandanthonylive.Data.Domain;
 using opieandanthonylive.Data.Domain.Archive;
 using opieandanthonylive.Data.Domain.Audible;
@@ -9,7 +11,7 @@ using opieandanthonylive.Data.Maps.Audible;
 namespace opieandanthonylive.Data.Context
 {
   public class CoreContext
-    : DbContext
+    : IdentityDbContext<IdentityUser>
   {
     public DbSet<ArchiveAlbum> ArchiveAlbums { get; set; }
 
@@ -18,10 +20,8 @@ namespace opieandanthonylive.Data.Context
     public DbSet<ArchiveFileTypeInfo> ArchiveFileTypeInfos { get; set; }
 
     public DbSet<ContentCreator> ContentCreators { get; set; }
-
     
     public DbSet<AudibleMediaItem> AudibleMediaItems { get; set; }
-
 
     public DbSet<EmbeddedContentSource> EmbeddedContentSources { get; set; }
     
@@ -67,7 +67,7 @@ namespace opieandanthonylive.Data.Context
     {
       base.OnConfiguring(optionsBuilder);
 
-      //var s = Configuration.GetConnectionString("DefaultConnectionString");
+      // var s = Configuration.GetConnectionString("DefaultConnectionString");
 
       optionsBuilder.UseSqlServer(
         "Server=(localdb)\\mssqllocaldb;Database=opieandanthonylive8;Trusted_Connection=true;MultipleActiveResultSets=true");

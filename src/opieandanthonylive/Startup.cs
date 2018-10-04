@@ -7,7 +7,6 @@ namespace opieandanthonylive {
   using Microsoft.Extensions.Configuration;
   using Microsoft.Extensions.DependencyInjection;
   using opieandanthonylive.Data.Context;
-  using opieandanthonylive.Data.Respositories;
 
   public class Startup {
 
@@ -19,11 +18,10 @@ namespace opieandanthonylive {
 
     public void ConfigureServices(IServiceCollection services) {
 
-      services.AddDbContext<CoreContext>(
-        t => t.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-      services.AddScoped<IAudibleItemMetadataRepository, AudibleItemMetadataRepository>();
-      services.AddScoped<IGuestRepository, GuestRepository>();
+      services.AddDbContext<CoreContext>(options =>
+        options.UseSqlServer(
+          Configuration.GetConnectionString("DefaultConnection"),
+          b => b.MigrationsAssembly("opieandanthonylive.Data")));
 
       services.Configure<CookiePolicyOptions>(options => {
         options.CheckConsentNeeded = context => true;
