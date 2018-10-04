@@ -22,18 +22,22 @@
       if (ModelState.IsValid == false)
         return BadRequest(ModelState);
 
-      return await Task.FromResult(new OkObjectResult("I didn't actually do anything!"));
+      var result = await this.userManager.CreateAsync(
+        new IdentityUser {
+          Email = model.Email,
+          UserName = model.Username,
+        },
+        model.Password);
 
+      if (result.Succeeded == false) {
+        foreach (var e in result.Errors)
+          ModelState.TryAddModelError(e.Code, e.Description);
+
+        return new BadRequestObjectResult(ModelState);
+      }
+
+      return new OkObjectResult("Created!");
     }
-
-    // public async Task<IActionResult> Post() {
-
-    //   if (ModelState.IsValid == false)
-    //     return BadRequest(ModelState);
-
-    //   return await Task.FromResult(new OkObjectResult("I didn't actually do anything!"));
-
-    // }
 
   }
 

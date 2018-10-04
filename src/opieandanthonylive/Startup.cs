@@ -29,13 +29,25 @@ namespace opieandanthonylive {
         options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
       });
 
-      // This has got to be one of the weirdest patterns for configuration
-      var identity = services.AddIdentityCore<IdentityUser>();
-      new IdentityBuilder(identity.UserType, typeof(IdentityRole), identity.Services)
-        .AddEntityFrameworkStores<CoreContext>().AddDefaultTokenProviders();
+      ConfigureIdentity(services);
 
       services.AddMvc()
         .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+    }
+
+    static void ConfigureIdentity(IServiceCollection services) {
+
+      /* This has got to be one of the weirdest patterns for configuration */
+      var identity = services.AddIdentityCore<IdentityUser>(o => {
+        o.Password.RequireDigit = false;
+        o.Password.RequireLowercase = false;
+        o.Password.RequireUppercase = false;
+        o.Password.RequireNonAlphanumeric = false;
+        o.Password.RequiredLength = 6;
+      });
+
+      new IdentityBuilder(identity.UserType, typeof(IdentityRole), identity.Services)
+        .AddEntityFrameworkStores<CoreContext>().AddDefaultTokenProviders();
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
