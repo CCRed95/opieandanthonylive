@@ -2,6 +2,7 @@ namespace opieandanthonylive {
 
   using Microsoft.AspNetCore.Builder;
   using Microsoft.AspNetCore.Hosting;
+  using Microsoft.AspNetCore.Identity;
   using Microsoft.AspNetCore.SpaServices.Webpack;
   using Microsoft.EntityFrameworkCore;
   using Microsoft.Extensions.Configuration;
@@ -28,6 +29,11 @@ namespace opieandanthonylive {
         options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
       });
 
+      // This has got to be one of the weirdest patterns for configuration
+      var identity = services.AddIdentityCore<IdentityUser>();
+      new IdentityBuilder(identity.UserType, typeof(IdentityRole), identity.Services)
+        .AddEntityFrameworkStores<CoreContext>().AddDefaultTokenProviders();
+
       services.AddMvc()
         .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
     }
@@ -46,6 +52,8 @@ namespace opieandanthonylive {
       app.UseHttpsRedirection();
       app.UseStaticFiles();
       app.UseCookiePolicy();
+
+      app.UseAuthentication();
 
       app.UseMvc(routes => {
         routes.MapRoute(
