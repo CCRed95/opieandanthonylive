@@ -3,6 +3,7 @@
   using System.Threading.Tasks;
   using Microsoft.AspNetCore.Identity;
   using Microsoft.AspNetCore.Mvc;
+  using opieandanthonylive.Auth;
   using opieandanthonylive.Data.Context;
   using opieandanthonylive.ViewModels;
 
@@ -11,10 +12,12 @@
 
     readonly UserManager<IdentityUser> userManager;
     readonly CoreContext dbContext;
+    readonly JwtIssuerOptions jwtIssuerOptions;
 
-    public RegisterController(UserManager<IdentityUser> userManager, CoreContext dbContext) {
+    public RegisterController(UserManager<IdentityUser> userManager, JwtIssuerOptions jwtIssuerOptions, CoreContext dbContext) {
       this.userManager = userManager;
       this.dbContext = dbContext;
+      this.jwtIssuerOptions = jwtIssuerOptions;
     }
 
     public async Task<IActionResult> Post([FromBody] RegisterViewModel model) {

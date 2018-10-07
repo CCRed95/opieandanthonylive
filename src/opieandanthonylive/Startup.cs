@@ -1,5 +1,8 @@
 namespace opieandanthonylive {
 
+  using System;
+  using System.Text;
+  using Microsoft.AspNetCore.Authentication.JwtBearer;
   using Microsoft.AspNetCore.Builder;
   using Microsoft.AspNetCore.Hosting;
   using Microsoft.AspNetCore.Identity;
@@ -7,9 +10,11 @@ namespace opieandanthonylive {
   using Microsoft.EntityFrameworkCore;
   using Microsoft.Extensions.Configuration;
   using Microsoft.Extensions.DependencyInjection;
+  using Microsoft.IdentityModel.Tokens;
+  using opieandanthonylive.Auth;
   using opieandanthonylive.Data.Context;
 
-  public class Startup {
+  public partial class Startup {
 
     public IConfiguration Configuration { get; }
 
@@ -29,10 +34,54 @@ namespace opieandanthonylive {
         options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
       });
 
+      ConfigureJwtAuth(services);
       ConfigureIdentity(services);
 
       services.AddMvc()
         .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+    }
+
+    static void ConfigureJwtAuth(IServiceCollection services) {
+
+      /*
+       * TODO: put these in an environment variable.
+       */
+      const string JwtAuthority = "https://opieandanthonylive.net/api/auth/";
+      const string JwtAudience = "https://opieandanthonylive.net/api/";
+
+      /*
+       * TODO: PUT THIS IN AN ENVIRONMENT VARIABLE.
+       */
+      const string jwtSecretKey = "1234567890";
+      var jwtSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSecretKey));
+
+      services.Configure<JwtIssuerOptions>(options => {
+        options.Authority   = JwtAuthority;
+        options.Audience    = JwtAudience;
+        options.Credentials = new SigningCredentials(jwtSigningKey, SecurityAlgorithms.HmacSha256);
+      });
+
+      var tokenValidationParameters = new TokenValidationParameters {
+        ValidateIssuer = true,
+        ValidIssuer = JwtAuthority,
+
+        ValidateAudience = true,
+        ValidAudience = JwtAudience,
+
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = jwtSigningKey,
+
+        RequireExpirationTime = true,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.FromMinutes(5),
+      };
+
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options => {
+          options.Authority = JwtAuthority;
+          options.Audience = JwtAudience;
+        });
+
     }
 
     static void ConfigureIdentity(IServiceCollection services) {
@@ -79,37 +128,3 @@ namespace opieandanthonylive {
     }
   }
 }
-
-#region old
-//using (var context = new CoreContext(
-//  new DbContextOptions<CoreContext>()))
-//{
-
-//}
-//context.Database.Migrate();
-//context.Database.EnsureCreated();
-//context.SaveChanges();
-
-//var test = new AudibleItemMetadata
-//{
-//  ItemTypeClassification = "Radio / TV Program",
-//  Title = "Ron and Fez, May 17, 2007",
-//  By = "Opie and Anthony" 
-//context.AudibleItemMetadatas.Add(test);
-//context.SaveChanges();
-//context.Database.OpenConnection();
-//context.SetIdentityInsert(t => t.Genders, true);
-//context.Seed(t => t.Genders, t => t.GenderID);
-//context.SaveChanges();
-//context.SetIdentityInsert(t => t.Genders, false);
-//context.Database.CloseConnection();
-
-//context.Genders.Seed()
-//context.SeedWithIdentities(t => t.Genders, t => t.GenderID);
-//context.SeedWithIdentities(t => t.Guests, t => t.GuestID);
-//context.SeedWithIdentities(t => t.GuestAppearanceTypes, t => t.GuestAppearanceTypeID);
-//context.SeedWithIdentities(t => t.Shows, t => t.ShowID);
-//context.SeedWithIdentities(t => t.ShowHosts, t => t.ShowHostID);
-//context.SeedWithIdentities(t => t.ShowRundownAuthors, t => t.ShowRundownAuthorID);
-
-#endregion
