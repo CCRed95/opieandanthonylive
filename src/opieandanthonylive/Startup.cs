@@ -46,24 +46,24 @@ namespace opieandanthonylive {
       /*
        * TODO: put these in an environment variable.
        */
-      const string JwtAuthority = "https://opieandanthonylive.net/api/auth/";
+      const string JwtIssuer = "https://opieandanthonylive.net/api/auth/";
       const string JwtAudience = "https://opieandanthonylive.net/api/";
 
       /*
        * TODO: PUT THIS IN AN ENVIRONMENT VARIABLE.
        */
-      const string jwtSecretKey = "1234567890";
+      const string jwtSecretKey = "1234567890abcdefghijklmnopqrstuvwxyz";
       var jwtSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSecretKey));
 
       services.Configure<JwtIssuerOptions>(options => {
-        options.Authority   = JwtAuthority;
+        options.Issuer      = JwtIssuer;
         options.Audience    = JwtAudience;
         options.Credentials = new SigningCredentials(jwtSigningKey, SecurityAlgorithms.HmacSha256);
       });
 
       var tokenValidationParameters = new TokenValidationParameters {
         ValidateIssuer = true,
-        ValidIssuer = JwtAuthority,
+        ValidIssuer = JwtIssuer,
 
         ValidateAudience = true,
         ValidAudience = JwtAudience,
@@ -78,9 +78,14 @@ namespace opieandanthonylive {
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options => {
-          options.Authority = JwtAuthority;
-          options.Audience = JwtAudience;
+          options.ClaimsIssuer = JwtIssuer;
+          options.TokenValidationParameters = tokenValidationParameters;
+          options.SaveToken = true;
         });
+
+      services.AddAuthorization(options => {
+        options.AddPolicy("auth/test", p => p.RequireClaim("rol", "auth/test"));
+      });
 
     }
 
