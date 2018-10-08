@@ -7,7 +7,6 @@
   using Microsoft.AspNetCore.Identity;
   using Microsoft.AspNetCore.Mvc;
   using Microsoft.Extensions.Options;
-  using Microsoft.IdentityModel.Tokens;
   using opieandanthonylive.Auth;
   using opieandanthonylive.Data.Context;
   using opieandanthonylive.ViewModels;
@@ -27,31 +26,6 @@
       this.userManager = userManager;
       this.dbContext = dbContext;
       this.jwtOptions = jwtIssuerOptions.Value;
-    }
-
-    string GenerateJwtToken(string userName) {
-
-      long ToUnixEpochDate(DateTime date) {
-        var unixEpoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
-        var dt = date.ToUniversalTime() - unixEpoch;
-        return (long)dt.TotalSeconds;
-      }
-
-      var claims = new[] {
-       new Claim(JwtRegisteredClaimNames.Sub, userName),
-       new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-       new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.Now).ToString(), ClaimValueTypes.Integer64),
-       new Claim("rol", "auth/test"),
-     };
-
-      var jwt = new JwtSecurityToken(
-        issuer: jwtOptions.Issuer,
-        audience: jwtOptions.Audience,
-        claims: claims,
-        expires: DateTime.Now.AddDays(7),
-        signingCredentials: jwtOptions.Credentials);
-
-      return new JwtSecurityTokenHandler().WriteToken(jwt);
     }
 
     public async Task<IActionResult> Post([FromBody] RegisterViewModel model) {
@@ -74,8 +48,32 @@
       }
 
       return new OkObjectResult(new {
-        token = GenerateJwtToken(model.Username)
+        token = GenerateJwtToken(this.jwtOptions, model.Username)
       });
+    }
+
+    static string GenerateJwtToken(JwtIssuerOptions jwtOptions, string userName) {
+
+      long ToUnixEpochDate(DateTime date) {
+        var unixEpoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+        var dt = date.ToUniversalTime() - unixEpoch;
+        return (long)dt.TotalSeconds;
+      }
+
+      var claims = new[] {
+       new Claim(JwtRegisteredClaimNames.Sub, userName),
+       new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+       new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.Now).ToString(), ClaimValueTypes.Integer64),
+     };
+
+      var jwt = new JwtSecurityToken(
+        issuer: jwtOptions.Issuer,
+        audience: jwtOptions.Audience,
+        claims: claims,
+        expires: DateTime.Now.AddDays(7),
+        signingCredentials: jwtOptions.Credentials);
+
+      return new JwtSecurityTokenHandler().WriteToken(jwt);
     }
 
   }

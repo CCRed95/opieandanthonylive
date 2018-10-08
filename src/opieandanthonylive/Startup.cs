@@ -12,6 +12,7 @@ namespace opieandanthonylive {
   using Microsoft.Extensions.DependencyInjection;
   using Microsoft.IdentityModel.Tokens;
   using opieandanthonylive.Auth;
+  using opieandanthonylive.Configuration;
   using opieandanthonylive.Data.Context;
 
   public partial class Startup {
@@ -34,30 +35,39 @@ namespace opieandanthonylive {
         options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
       });
 
-      ConfigureJwtAuth(services);
       ConfigureIdentity(services);
+      ConfigureJwtAuth(services);
 
       services.AddMvc()
         .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
     }
 
-    static void ConfigureJwtAuth(IServiceCollection services) {
+    static void ConfigureIdentity(IServiceCollection services) {
 
-      /*
-       * TODO: put these in an environment variable.
-       */
-      const string JwtIssuer = "https://opieandanthonylive.net/api/auth/";
-      const string JwtAudience = "https://opieandanthonylive.net/api/";
+      /* This has got to be one of the weirdest patterns for configuration */
+      var identity = services.AddIdentityCore<IdentityUser>(o => {
+        o.Password.RequireDigit = false;
+        o.Password.RequireLowercase = false;
+        o.Password.RequireUppercase = false;
+        o.Password.RequireNonAlphanumeric = false;
+        o.Password.RequiredLength = 6;
+      });
 
-      /*
-       * TODO: PUT THIS IN AN ENVIRONMENT VARIABLE.
-       */
-      const string jwtSecretKey = "1234567890abcdefghijklmnopqrstuvwxyz";
+      new IdentityBuilder(identity.UserType, typeof(IdentityRole), identity.Services)
+        .AddEntityFrameworkStores<CoreContext>().AddDefaultTokenProviders();
+    }
+
+    void ConfigureJwtAuth(IServiceCollection services) {
+
+      var JwtIssuer = Configuration.GetValue<string>(EnvironmentVariables.JWT_ISSUER);
+      var JwtAudience = Configuration.GetValue<string>(EnvironmentVariables.JWT_AUDIENCE);
+      var jwtSecretKey = Configuration.GetValue<string>(EnvironmentVariables.JWT_SECRET);
+
       var jwtSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSecretKey));
 
       services.Configure<JwtIssuerOptions>(options => {
-        options.Issuer      = JwtIssuer;
-        options.Audience    = JwtAudience;
+        options.Issuer = JwtIssuer;
+        options.Audience = JwtAudience;
         options.Credentials = new SigningCredentials(jwtSigningKey, SecurityAlgorithms.HmacSha256);
       });
 
@@ -83,25 +93,7 @@ namespace opieandanthonylive {
           options.SaveToken = true;
         });
 
-      services.AddAuthorization(options => {
-        options.AddPolicy("auth/test", p => p.RequireClaim("rol", "auth/test"));
-      });
-
-    }
-
-    static void ConfigureIdentity(IServiceCollection services) {
-
-      /* This has got to be one of the weirdest patterns for configuration */
-      var identity = services.AddIdentityCore<IdentityUser>(o => {
-        o.Password.RequireDigit = false;
-        o.Password.RequireLowercase = false;
-        o.Password.RequireUppercase = false;
-        o.Password.RequireNonAlphanumeric = false;
-        o.Password.RequiredLength = 6;
-      });
-
-      new IdentityBuilder(identity.UserType, typeof(IdentityRole), identity.Services)
-        .AddEntityFrameworkStores<CoreContext>().AddDefaultTokenProviders();
+      services.AddAuthorization();
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
