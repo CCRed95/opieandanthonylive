@@ -1,0 +1,25 @@
+﻿<template>
+  <div class="container col-md-6 mx-auto">
+
+    <div class="text-center my-5">
+      <h1 class="h1">Create account</h1>
+      <h6 class="h6 text-muted">Please enter your information</h6>
+    </div>
+
+    <form @submit.prevent="submit" novalidate>
+
+      <form-input
+        v-for="input in inputs"
+        :data="input">
+      </form-input>
+
+      <div class="text-center mt-5">
+        <button type="submit" class="btn btn-primary btn-lg">Create account</button>
+      </div>
+
+    </form>
+
+  </div>
+</template>
+
+<script src="./create-account.ts"></script>

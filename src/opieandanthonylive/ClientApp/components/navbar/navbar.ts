@@ -5,6 +5,6 @@ import { namespace } from 'vuex-class';
 const auth = namespace('auth');
 
 @Component
-export default class NavBar extends Vue {
+export default class NavbarComponent extends Vue {
   @auth.Getter('isSignedIn') isSignedIn!: boolean;
 }

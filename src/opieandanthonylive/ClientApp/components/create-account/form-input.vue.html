@@ -1,0 +1,19 @@
+﻿<template>
+  <div class="form-group">
+
+    <input
+      :type="data.type"
+      class="form-control form-control-lg"
+      :class="{ 'is-invalid': hasErrors }"
+      :placeholder="data.placeholder">
+
+    <div
+      class="invalid-feedback"
+      v-for="error in data.errors">
+      {{ error }}
+    </div>
+
+  </div>
+</template>
+
+<script src="./form-input.ts"></script>

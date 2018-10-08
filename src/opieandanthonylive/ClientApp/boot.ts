@@ -12,7 +12,8 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', component: require('./components/home/home.vue.html').default },
   { path: '/counter', component: require('./components/counter/counter.vue.html').default },
-  { path: '/fetchdata', component: require('./components/fetchdata/fetchdata.vue.html').default }
+  { path: '/fetchdata', component: require('./components/fetchdata/fetchdata.vue.html').default },
+  { path: '/create-account', component: require('./components/create-account/create-account.vue.html').default },
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes });
