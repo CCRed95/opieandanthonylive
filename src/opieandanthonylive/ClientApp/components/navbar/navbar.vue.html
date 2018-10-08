@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
 
     <a class="navbar-brand" href="#">opieandanthonylive</a>
 
@@ -8,12 +8,25 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="navbar-nav">
+
+      <div class="navbar-nav mr-auto">
         <router-link to="/" :exact="true" class="nav-link">Home</router-link>
         <router-link to="/counter" class="nav-link">Counter</router-link>
         <router-link to="/fetchdata" class="nav-link">Fetch Data</router-link>
       </div>
+
+      <div v-if="isSignedIn">
+        <a href="#" class="btn btn-sm btn-danger" role="button">Sign out</a>
+      </div>
+      <div v-else>
+        <router-link to="/sign-in" class="btn btn-sm btn-outline-primary mr-sm-1" role="button">Sign in</router-link>
+        <router-link to="/create-account" class="btn btn-sm btn-success" role="button">Create account</router-link>
+      </div>
+
     </div>
 
   </nav>
+
 </template>
+
+<script src="./navbar.ts"></script>
