@@ -2,14 +2,13 @@
   <div class="form-group">
 
     <input
-      :type="data.type"
+      :type="vm.type"
+      :placeholder="vm.placeholder"
+      v-model="vm.value"
       class="form-control form-control-lg"
-      :class="{ 'is-invalid': hasErrors }"
-      :placeholder="data.placeholder">
+      :class="{ 'is-invalid': hasErrors }">
 
-    <div
-      class="invalid-feedback"
-      v-for="error in data.errors">
+    <div class="invalid-feedback" v-for="error in vm.errors">
       {{ error }}
     </div>
 

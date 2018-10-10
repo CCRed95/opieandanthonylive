@@ -1,24 +1,25 @@
 ﻿import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
+export type InputType
+  = "text"
+  | "email"
+  | "password";
+
 export interface FormInput {
-  type:        string;
+  type:        InputType;
   placeholder: string;
+  value:       string;
   errors:      string[];
 }
 
 @Component
 export default class FormInputComponent extends Vue {
 
-  constructor() {
-    super();
-  }
-
-  @Prop({ type: Object as () => FormInput })
-  data!: FormInput;
+  @Prop({ type: Object as () => FormInput }) vm!: FormInput;
 
   get hasErrors() {
-    return this.data.errors.length > 0;
+    return this.vm.errors.length > 0;
   }
 
 }

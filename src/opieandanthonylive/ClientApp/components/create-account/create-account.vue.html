@@ -8,10 +8,7 @@
 
     <form @submit.prevent="submit" novalidate>
 
-      <form-input
-        v-for="input in inputs"
-        :data="input">
-      </form-input>
+      <form-input v-for="input in inputs" :vm="input"/>
 
       <div class="text-center mt-5">
         <button type="submit" class="btn btn-primary btn-lg">Create account</button>
