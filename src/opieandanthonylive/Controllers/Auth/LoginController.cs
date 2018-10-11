@@ -39,9 +39,7 @@
         return BadRequest(ModelState);
       }
 
-      return new OkObjectResult(new {
-        token = GenerateJwtToken(this.jwtOptions, model.Username)
-      });
+      return new OkObjectResult(GenerateJwtToken(this.jwtOptions, model.Username));
     }
 
     public static string GenerateJwtToken(JwtIssuerOptions jwtOptions, string userName) {
