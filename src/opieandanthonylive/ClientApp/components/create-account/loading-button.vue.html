@@ -1,0 +1,10 @@
+﻿<template>
+
+  <button class="btn" :disabled="isLoading">
+    <i v-show="isLoading" class="fa fa-circle-o-notch fa-spin"></i>
+    <slot/>
+  </button>
+
+</template>
+
+<script src="./loading-button.ts"></script>

@@ -26,7 +26,8 @@ const auth = namespace('auth');
 
 @Component({
   components: {
-    'form-input': require('./form-input.vue.html').default
+    'form-input': require('./form-input.vue.html').default,
+    'loading-button': require('./loading-button.vue.html').default
   }
 })
 export default class CreateAccountComponent extends Vue {

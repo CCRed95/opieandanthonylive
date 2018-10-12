@@ -1,7 +1,8 @@
-﻿import { Module } from 'vuex';
+﻿import { Module, ActionContext } from 'vuex';
 import axios from 'axios';
 
 import { RootState } from './types';
+import { decodeJwt } from '../helpers';
 
 export type LoginPayload = {
   username: string;
@@ -25,43 +26,46 @@ interface SignedOut {
 
 interface SignedIn {
   kind: 'signed-in';
-  username: string;
+  token: string;
 };
 
+type AuthState = SignedOut | SignedIn;
+
 type State = {
-  authState: SignedOut | SignedIn;
+  authState: AuthState;
 }
 
-export const auth: Module<State, RootState> = {
+export const loadState = (): State => {
+  const token = localStorage.getItem('auth-token');
+  return token == null
+    ? { authState: { kind: 'signed-out' } }
+    : { authState: { kind: 'signed-in', token } };
+}
 
-  namespaced: true,
+const getters = {
 
-  state: {
-    authState: {
-      kind: 'signed-out',
-    }
+  isSignedIn: (s: State) =>
+    s.authState.kind == 'signed-in',
+
+  username: (s: State) =>
+    s.authState.kind == 'signed-in'
+      ? decodeJwt(s.authState.token).sub
+      : null,
+
+};
+
+const mutations = {
+
+  login: (s: State, payload: LoginMutationPayload) => {
+    localStorage.setItem('auth-token', payload.token);
+    s.authState = { kind: 'signed-in', token: payload.token };
   },
 
-  getters: {
-    isSignedIn: s => s.authState.kind === 'signed-in',
-  },
+};
 
-  mutations: {
-    login: (s: State, payload: LoginMutationPayload) => {
+const actions = {
 
-      // store the token
-      localStorage.setItem('auth-token', payload.token);
-
-      s.authState = {
-        kind: "signed-in",
-        username: payload.username
-      };
-    },
-  },
-
-  actions: {
-
-    login: (ctx, payload: LoginPayload) => axios
+    login: (ctx: ActionContext<State, RootState>, payload: LoginPayload) => axios
       .post('http://localhost:5000/api/auth/login', payload)
       .then(x => ctx.commit('login', {
         username: payload.username,
@@ -69,7 +73,7 @@ export const auth: Module<State, RootState> = {
       }))
       .catch(x => alert(x)),
 
-    register: (ctx, payload: RegisterPayload) => axios
+    register: (ctx: ActionContext<State, RootState>, payload: RegisterPayload) => axios
       .post('http://localhost:5000/api/auth/register', payload)
       .then(_ => ctx.dispatch('login', {
         username: payload.username,
@@ -77,6 +81,12 @@ export const auth: Module<State, RootState> = {
       }))
       .catch(x => alert(x)),
 
-  }
+  };
 
-};
+export const createModule = (state: State): Module<State, RootState> => ({
+  namespaced: true,
+  state,
+  getters,
+  mutations,
+  actions,
+});

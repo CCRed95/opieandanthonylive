@@ -1,5 +1,5 @@
 ﻿<template>
-  <div class="container col-md-6 mx-auto">
+  <div class="col-md-5 mx-auto">
 
     <div class="text-center my-5">
       <h1 class="h1">Create account</h1>
@@ -11,7 +11,7 @@
       <form-input v-for="input in inputs" :vm="input"/>
 
       <div class="text-center mt-5">
-        <button type="submit" class="btn btn-primary btn-lg">Create account</button>
+        <loading-button type="submit" class="btn-primary btn-lg" :isLoading="false">Create account</loading-button>
       </div>
 
     </form>

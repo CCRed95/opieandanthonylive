@@ -16,6 +16,7 @@ module.exports = (env) => {
             vendor: [
                 'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
+                'font-awesome/css/font-awesome.css',
                 'event-source-polyfill',
                 'isomorphic-fetch',
                 'jquery',
