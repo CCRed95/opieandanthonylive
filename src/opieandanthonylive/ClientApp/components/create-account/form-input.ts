@@ -20,6 +20,20 @@ export const mkInput = (type: InputType, placeholder: string): FormInput => ({
   errors: []
 });
 
+export interface FormValidation<TModel> {
+  input: (m: TModel) => FormInput;
+  validation: (m: TModel, v: string) => string[];
+}
+
+export const mkFormValidation = <TModel>(
+  input: (m: TModel) => FormInput,
+  p: (m: TModel, s: string) => boolean,
+  error: string
+): FormValidation<TModel> => ({
+  input,
+  validation: (m, v) => p(m, v) ? [error] : []
+});
+
 @Component
 export default class FormInputComponent extends Vue {
 

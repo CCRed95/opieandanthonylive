@@ -75,12 +75,17 @@ interface UsernameAlreadyExists {
   username: string;
 }
 
+interface LoginFailure {
+  kind: 'login-error';
+}
+
 interface OtherError {
   kind: 'other-error';
   error: AxiosError;
 }
 
-export type RegistrationError = UsernameAlreadyExists | OtherError;
+export type LoginError = LoginFailure | OtherError;
+export type RegistrationError = UsernameAlreadyExists | LoginError;
 
 const actions = {
 
@@ -90,19 +95,22 @@ const actions = {
       username: payload.username,
       token: x.data
     }))
-    .catch(x => alert(x)),
+    .catch((x: AxiosError) => {
+      throw (x.response && 'login_failure' in x.response.data)
+        ? { kind: 'login-error' }
+        : { kind: 'other', error: x };
+    }),
 
   register: (ctx: ActionContext<State, RootState>, payload: RegisterPayload) => axios
     .post('http://localhost:5000/api/auth/register', payload)
-    .then(_ => ctx.dispatch('login', {
-      username: payload.username,
-      password: payload.password
-    }))
     .catch((x: AxiosError) => {
       throw (x.response && 'DuplicateUserName' in x.response.data)
         ? { kind: 'username-already-exists', username: payload.username }
         : { kind: 'other', error: x };
-    })
+    }).then(_ => ctx.dispatch('login', {
+      username: payload.username,
+      password: payload.password
+    }))
 
 };
 
