@@ -8,4 +8,6 @@ const auth = namespace('auth');
 export default class NavbarComponent extends Vue {
   @auth.Getter('isSignedIn') isSignedIn!: boolean;
   @auth.Getter('username') username!: string;
+
+  @auth.Mutation('signOut') signOut!: any;
 }

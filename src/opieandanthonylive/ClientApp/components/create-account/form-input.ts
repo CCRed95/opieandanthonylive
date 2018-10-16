@@ -13,6 +13,13 @@ export interface FormInput {
   errors:      string[];
 }
 
+export const mkInput = (type: InputType, placeholder: string): FormInput => ({
+  type,
+  placeholder,
+  value: "",
+  errors: []
+});
+
 @Component
 export default class FormInputComponent extends Vue {
 

@@ -3,70 +3,121 @@ import { Component, Prop } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
 import { flattenArray, validEmail } from '../../helpers';
-import { FormInput, InputType } from './form-input';
-import { RegisterPayload } from '../../store/auth';
+import { FormInput, mkInput } from './form-input';
+import { RegisterPayload, RegistrationError } from '../../store/auth';
+import { VueClass } from 'vue-class-component/lib/declarations';
 
-type Validation = (value: string) => string[];
-
-interface ValidatedInput {
-  input: FormInput;
-  validation: Validation;
+interface FormValidation<TModel> {
+  input: (m: TModel) => FormInput;
+  validation: (m: TModel, v: string) => string[];
 }
 
-const mkValidation = (p: (s: string) => boolean, error: string): Validation =>
-  i => p(i) ? [error] : [];
-
-const mkValidatedInput = (type: InputType, placeholder: string, ...validations: Validation[]): ValidatedInput => {
-  const input = { type, placeholder, value: "", errors: [] };
-  const validation = (i: string) => flattenArray(validations.map(v => v(i)));
-  return { input, validation };
-}
+const mkFormValidation = <TModel>(
+  input: (m: TModel) => FormInput,
+  p: (m: TModel, s: string) => boolean,
+  error: string
+): FormValidation<TModel> => ({
+  input,
+  validation: (m, v) => p(m, v) ? [error] : []
+});
 
 const auth = namespace('auth');
 
-@Component({
-  components: {
-    'form-input': require('./form-input.vue.html').default,
-    'loading-button': require('./loading-button.vue.html').default
+const FormComponent = <V extends Vue, VC extends VueClass<V>>(x: VC): VC =>
+  Component({
+    components: {
+      'form-input': require('./form-input.vue.html').default,
+      'loading-button': require('./loading-button.vue.html').default
+    }
+  })(x);
+
+abstract class AuthFormComponent<TModel, TServerError, TPayload> extends Vue {
+
+  constructor(readonly model: TModel, getInputs: (m: TModel) => FormInput[]) {
+    super();
+    this.inputs = getInputs(model);
   }
-})
-export default class CreateAccountComponent extends Vue {
-
-  readonly username = mkValidatedInput('text', 'Username',
-      mkValidation(s => s.length == 0, "Please provide a username"));
-
-  readonly email = mkValidatedInput('email', 'Email',
-    mkValidation(s => validEmail(s) == false, "Please provide a valid email address"));
-
-  readonly password = mkValidatedInput('password', 'Password',
-    mkValidation(s => s.length < 6, "Password must contain at least 6 characters"));
-
-  readonly passwordConfirm = mkValidatedInput('password', 'Confirm password',
-    mkValidation(s => s != this.password.input.value, "Passwords must match"));
-
-  readonly validatedInputs = [this.username, this.email, this.password, this.passwordConfirm];
 
   @Prop({ type: Object as () => FormInput[] })
-  inputs: FormInput[] = this.validatedInputs.map(x => x.input);
+  readonly inputs: FormInput[];
 
-  @auth.Action('register')
-  register!: (payload: RegisterPayload) => void;
+  @Prop(Boolean)
+  isBusy!: boolean;
 
-  submit() {
+  @Prop(String)
+  serverValidation!: string;
 
-    this.validatedInputs.forEach(x =>
-      x.input.errors = x.validation(x.input.value));
+  protected handleSubmit(): void {
+
+    this.validate();
 
     // stop on errors
     if (flattenArray(this.inputs.map(x => x.errors)).length > 0)
       return;
 
-    this.register({
-      email:    this.email.input.value,
-      username: this.username.input.value,
-      password: this.password.input.value,
-    });
+    this.isBusy = true;
 
+    this.submit(this.createPayload(this.model))
+      .catch((e: TServerError) => this.serverValidation = this.formatError(e))
+      .then(_ => this.isBusy = false);
+
+  }
+
+  private validate() {
+    for (const v of this.validations) {
+      const input = v.input(this.model);
+      input.errors = v.validation(this.model, input.value);
+    }
+  }
+
+  abstract validations: FormValidation<TModel>[];
+  abstract createPayload: (m: TModel) => TPayload;
+  abstract submit: (payload: TPayload) => Promise<any>;
+  abstract formatError(e: TServerError): string;
+
+}
+
+interface CreateAccountModel {
+  username:        FormInput;
+  email:           FormInput;
+  password:        FormInput;
+  passwordConfirm: FormInput;
+}
+
+@FormComponent
+export default class CreateAccountComponent extends
+  AuthFormComponent<CreateAccountModel, RegistrationError, RegisterPayload>
+{
+
+  constructor() {
+    super({
+      username:        mkInput('text',     'Username'),
+      email:           mkInput('email',    'Email'),
+      password:        mkInput('password', 'Password'),
+      passwordConfirm: mkInput('password', 'Confirm password'),
+    }, m => [m.username, m.email, m.password, m.passwordConfirm]);
+  }
+
+  validations: FormValidation<CreateAccountModel>[] = [
+      mkFormValidation(m => m.username, (_, s) => s.length == 0, "Please provide a username"),
+      mkFormValidation(m => m.email, (_, s) => validEmail(s) == false, "Please provide a valid email address"),
+      mkFormValidation(m => m.password, (_, s) => s.length < 6, "Password must contain at least 6 characters"),
+      mkFormValidation(m => m.passwordConfirm, (m, s) => s != m.password.value, "Passwords must match"),
+  ];
+
+  createPayload = (m: CreateAccountModel): RegisterPayload => ({
+      email:    m.email.value,
+      username: m.username.value,
+      password: m.password.value,
+  });
+
+  @auth.Action('register')
+  submit!: (payload: RegisterPayload) => Promise<any>;
+
+  formatError(x: RegistrationError) {
+    return x.kind == "username-already-exists"
+      ? `Username '${x.username}' already taken`
+      : 'Unknown error occurred';
   }
 
 }
