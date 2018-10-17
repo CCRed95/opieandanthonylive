@@ -59,9 +59,20 @@ namespace opieandanthonylive {
 
     void ConfigureJwtAuth(IServiceCollection services) {
 
-      var JwtIssuer = Configuration.GetValue<string>(EnvironmentVariables.JWT_ISSUER);
-      var JwtAudience = Configuration.GetValue<string>(EnvironmentVariables.JWT_AUDIENCE);
-      var jwtSecretKey = Configuration.GetValue<string>(EnvironmentVariables.JWT_SECRET);
+      T GetConfigurationValue<T>(string environmentVariableName) {
+        var value = Configuration.GetValue<T>(environmentVariableName);
+        if (value == null) {
+          throw new ApplicationException
+            ( $"Missing configuration value '{environmentVariableName}'\n\n"
+            + "Are you missing an environment variable?"
+            );
+        }
+        return value;
+      }
+
+      var JwtIssuer = GetConfigurationValue<string>(EnvironmentVariables.JWT_ISSUER);
+      var JwtAudience = GetConfigurationValue<string>(EnvironmentVariables.JWT_AUDIENCE);
+      var jwtSecretKey = GetConfigurationValue<string>(EnvironmentVariables.JWT_SECRET);
 
       var jwtSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSecretKey));
 
@@ -95,6 +106,7 @@ namespace opieandanthonylive {
 
       services.AddAuthorization();
     }
+
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
       if (env.IsDevelopment()) {
