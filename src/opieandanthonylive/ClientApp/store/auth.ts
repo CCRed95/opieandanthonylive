@@ -90,7 +90,7 @@ export type RegistrationError = UsernameAlreadyExists | LoginError;
 const actions = {
 
   login: (ctx: ActionContext<State, RootState>, payload: LoginPayload) => axios
-    .post('http://localhost:5000/api/auth/login', payload)
+    .post('/api/auth/login', payload)
     .then(x => ctx.commit('login', {
       username: payload.username,
       token: x.data
@@ -102,7 +102,7 @@ const actions = {
     }),
 
   register: (ctx: ActionContext<State, RootState>, payload: RegisterPayload) => axios
-    .post('http://localhost:5000/api/auth/register', payload)
+    .post('/api/auth/register', payload)
     .catch((x: AxiosError) => {
       throw (x.response && 'DuplicateUserName' in x.response.data)
         ? { kind: 'username-already-exists', username: payload.username }
