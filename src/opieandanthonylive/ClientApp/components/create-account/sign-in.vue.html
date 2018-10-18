@@ -13,7 +13,7 @@
 
     <form @submit.prevent="handleSubmit" novalidate>
 
-      <form-input v-for="input in inputs" :vm="input" />
+      <form-input v-for="input in inputs" :vm="input" :key="input.id" />
 
       <div class="text-center my-5">
         <loading-button type="submit" class="btn-primary btn-lg" :isLoading="isBusy">Login</loading-button>

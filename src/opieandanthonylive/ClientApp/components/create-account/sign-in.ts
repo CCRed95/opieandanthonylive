@@ -17,8 +17,8 @@ export default class CreateAccountComponent extends
 {
   constructor() {
     super({
-      username: mkInput('text',     'Username'),
-      password: mkInput('password', 'Password'),
+      username: mkInput(1, 'text',     'Username'),
+      password: mkInput(2, 'password', 'Password'),
     }, m => [m.username, m.password]);
   }
 

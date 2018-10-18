@@ -21,10 +21,10 @@ export default class CreateAccountComponent extends
 
   constructor() {
     super({
-      username:        mkInput('text',     'Username'),
-      email:           mkInput('email',    'Email'),
-      password:        mkInput('password', 'Password'),
-      passwordConfirm: mkInput('password', 'Confirm password'),
+      username:        mkInput(1, 'text',     'Username'),
+      email:           mkInput(2, 'email',    'Email'),
+      password:        mkInput(3, 'password', 'Password'),
+      passwordConfirm: mkInput(4, 'password', 'Confirm password'),
     }, m => [m.username, m.email, m.password, m.passwordConfirm]);
   }
 

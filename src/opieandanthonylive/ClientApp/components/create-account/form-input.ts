@@ -7,13 +7,15 @@ export type InputType
   | "password";
 
 export interface FormInput {
+  id:          number;
   type:        InputType;
   placeholder: string;
   value:       string;
   errors:      string[];
 }
 
-export const mkInput = (type: InputType, placeholder: string): FormInput => ({
+export const mkInput = (id: number, type: InputType, placeholder: string): FormInput => ({
+  id,
   type,
   placeholder,
   value: "",
