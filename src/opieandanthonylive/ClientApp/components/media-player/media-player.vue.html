@@ -1,49 +1,17 @@
 ﻿<template>
 
   <div class="fixed-bottom media-player-bar">
-
     <div class="media-player">
-
-      <div class="media-player-controls">
-
-        <button class="media-player-button">
-          <i class="fa fa-step-backward"></i>
-        </button>
-
-        <button class="media-player-button media-player-play">
-          <i class="fa fa-play">
-          </i>
-        </button>
-
-        <button class="media-player-button">
-          <i class="fa fa-step-forward"></i>
-        </button>
-
-      </div>
-
-      <div class="media-player-timeline">
-        <div class="media-player-elapsed">{{ elapsedFmt }}</div>
-        <div class="media-player-timeline-wrapper">
-          <div class="media-player-timeline-background"></div>
-          <div class="media-player-timeline-position"></div>
-        </div>
-        <div class="media-player-duration">{{ durationFmt }}</div>
-      </div>
-
-      <div>
-        <button class="media-player-button">
-        <i class="fa fa-volume-up"></i>
-        </button>
-      </div>
-
-      <div>
-      </div>
-
+      <audio id="MY-PLAYER"></audio>
+      <controls/>
+      <timeline/>
+      <volume-control/>
+      <badge/>
+      <playlist/>
     </div>
-
   </div>
 
 </template>
 
-<style scoped src="./media-player.css"></style>
+<style src="./media-player.css"></style>
 <script src="./media-player.ts"></script>

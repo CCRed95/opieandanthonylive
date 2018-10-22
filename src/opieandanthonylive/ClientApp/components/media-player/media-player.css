@@ -1,14 +1,19 @@
 ﻿:root {
   --media-player-primary: #ef1960;
+  --media-player-background: #363c43;
+  --media-player-text: white;
+  --media-player-timeline-background: #cccccc;
+  --media-player-button: var(--media-player-text);
 }
 
 .media-player-bar {
-  color: white;
-  background: #363c43;
+  color: var(--media-player-text);
+  background: var(--media-player-background);
   border-top: 1px solid #cccccc;
 }
 
 .media-player {
+  min-width: 600px;
   max-width: 1140px;
   width: 100%;
   padding-right: 15px;
@@ -20,13 +25,17 @@
 .media-player-button {
   height: 36px;
   width: 36px;
-  border: 0px;
+  border: 0;
   background: none;
-  outline: none;
+  outline: 0;
   padding: 0px;
   cursor: pointer;
-  color: white;
   margin: 4px 0;
+  color: transparent;
+}
+
+.media-player-button * {
+  color: var(--media-player-button);
 }
 
 .media-player-play {
@@ -66,7 +75,7 @@
 .media-player-timeline-background {
   width: 100%;
   height: 1px;
-  background: #cccccc;
+  background: var(--media-player-timeline-background);
   position: absolute;
 }
 
@@ -75,4 +84,17 @@
   height: 1px;
   background: var(--red);
   position: absolute;
+}
+
+.media-player-badge {
+  width: 250px;
+  display: flex;
+  align-items: center;
+}
+
+.media-image {
+  background: var(--red);
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
