@@ -11,3 +11,9 @@ export const decodeJwt = (token: string): any => {
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   return JSON.parse(window.atob(base64));
 }
+
+export const min = (x: number, y: number) =>
+  x < y ? x : y;
+
+export const max = (x: number, y: number) =>
+  x > y ? x : y;

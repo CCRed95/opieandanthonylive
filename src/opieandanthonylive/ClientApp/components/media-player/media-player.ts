@@ -11,7 +11,4 @@ import { Component } from 'vue-property-decorator';
   }
 })
 export default class MediaPlayerComponent extends Vue {
-
-  mounted() {
-  }
 }

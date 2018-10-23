@@ -2,26 +2,30 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
-const media = namespace('media');
+const audio = namespace('audio');
 
 @Component
 export default class Controls extends Vue {
 
-  @media.Getter('isPlaying') isPlaying!: boolean;
+  @audio.Getter('isLoading') isLoading!: boolean;
+  @audio.Getter('isPlaying') isPlaying!: boolean;
 
-  @media.Mutation('pause') pause!: () => void;
-  @media.Action('play') play!: () => Promise<void>;
+  @audio.Action('pause') pause!: () => void;
+  @audio.Action('play') play!: () => void;
+  @audio.Action('prev') prev!: () => void;
+  @audio.Action('next') next!: () => void;
 
   get playClass() {
-    return this.isPlaying ? 'fa-pause' : 'fa-play';
+    if (this.isLoading)
+      return 'fa-sync';
+    else if (this.isPlaying)
+      return 'fa-pause';
+    else
+      return 'fa-play';
   }
 
   playOrPause() {
-    if (this.isPlaying) {
-      this.pause();
-    } else {
-      this.play();
-    }
+    this.isPlaying || this.isLoading ? this.pause() : this.play();
   }
 
 }
