@@ -24,11 +24,11 @@ interface State<M> {
 
 const mkGetters = <M>() => ({
 
-  isPlaying: (s: State<M>) =>
-    s.status == 'playing',
+  isPlaying: (s: State<M>) => s.status == 'playing',
+  isLoading: (s: State<M>) => s.status == 'loading',
 
-  isLoading: (s: State<M>) =>
-    s.status == 'loading',
+  isStopped: (s: State<M>) =>
+    !(s.playlist.current in s.playlist.tracks),
 
   currentTrack: (s: State<M>) =>
     s.playlist.tracks[s.playlist.current],
@@ -40,10 +40,10 @@ const mkMutations = <M>() => ({
   status: (s: State<M>, status: PlaybackStatus) =>
     s.status = status,
 
-  elapsed: (s: State<M>, elapsed: number) =>
+  elapsed: (s: State<M>, elapsed?: number) =>
     s.elapsed = elapsed,
 
-  duration: (s: State<M>, duration: number) =>
+  duration: (s: State<M>, duration?: number) =>
     s.duration = duration,
 
   prev: (s: State<M>) =>
@@ -64,7 +64,6 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
 
   stop: (ctx:ActionContext<State<M>, RootState>) => {
     audio.pause();
-    audio.currentTime = 0;
   },
 
   play: (ctx:ActionContext<State<M>, RootState>) => {
@@ -79,13 +78,14 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
     // Updating audio.src disrupts playback.  Only do so if we're supposed to
     // be playing something else.
     const current: Track<M> = ctx.getters.currentTrack;
-    if (audio.src != current.url)
+    if (audio.src != current.url) {
       audio.src = current.url;
+    }
 
     // This *should* be a no-op if we're in the middle of playing the track.
     audio.play()
-      .catch((x: string | null) => {
-        if (x == null) {
+      .catch((x: DOMException) => {
+        if (x.code == x.ABORT_ERR) {
           // This only ever seems to occur when the `play()` action is
           // disrupted, for example by changing `audio.src`.  As best as I can
           // tell, ignoring this error is harmless.
@@ -97,21 +97,37 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
       });
   },
 
+  prev: (ctx:ActionContext<State<M>, RootState>) => {
+    ctx.commit('prev');
+    ctx.dispatch('play');
+  },
+
+  next: (ctx:ActionContext<State<M>, RootState>) => {
+    ctx.commit('next');
+    ctx.dispatch('play');
+  },
+
 });
 
 export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S>(s: Store<S>) => {
+
+  const state: State<M> = {
+    status: 'paused',
+    elapsed: undefined,
+    duration: undefined,
+    playlist: {
+      current: 0,
+      tracks: [
+        { url: "https://archive.org/download/OA-2008-12/O&A-2008-12-04.mp3", metadata: {} as M },
+        { url: "https://archive.org/download/OA-2008-12/O&A-2008-12-05.mp3", metadata: {} as M },
+        { url: "https://archive.org/download/OA-2008-12/O&A-2008-12-12.mp3", metadata: {} as M },
+      ]
+    }
+  };
+
   s.registerModule(moduleName, {
     namespaced: true,
-    state: {
-      status: 'paused', playlist: {
-        current: 0,
-        tracks: [
-          { url: "https://archive.org/download/OA-2008-12/O&A-2008-12-04.mp3", metadata: {} as M },
-          { url: "https://archive.org/download/OA-2008-12/O&A-2008-12-05.mp3", metadata: {} as M },
-          { url: "https://archive.org/download/OA-2008-12/O&A-2008-12-12.mp3", metadata: {} as M },
-        ]
-      }
-    },
+    state,
     getters: mkGetters<M>(),
     mutations: mkMutations<M>(),
     actions: mkActions<M>(audio),
@@ -119,9 +135,9 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
 
   audio.addEventListener('playing', () => s.commit(`${moduleName}/status`, 'playing'));
   audio.addEventListener('pause',   () => s.commit(`${moduleName}/status`, 'pause'));
-  audio.addEventListener('stalled', () => s.commit(`${moduleName}/status`, 'loading'));
   audio.addEventListener('waiting', () => s.commit(`${moduleName}/status`, 'loading'));
 
   audio.addEventListener('durationchange', () => s.commit(`${moduleName}/duration`, audio.duration));
   audio.addEventListener('timeupdate',     () => s.commit(`${moduleName}/elapsed`, audio.currentTime));
+
 };

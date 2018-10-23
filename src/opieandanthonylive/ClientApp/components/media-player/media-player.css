@@ -53,7 +53,7 @@
 
 .media-player-elapsed {
   height: 40px;
-  width: 40px;
+  width: 55px;
   line-height: 40px;
   text-align: right;
   color: var(--media-player-primary);
@@ -61,7 +61,7 @@
 
 .media-player-duration {
   height: 40px;
-  width: 40px;
+  width: 55px;
   line-height: 40px;
   text-align: left;
 }
@@ -80,7 +80,6 @@
 }
 
 .media-player-timeline-position {
-  width: 50%;
   height: 1px;
   background: var(--red);
   position: absolute;
