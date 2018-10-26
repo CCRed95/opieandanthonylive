@@ -1,4 +1,5 @@
 import { ActionContext, Store } from 'vuex';
+import throttle from 'lodash.throttle';
 
 import { RootState } from "./types";
 import { max, min } from '../helpers';
@@ -64,6 +65,11 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
 
   stop: (ctx:ActionContext<State<M>, RootState>) => {
     audio.pause();
+  },
+
+  seek: (ctx:ActionContext<State<M>, RootState>, time: number) => {
+    audio.currentTime = time;
+    ctx.commit('elapsed', time)
   },
 
   play: (ctx:ActionContext<State<M>, RootState>) => {
@@ -138,6 +144,8 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
   audio.addEventListener('waiting', () => s.commit(`${moduleName}/status`, 'loading'));
 
   audio.addEventListener('durationchange', () => s.commit(`${moduleName}/duration`, audio.duration));
-  audio.addEventListener('timeupdate',     () => s.commit(`${moduleName}/elapsed`, audio.currentTime));
+
+  audio.addEventListener('timeupdate', throttle(() =>
+    s.commit(`${moduleName}/elapsed`, audio.currentTime), 500));
 
 };

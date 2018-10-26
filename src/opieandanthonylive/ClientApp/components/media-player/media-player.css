@@ -67,9 +67,16 @@
 }
 
 .media-player-timeline-wrapper {
-  margin: 10px;
+  display: block;
+  margin: 0 10px 0 10px;
+  padding: 10px 0;
+  height: 10px;
   position: relative;
   flex: 1;
+}
+
+.media-player-timeline-wrapper:hover {
+  cursor: pointer;
 }
 
 .media-player-timeline-background {
@@ -81,7 +88,17 @@
 
 .media-player-timeline-position {
   height: 1px;
-  background: var(--red);
+  background: var(--media-player-primary);
+  position: absolute;
+}
+
+.media-player-timeline-handle {
+  border: 1px solid var(--media-player-primary);
+  background: var(--media-player-primary);
+  height: 7px;
+  width: 7px;
+  margin: -3px -3px 0 0;
+  border-radius: 100%;
   position: absolute;
 }
 
@@ -92,7 +109,7 @@
 }
 
 .media-image {
-  background: var(--red);
+  background: var(--media-player-primary);
   width: 40px;
   height: 40px;
   margin-right: 10px;

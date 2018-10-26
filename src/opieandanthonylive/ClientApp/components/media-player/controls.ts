@@ -10,10 +10,10 @@ export default class Controls extends Vue {
   @audio.Getter('isLoading') isLoading!: boolean;
   @audio.Getter('isPlaying') isPlaying!: boolean;
 
-  @audio.Action('pause') pause!: () => void;
-  @audio.Action('play') play!: () => void;
-  @audio.Action('prev') prev!: () => void;
-  @audio.Action('next') next!: () => void;
+  @audio.Action('pause') pause!: () => Promise<any>;
+  @audio.Action('play') play!: () => Promise<any>;
+  @audio.Action('prev') prev!: () => Promise<any>;
+  @audio.Action('next') next!: () => Promise<any>;
 
   get playClass() {
     if (this.isLoading)
