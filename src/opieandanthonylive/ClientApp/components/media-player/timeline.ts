@@ -23,7 +23,7 @@ const fmtTime = (isStopped: boolean, n: number) => {
 @Component
 export default class Timeline extends Vue {
 
-  isMouseDown = false;
+  isSeeking = false;
   seekElapsed = 0;
 
   @audio.State('elapsed') storeElapsed!: number;
@@ -32,7 +32,7 @@ export default class Timeline extends Vue {
   @audio.Action('seek') seek!: (time: number) => Promise<any>;
 
   get elapsed() {
-    return this.isMouseDown
+    return this.isSeeking
       ? this.seekElapsed
       : this.storeElapsed;
   }
@@ -49,32 +49,29 @@ export default class Timeline extends Vue {
     return this.isStopped ? '0%' : `${100.0 * this.elapsed / this.duration}%`;
   }
 
-  updateElapsed(ev: MouseEvent) {
-    if (!(ev.target instanceof HTMLDivElement))
-      return;
-
-    const duration = this.duration;
-    const width = ev.target.clientWidth;
-
-    const offset = clump(0, ev.offsetX, width);
-    this.seekElapsed = offset / width * duration;
-  }
-
   mouseDown(ev: MouseEvent) {
-    this.isMouseDown = true;
-    this.updateElapsed(ev);
-  }
+    const div = ev.target as HTMLDivElement;
 
-  mouseMove(ev: MouseEvent) {
-    if (this.isMouseDown && ev.buttons == 0)
-      this.mouseUp();
-    if (this.isMouseDown)
-      this.updateElapsed(ev);
-  }
+    const mouseMove = (ev: MouseEvent) => {
+      const width = div.clientWidth;
+      const left = div.getBoundingClientRect().left;
+      const offset = clump(0, ev.clientX - left, width);
+      this.seekElapsed = offset / width * this.duration;
+    }
 
-  mouseUp() {
-    this.isMouseDown = false;
-    this.seek(this.seekElapsed);
+    const mouseUp = (ev: MouseEvent) => {
+      document.removeEventListener('mousemove', mouseMove);
+      document.removeEventListener('mouseup', mouseUp);
+      this.isSeeking = false;
+      this.seek(this.seekElapsed);
+    }
+
+    this.isSeeking = true;
+
+    document.addEventListener('mousemove', mouseMove);
+    document.addEventListener('mouseup', mouseUp);
+
+    mouseMove(ev);
   }
 
 }
