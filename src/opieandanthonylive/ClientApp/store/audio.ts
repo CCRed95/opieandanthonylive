@@ -140,12 +140,18 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
   });
 
   audio.addEventListener('playing', () => s.commit(`${moduleName}/status`, 'playing'));
-  audio.addEventListener('pause',   () => s.commit(`${moduleName}/status`, 'pause'));
-  audio.addEventListener('waiting', () => s.commit(`${moduleName}/status`, 'loading'));
+  audio.addEventListener('pause', () => s.commit(`${moduleName}/status`, 'pause'));
 
-  audio.addEventListener('durationchange', () => s.commit(`${moduleName}/duration`, audio.duration));
+  audio.addEventListener('durationchange',
+    () => s.commit(`${moduleName}/duration`, audio.duration));
 
   audio.addEventListener('timeupdate', throttle(() =>
     s.commit(`${moduleName}/elapsed`, audio.currentTime), 500));
+
+  audio.addEventListener('waiting', () => {
+    s.commit(`${moduleName}/status`, 'loading');
+    s.commit(`${moduleName}/duration`, audio.duration);
+    s.commit(`${moduleName}/elapsed`,  audio.currentTime);
+  });
 
 };
