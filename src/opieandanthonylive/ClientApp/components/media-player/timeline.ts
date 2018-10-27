@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
-import { clamp } from '../../helpers';
+import { clamp, drag } from '../../helpers';
 
 const audio = namespace('audio');
 
@@ -49,29 +49,20 @@ export default class Timeline extends Vue {
     return this.isStopped ? '0%' : `${100.0 * this.elapsed / this.duration}%`;
   }
 
-  mouseDown(ev: MouseEvent) {
+  startSeeking(ev: MouseEvent) {
     const div = ev.target as HTMLDivElement;
 
-    const mouseMove = (ev: MouseEvent) => {
+    const onMove = (ev: MouseEvent) => {
       const width = div.clientWidth;
       const left = div.getBoundingClientRect().left;
       const offset = clamp(0, ev.clientX - left, width);
       this.seekElapsed = offset / width * this.duration;
     }
 
-    const mouseUp = (ev: MouseEvent) => {
-      document.removeEventListener('mousemove', mouseMove);
-      document.removeEventListener('mouseup', mouseUp);
-      this.isSeeking = false;
-      this.seek(this.seekElapsed);
-    }
+    const onGrab = ()               => { this.isSeeking = true; onMove(ev); };
+    const onDrop = (ev: MouseEvent) => { this.isSeeking = false; this.seek(this.seekElapsed); }
 
-    this.isSeeking = true;
-
-    document.addEventListener('mousemove', mouseMove);
-    document.addEventListener('mouseup', mouseUp);
-
-    mouseMove(ev);
+    drag(onGrab, onMove, onDrop);
   }
 
 }

@@ -20,3 +20,20 @@ export const max = (x: number, y: number) =>
 
 export const clamp = (lowerBound: number, x: number, upperBound: number) =>
   min(max(lowerBound, x), upperBound)
+
+export const drag = (
+  onGrab: () => void,
+  onMove: (ev: MouseEvent) => void,
+  onDrop: (ev: MouseEvent) => void
+) => {
+  const mouseUp = (ev: MouseEvent) => {
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', mouseUp);
+    onDrop(ev);
+  }
+
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', mouseUp);
+
+  onGrab();
+};

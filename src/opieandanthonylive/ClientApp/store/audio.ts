@@ -1,5 +1,4 @@
 import { ActionContext, Store } from 'vuex';
-import throttle from 'lodash.throttle';
 
 import { RootState } from "./types";
 import { max, min } from '../helpers';
@@ -72,7 +71,7 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
     ctx.commit('elapsed', time)
   },
 
-  play: (ctx:ActionContext<State<M>, RootState>) => {
+  play: async (ctx:ActionContext<State<M>, RootState>) => {
     const state = ctx.state;
 
     // Reaching the end of the playlist, we should stop.
@@ -84,33 +83,34 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
     // Updating audio.src disrupts playback.  Only do so if we're supposed to
     // be playing something else.
     const current: Track<M> = ctx.getters.currentTrack;
-    if (audio.src != current.url) {
+    if (audio.src != current.url)
       audio.src = current.url;
+
+    try {
+      // This *should* be a no-op if we're in the middle of playing the track.
+      await audio.play();
+    } catch (x) {
+      if (x.code == x.ABORT_ERR) {
+        // This only ever seems to occur when the `play()` action is
+        // disrupted, for example by changing `audio.src`.  As best as I can
+        // tell, ignoring this error is harmless.
+        return;
+      } else {
+        // TOOD: Better error reporting facilities.
+        alert(x);
+      }
     }
 
-    // This *should* be a no-op if we're in the middle of playing the track.
-    audio.play()
-      .catch((x: DOMException) => {
-        if (x.code == x.ABORT_ERR) {
-          // This only ever seems to occur when the `play()` action is
-          // disrupted, for example by changing `audio.src`.  As best as I can
-          // tell, ignoring this error is harmless.
-          return;
-        } else {
-          // TOOD: Better error reporting facilities.
-          alert(x);
-        }
-      });
   },
 
-  prev: (ctx:ActionContext<State<M>, RootState>) => {
+  prev: async (ctx:ActionContext<State<M>, RootState>) => {
     ctx.commit('prev');
-    ctx.dispatch('play');
+    await ctx.dispatch('play');
   },
 
-  next: (ctx:ActionContext<State<M>, RootState>) => {
+  next: async (ctx:ActionContext<State<M>, RootState>) => {
     ctx.commit('next');
-    ctx.dispatch('play');
+    await ctx.dispatch('play');
   },
 
 });
@@ -140,13 +140,13 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
   });
 
   audio.addEventListener('playing', () => s.commit(`${moduleName}/status`, 'playing'));
-  audio.addEventListener('pause', () => s.commit(`${moduleName}/status`, 'pause'));
+  audio.addEventListener('pause',   () => s.commit(`${moduleName}/status`, 'pause'));
 
-  audio.addEventListener('durationchange',
-    () => s.commit(`${moduleName}/duration`, audio.duration));
+  audio.addEventListener('durationchange', () =>
+    s.commit(`${moduleName}/duration`, audio.duration));
 
-  audio.addEventListener('timeupdate', throttle(() =>
-    s.commit(`${moduleName}/elapsed`, audio.currentTime), 500));
+  audio.addEventListener('timeupdate', () =>
+    s.commit(`${moduleName}/elapsed`, audio.currentTime));
 
   audio.addEventListener('waiting', () => {
     s.commit(`${moduleName}/status`, 'loading');
