@@ -18,5 +18,5 @@ export const min = (x: number, y: number) =>
 export const max = (x: number, y: number) =>
   x > y ? x : y;
 
-export const clump = (lowerBound: number, x: number, upperBound: number) =>
+export const clamp = (lowerBound: number, x: number, upperBound: number) =>
   min(max(lowerBound, x), upperBound)

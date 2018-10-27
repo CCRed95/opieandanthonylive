@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
-import { clump } from '../../helpers';
+import { clamp } from '../../helpers';
 
 const audio = namespace('audio');
 
@@ -55,7 +55,7 @@ export default class Timeline extends Vue {
     const mouseMove = (ev: MouseEvent) => {
       const width = div.clientWidth;
       const left = div.getBoundingClientRect().left;
-      const offset = clump(0, ev.clientX - left, width);
+      const offset = clamp(0, ev.clientX - left, width);
       this.seekElapsed = offset / width * this.duration;
     }
 
