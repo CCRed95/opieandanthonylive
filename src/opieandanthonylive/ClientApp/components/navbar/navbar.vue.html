@@ -1,0 +1,53 @@
+<template>
+
+  <nav class="container navbar navbar-expand-md navbar-light bg-light">
+
+    <a class="navbar-brand" href="#">opieandanthonylive</a>
+
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#ooalNavbar"
+            aria-controls="ooalNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="ooalNavbar">
+
+      <div class="navbar-nav mr-auto">
+        <router-link to="/" :exact="true" class="nav-link">Home</router-link>
+        <router-link to="/counter" class="nav-link">Counter</router-link>
+        <router-link to="/fetchdata" class="nav-link">Fetch Data</router-link>
+      </div>
+
+      <ul class="navbar-nav" v-if="isSignedIn">
+        <li class="nav-item dropdown">
+          <a id="userMenu"
+             href="#"
+             class="nav-item nav-link dropdown dropdown-toggle"
+             data-toggle="dropdown"
+             aria-haspopup="true"
+             aria-expanded="false">
+            {{ username }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="userMenu">
+            <a href="#" class="dropdown-item">Preferences</a>
+            <a href="#" class="dropdown-item" @click.prevent="signOut">Sign out</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="navbar-nav" v-else>
+        <router-link to="/sign-in" class="btn btn-sm btn-outline-primary mr-sm-1" role="button">Sign in</router-link>
+        <router-link to="/create-account" class="btn btn-sm btn-success" role="button">Create account</router-link>
+      </div>
+
+    </div>
+
+  </nav>
+
+</template>
+
+<script src="./navbar.ts"></script>

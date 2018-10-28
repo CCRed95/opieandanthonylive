@@ -46,6 +46,9 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.c
 
+# DNX
+artifacts/
+
 *_i.c
 *_p.c
 *_i.h

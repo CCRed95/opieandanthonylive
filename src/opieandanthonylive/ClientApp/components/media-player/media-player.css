@@ -1,0 +1,116 @@
+﻿:root {
+  --media-player-primary: #ef1960;
+  --media-player-background: #363c43;
+  --media-player-text: white;
+  --media-player-timeline-background: #cccccc;
+  --media-player-button: var(--media-player-text);
+}
+
+.media-player-bar {
+  color: var(--media-player-text);
+  background: var(--media-player-background);
+  border-top: 1px solid #cccccc;
+}
+
+.media-player {
+  min-width: 600px;
+  max-width: 1140px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto 0 auto;
+  display: flex;
+}
+
+.media-player-button {
+  height: 36px;
+  width: 36px;
+  border: 0;
+  background: none;
+  outline: 0;
+  padding: 0px;
+  cursor: pointer;
+  margin: 4px 0;
+  color: transparent;
+}
+
+.media-player-button * {
+  color: var(--media-player-button);
+}
+
+.media-player-play {
+  background: var(--media-player-primary);
+  border-radius: 100%;
+}
+
+.media-player-timeline {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-size: 13px;
+}
+
+.media-player-elapsed {
+  height: 40px;
+  width: 55px;
+  line-height: 40px;
+  text-align: right;
+  color: var(--media-player-primary);
+}
+
+.media-player-duration {
+  height: 40px;
+  width: 55px;
+  line-height: 40px;
+  text-align: left;
+}
+
+.media-player-timeline-wrapper {
+  display: block;
+  margin: 0 10px 0 10px;
+  padding: 10px 0;
+  height: 10px;
+  position: relative;
+  flex: 1;
+}
+
+.media-player-timeline-wrapper:hover {
+  cursor: pointer;
+}
+
+.media-player-timeline-background {
+  width: 100%;
+  height: 1px;
+  background: var(--media-player-timeline-background);
+  position: absolute;
+}
+
+.media-player-timeline-position {
+  height: 1px;
+  background: var(--media-player-primary);
+  position: absolute;
+}
+
+.media-player-timeline-handle {
+  border: 1px solid var(--media-player-primary);
+  background: var(--media-player-primary);
+  height: 7px;
+  width: 7px;
+  margin: -3px -3px 0 0;
+  border-radius: 100%;
+  position: absolute;
+}
+
+.media-player-badge {
+  width: 250px;
+  display: flex;
+  align-items: center;
+}
+
+.media-image {
+  background: var(--media-player-primary);
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
