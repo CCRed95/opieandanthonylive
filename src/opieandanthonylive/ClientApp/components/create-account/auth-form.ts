@@ -1,9 +1,14 @@
 ﻿import Vue from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
 import { VueClass } from 'vue-class-component/lib/declarations';
+import { namespace } from 'vuex-class';
+import { Route } from 'vue-router';
 
 import { FormInput, FormValidation } from './form-input';
 import { flattenArray } from '../../helpers';
+import { authRoutes } from '../../router';
+
+const route = namespace('route');
 
 export const FormComponent = <V extends Vue, VC extends VueClass<V>>(x: VC): VC =>
   Component({
@@ -23,13 +28,12 @@ export abstract class AuthForm<TModel, TServerError, TPayload> extends Vue {
   @Prop({ type: Object as () => FormInput[] })
   readonly inputs: FormInput[];
 
-  @Prop(Boolean)
-  isBusy!: boolean;
+  @Prop(Boolean) isBusy!: boolean;
+  @Prop(String) serverValidation!: string;
 
-  @Prop(String)
-  serverValidation!: string;
+  @route.State('from') prevRoute!: Route;
 
-  protected handleSubmit(): void {
+  protected async handleSubmit(): Promise<void> {
 
     this.validate();
 
@@ -39,9 +43,18 @@ export abstract class AuthForm<TModel, TServerError, TPayload> extends Vue {
 
     this.isBusy = true;
 
-    this.submit(this.createPayload(this.model))
-      .catch((e: TServerError) => this.serverValidation = this.formatError(e))
-      .then(_ => this.isBusy = false);
+    try {
+      await this.submit(this.createPayload(this.model))
+
+      authRoutes.find(s => this.prevRoute.path == s)
+        ? this.$router.replace('/')
+        : this.$router.replace(this.prevRoute.path);
+
+    } catch (e) {
+      this.serverValidation = this.formatError(e);
+    }
+
+    this.isBusy = false;
 
   }
 

@@ -7,10 +7,6 @@
       <h6 class="h6 text-muted">Please enter your information</h6>
     </div>
 
-    <div class="alert alert-danger" v-show="!!serverValidation">
-      {{ serverValidation }}
-    </div>
-
     <form @submit.prevent="handleSubmit" novalidate>
 
       <form-input v-for="input in inputs" :vm="input" :key="input.id"/>
@@ -20,6 +16,10 @@
       </div>
 
     </form>
+
+    <div class="alert alert-danger" v-show="!!serverValidation">
+      {{ serverValidation }}
+    </div>
 
   </div>
 </template>
