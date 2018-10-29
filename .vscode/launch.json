@@ -30,7 +30,10 @@
                 }
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "OAAL_JWT_ISSUER": "https://opieandanthonylive.net/api/auth/",
+                "OAAL_JWT_AUDIENCE": "https://opieandanthonylive.net/api/",
+                "OAAL_JWT_SECRET": "1234567890abcdefghijklmnopqrstuvwxyz",
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
