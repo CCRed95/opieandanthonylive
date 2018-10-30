@@ -34,6 +34,10 @@
   color: transparent;
 }
 
+.media-player-button:focus {
+  outline:0;
+}
+
 .media-player-button * {
   color: var(--media-player-button);
 }
