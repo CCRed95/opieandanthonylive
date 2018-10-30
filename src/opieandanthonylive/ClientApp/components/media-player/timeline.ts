@@ -6,13 +6,13 @@ import { clamp, drag } from '../../helpers';
 
 const audio = namespace('audio');
 
-const fmtTime = (isStopped: boolean, n: number) => {
-  if (isStopped)
+const fmtTime = (isEmpty: boolean, n: number) => {
+  if (isEmpty)
     return '--:--:--';
 
-  const seconds = n % 60 | 0;
-  const minutes = (n / 60) % 60 | 0;
-  const hours = (n / 60 / 60) % 60 | 0;
+  const seconds =  n            % 60 | 0;
+  const minutes = (n / 60)      % 60 | 0;
+  const hours   = (n / 60 / 60) % 60 | 0;
 
   const fmt = (x: number) =>
     ('00' + x).substr(-2, 2);
@@ -28,7 +28,7 @@ export default class Timeline extends Vue {
 
   @audio.State('elapsed') storeElapsed!: number;
   @audio.State('duration') duration!: number;
-  @audio.Getter('isStopped') isStopped!: boolean;
+  @audio.Getter('isEmpty') isEmpty!: boolean;
   @audio.Action('seek') seek!: (time: number) => Promise<any>;
 
   get elapsed() {
@@ -38,15 +38,15 @@ export default class Timeline extends Vue {
   }
 
   get fmtElapsed() {
-    return fmtTime(this.isStopped, this.elapsed);
+    return fmtTime(this.isEmpty, this.elapsed);
   }
 
   get fmtDuration(): string {
-    return fmtTime(this.isStopped, this.duration);
+    return fmtTime(this.isEmpty, this.duration);
   }
 
   get percentage(): string {
-    return this.isStopped ? '0%' : `${100.0 * this.elapsed / this.duration}%`;
+    return this.isEmpty ? '0%' : `${100.0 * this.elapsed / this.duration}%`;
   }
 
   startSeeking(ev: MouseEvent) {
