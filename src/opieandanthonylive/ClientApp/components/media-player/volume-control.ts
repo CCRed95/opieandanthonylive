@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
+
 import { drag, clamp } from '../../helpers';
 
 const audio = namespace('audio');
@@ -8,11 +9,11 @@ const audio = namespace('audio');
 @Component
 export default class Volume extends Vue {
 
-  @audio.State('volume') volume!: number;
+  @audio.State('volume') storeVolume!: number;
   @audio.Action('volume') setVolume!: (v: number) => Promise<any>;
 
-  get percentage(): string {
-    return `${this.volume * 100.0}%`;
+  get fmtPercentage(): string {
+    return `${this.storeVolume * 100.0}%`;
   }
 
   dragVolume(ev: MouseEvent) {
@@ -22,14 +23,15 @@ export default class Volume extends Vue {
       const height = target.clientHeight;
       const bottom = target.getBoundingClientRect().bottom;
       const offset = clamp(0, bottom - ev.clientY, height);
-      this.setVolume(offset / height);
+      const volume = offset / height;
+
+      this.setVolume(volume);
     };
 
-    const onGrab = ()               => { onMove(ev); };
-    const onDrop = (ev: MouseEvent) => { };
+    const onGrab = () => { onMove(ev); };
+    const onDrop = () => {};
 
     drag(onGrab, onMove, onDrop);
-
   }
 
 }

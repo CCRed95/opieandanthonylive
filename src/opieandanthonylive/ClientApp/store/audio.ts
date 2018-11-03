@@ -63,8 +63,10 @@ const mkMutations = <M>() => ({
 
 const mkActions = <M>(audio: HTMLAudioElement) => ({
 
-  volume: (ctx:ActionContext<State<M>, RootState>, v: number) =>
-    audio.volume = clamp(0, v, 1),
+  volume: (ctx:ActionContext<State<M>, RootState>, v: number) => {
+    ctx.commit('volume', v);
+    audio.volume = clamp(0, v, 1);
+  },
 
   pause: (ctx:ActionContext<State<M>, RootState>) => 
     audio.pause(),
@@ -153,7 +155,6 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
   audio.addEventListener('playing', () => s.commit(`${moduleName}/status`, 'playing'));
   audio.addEventListener('waiting', () => s.commit(`${moduleName}/status`, 'loading'));
 
-  audio.addEventListener('volumechange',   () => s.commit(`${moduleName}/volume`, audio.volume));
   audio.addEventListener('durationchange', () => s.commit(`${moduleName}/duration`, audio.duration));
   audio.addEventListener('timeupdate',     () => s.commit(`${moduleName}/elapsed`, audio.currentTime));
 

@@ -1,15 +1,12 @@
 <template>
   <div class="volume" style="position: relative">
-
     <button class="media-player-button"><i class="fas fa-volume-up"></i></button>
-
-    <div class="media-player-volume-wrapper" @mousedown.prevent.self="dragVolume">
+    <div class="media-player-volume-wrapper" @mousedown.prevent="dragVolume">
       <div class="media-player-volume-background" ref="sliderBackground">
-        <div class="media-player-volume-position" :style="{ height: percentage }"></div>
-        <div class="media-player-volume-handle" :style="{ bottom: percentage }"></div>
+        <div class="media-player-volume-position" :style="{ height: fmtPercentage }"></div>
+        <div class="media-player-volume-handle" :style="{ bottom: fmtPercentage }"></div>
       </div>
     </div>
-
   </div>
 </template>
 <script src="./volume-control.ts"></script>

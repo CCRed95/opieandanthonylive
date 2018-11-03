@@ -50,7 +50,7 @@ export default class Timeline extends Vue {
   }
 
   startSeeking(ev: MouseEvent) {
-    const div = ev.target as HTMLDivElement;
+    const div = this.$refs.timelineWrapper as HTMLDivElement;
 
     const onMove = (ev: MouseEvent) => {
       const width = div.clientWidth;
@@ -59,8 +59,8 @@ export default class Timeline extends Vue {
       this.seekElapsed = offset / width * this.duration;
     }
 
-    const onGrab = ()               => { this.isSeeking = true; onMove(ev); };
-    const onDrop = (ev: MouseEvent) => { this.isSeeking = false; this.seek(this.seekElapsed); }
+    const onGrab = () => { this.isSeeking = true; onMove(ev); };
+    const onDrop = () => { this.isSeeking = false; this.seek(this.seekElapsed); }
 
     drag(onGrab, onMove, onDrop);
   }
