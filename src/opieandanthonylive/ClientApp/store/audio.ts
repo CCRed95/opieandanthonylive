@@ -1,7 +1,7 @@
 import { ActionContext, Store } from 'vuex';
 
 import { RootState } from "./types";
-import { max } from '../helpers';
+import { max, clamp } from '../helpers';
 
 interface Track<M> {
   url: string;
@@ -16,9 +16,10 @@ interface Playlist<M> {
 type PlaybackStatus = 'paused' | 'loading' | 'playing';
 
 interface State<M> {
-  status: PlaybackStatus;
-  elapsed?: number;
-  duration?: number;
+  status:   PlaybackStatus;
+  elapsed:  number;
+  duration: number;
+  volume:   number;
   playlist: Playlist<M>;
 };
 
@@ -40,10 +41,10 @@ const mkMutations = <M>() => ({
   status: (s: State<M>, status: PlaybackStatus) =>
     s.status = status,
 
-  elapsed: (s: State<M>, elapsed?: number) =>
+  elapsed: (s: State<M>, elapsed: number) =>
     s.elapsed = elapsed,
 
-  duration: (s: State<M>, duration?: number) =>
+  duration: (s: State<M>, duration: number) =>
     s.duration = duration,
 
   prev: (s: State<M>) =>
@@ -55,9 +56,15 @@ const mkMutations = <M>() => ({
   add: (s: State<M>, t: Track<M>) =>
     s.playlist.tracks.push(t),
 
+  volume: (s: State<M>, v: number) =>
+    s.volume = v,
+
 });
 
 const mkActions = <M>(audio: HTMLAudioElement) => ({
+
+  volume: (ctx:ActionContext<State<M>, RootState>, v: number) =>
+    audio.volume = clamp(0, v, 1),
 
   pause: (ctx:ActionContext<State<M>, RootState>) => 
     audio.pause(),
@@ -128,9 +135,10 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
 
   const state: State<M> = {
     status: 'paused',
-    elapsed: undefined,
-    duration: undefined,
-    playlist: { index: 0, tracks: [] }
+    elapsed: audio.currentTime,
+    duration: audio.duration,
+    volume: audio.volume,
+    playlist: { index: 0, tracks: [] },
   };
 
   s.registerModule(moduleName, {
@@ -145,6 +153,7 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
   audio.addEventListener('playing', () => s.commit(`${moduleName}/status`, 'playing'));
   audio.addEventListener('waiting', () => s.commit(`${moduleName}/status`, 'loading'));
 
+  audio.addEventListener('volumechange',   () => s.commit(`${moduleName}/volume`, audio.volume));
   audio.addEventListener('durationchange', () => s.commit(`${moduleName}/duration`, audio.duration));
   audio.addEventListener('timeupdate',     () => s.commit(`${moduleName}/elapsed`, audio.currentTime));
 
@@ -152,8 +161,8 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
   // isn't immediately obvious for that.  `.dispatch` returns a Promise.
   // Wherever this actually gets called from eventually would similarly need to
   // `await` that.
-  s.dispatch('audio/add', { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-04.mp3', metadata: {} as M });
-  s.dispatch('audio/add', { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-05.mp3', metadata: {} as M });
-  s.dispatch('audio/add', { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-12.mp3', metadata: {} as M });
+  s.dispatch(`${moduleName}/add`, { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-04.mp3', metadata: {} as M });
+  s.dispatch(`${moduleName}/add`, { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-05.mp3', metadata: {} as M });
+  s.dispatch(`${moduleName}/add`, { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-12.mp3', metadata: {} as M });
 
 };

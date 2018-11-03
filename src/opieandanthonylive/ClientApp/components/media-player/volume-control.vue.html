@@ -1,5 +1,16 @@
 <template>
-  <button class="media-player-button">
-    <i class="fas fa-volume-up"></i>
-  </button>
+  <div class="volume" style="position: relative">
+
+    <button class="media-player-button"><i class="fas fa-volume-up"></i></button>
+
+      <div class="media-player-volume-wrapper">
+        <div class="media-player-volume-background">
+          <div class="media-player-volume-position" :style="{ height: percentage }"></div>
+          <div class="media-player-volume-handle" :style="{ bottom: percentage }"></div>
+        </div>
+      </div>
+
+  </div>
 </template>
+
+<script src="./volume-control.ts"></script>
