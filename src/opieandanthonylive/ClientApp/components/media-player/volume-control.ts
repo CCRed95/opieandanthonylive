@@ -9,9 +9,10 @@ const audio = namespace('audio');
 @Component
 export default class Volume extends Vue {
 
-  @audio.State('muted')   isMuted!: boolean;
-  @audio.Getter('volume') storeVolume!: number;
-  @audio.Action('volume') setVolume!: (v: number) => Promise<any>;
+  @audio.State('muted')       isMuted!: boolean;
+  @audio.Getter('volume')     storeVolume!: number;
+  @audio.Action('volume')     setVolume!: (v: number) => Promise<any>;
+  @audio.Action('toggleMute') toggleMute!: () => Promise<any>;
 
   get volumeButtonClass(): string {
     if (this.storeVolume > 0.5)
