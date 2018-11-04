@@ -23,6 +23,16 @@ export default class Volume extends Vue {
       return 'fa-volume-mute';
   }
 
+  isSliding = false;
+  isHover = false;
+
+  get volumeClass() {
+    return this.isSliding || this.isHover ? "hover" : "";
+  }
+
+  beginHover(ev: MouseEvent) { this.isHover = true;  }
+  endHover(ev: MouseEvent)   { this.isHover = false; }
+
   get fmtPercentage(): string {
     return `${this.storeVolume * 100.0}%`;
   }
@@ -39,8 +49,8 @@ export default class Volume extends Vue {
       this.setVolume(volume);
     };
 
-    const onGrab = () => { onMove(ev); };
-    const onDrop = () => {};
+    const onGrab = () => { this.isSliding = true;  onMove(ev); };
+    const onDrop = () => { this.isSliding = false; };
 
     drag(onGrab, onMove, onDrop);
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="volume" style="position: relative">
+  <div class="volume" :class="volumeClass" @mouseenter="beginHover" @mouseleave="endHover" style="position: relative">
     <button class="media-player-button" @click="toggleMute">
       <i class="fas" :class="volumeButtonClass"></i>
     </button>
