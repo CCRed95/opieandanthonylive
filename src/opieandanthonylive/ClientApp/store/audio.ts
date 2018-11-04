@@ -174,8 +174,32 @@ export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S
   // isn't immediately obvious for that.  `.dispatch` returns a Promise.
   // Wherever this actually gets called from eventually would similarly need to
   // `await` that.
-  s.dispatch(`${moduleName}/add`, { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-04.mp3', metadata: {} as M });
-  s.dispatch(`${moduleName}/add`, { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-05.mp3', metadata: {} as M });
-  s.dispatch(`${moduleName}/add`, { url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-12.mp3', metadata: {} as M });
+
+  s.dispatch(`${moduleName}/add`, {
+    url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-04.mp3',
+    metadata: {
+      artwork: 'http://opieandanthonylive.info/alpha3/images/Ralphie%20May.jpg',
+      title: 'December 4, 2008 - Bill Burr, Ralphie May',
+      show:  'Opie and Anthony',
+    } as unknown as M
+  });
+
+  s.dispatch(`${moduleName}/add`, {
+    url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-05.mp3',
+    metadata: {
+      artwork: 'http://opieandanthonylive.info/alpha3/images/Bill%20Burr.jpg',
+      title: 'December 5, 2008 - Bill Burr, Joe DeRosa',
+      show:  'Opie and Anthony',
+    } as unknown as M
+  });
+
+  s.dispatch(`${moduleName}/add`, {
+    url: 'https://archive.org/download/OA-2008-12/O&A-2008-12-12.mp3',
+    metadata: {
+      artwork: 'http://opieandanthonylive.info/alpha3/images/Ralphie%20May.jpg',
+      title: 'http://opieandanthonylive.info/alpha3/images/Jeffrey%20Ross.jpg',
+      show:  'Opie and Anthony',
+    } as unknown as M
+  });
 
 };

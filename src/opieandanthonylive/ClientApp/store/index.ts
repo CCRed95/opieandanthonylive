@@ -7,6 +7,12 @@ import * as audio from './audio';
 
 Vue.use(Vuex);
 
+export interface Metadata {
+  artwork: string;
+  title: string;
+  show: string;
+}
+
 export const store: Store<RootState> = new Vuex.Store({
 
   modules: {
@@ -14,7 +20,7 @@ export const store: Store<RootState> = new Vuex.Store({
   },
 
   plugins: [
-    audio.mkPlugin(new Audio())
+    audio.mkPlugin<Metadata>(new Audio())
   ],
 
 });
