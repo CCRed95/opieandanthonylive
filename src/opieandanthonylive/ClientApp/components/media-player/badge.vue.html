@@ -1,9 +1,10 @@
 <template>
   <div class="media-player-badge">
-    <div class="media-image" />
+    <img class="media-image"  :src="artwork"/>
     <div style="flex: 1">
-      <span style="display:block; font-size: 12px">Title</span>
-      <span style="display:block; font-size: 12px">Show Name</span>
+      <span style="display:block; font-size: 12px"> {{ title }} </span>
+      <span style="display:block; font-size: 12px"> {{ show }} </span>
     </div>
   </div>
 </template>
+<script src="./badge.ts"></script>

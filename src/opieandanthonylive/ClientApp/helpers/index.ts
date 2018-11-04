@@ -21,6 +21,12 @@ export const max = (x: number, y: number) =>
 export const clamp = (lowerBound: number, x: number, upperBound: number) =>
   min(max(lowerBound, x), upperBound)
 
+export const maybe = <A, B>(a: A | undefined, b: B, f: (a: A) => B): B =>
+  a ? f(a) : b;
+
+export const maybeStr = <A>(a: A | undefined, f: (a: A) => string) =>
+  maybe(a, "", f);
+
 export const drag = (
   onGrab: () => void,
   onMove: (ev: MouseEvent) => void,
