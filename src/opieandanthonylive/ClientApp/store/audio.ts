@@ -19,6 +19,7 @@ interface State<M> {
   status:   PlaybackStatus;
   elapsed:  number;
   duration: number;
+  muted:    boolean;
   volume:   number;
   playlist: Playlist<M>;
 };
@@ -28,6 +29,8 @@ const mkGetters = <M>() => ({
   isPlaying: (s: State<M>) => s.status == 'playing',
   isLoading: (s: State<M>) => s.status == 'loading',
   isEmpty:   (s: State<M>) => s.playlist.tracks.length == 0,
+  isMuted:   (s: State<M>) => s.muted,
+  volume:    (s: State<M>) => s.muted ? 0 : s.volume,
 
   currentTrack: (s: State<M>) =>
     s.playlist.tracks.length == 0
@@ -38,14 +41,11 @@ const mkGetters = <M>() => ({
 
 const mkMutations = <M>() => ({
 
-  status: (s: State<M>, status: PlaybackStatus) =>
-    s.status = status,
-
-  elapsed: (s: State<M>, elapsed: number) =>
-    s.elapsed = elapsed,
-
-  duration: (s: State<M>, duration: number) =>
-    s.duration = duration,
+  status:   (s: State<M>, status: PlaybackStatus) => s.status = status,
+  elapsed:  (s: State<M>, elapsed: number)        => s.elapsed = elapsed,
+  duration: (s: State<M>, duration: number)       => s.duration = duration,
+  muted:    (s: State<M>, b: boolean)             => s.muted = b,
+  volume:   (s: State<M>, v: number)              => s.volume = v,
 
   prev: (s: State<M>) =>
     s.playlist.index = max(0, s.playlist.index - 1),
@@ -56,16 +56,27 @@ const mkMutations = <M>() => ({
   add: (s: State<M>, t: Track<M>) =>
     s.playlist.tracks.push(t),
 
-  volume: (s: State<M>, v: number) =>
-    s.volume = v,
-
 });
 
 const mkActions = <M>(audio: HTMLAudioElement) => ({
 
-  volume: (ctx:ActionContext<State<M>, RootState>, v: number) => {
-    ctx.commit('volume', v);
-    audio.volume = clamp(0, v, 1);
+  muted: (ctx:ActionContext<State<M>, RootState>, b: boolean) => {
+    ctx.commit('muted', b);
+    audio.muted = b;
+  },
+
+  toggleMute: async (ctx:ActionContext<State<M>, RootState>) => 
+    await ctx.dispatch('muted', !ctx.state.muted),
+
+  volume: async (ctx:ActionContext<State<M>, RootState>, v: number) => {
+    const value = clamp(0, v, 1)
+    if (value == 0) {
+      await ctx.dispatch('muted', true);
+    } else {
+      ctx.commit('volume', value);
+      audio.volume = value;
+      await ctx.dispatch('muted', false);
+    }
   },
 
   pause: (ctx:ActionContext<State<M>, RootState>) => 
@@ -136,10 +147,11 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
 export const mkPlugin = <M>(audio: HTMLAudioElement, moduleName = 'audio') => <S>(s: Store<S>) => {
 
   const state: State<M> = {
-    status: 'paused',
-    elapsed: audio.currentTime,
+    status:   'paused',
+    elapsed:  audio.currentTime,
     duration: audio.duration,
-    volume: audio.volume,
+    muted:    audio.muted,
+    volume:   audio.volume,
     playlist: { index: 0, tracks: [] },
   };
 

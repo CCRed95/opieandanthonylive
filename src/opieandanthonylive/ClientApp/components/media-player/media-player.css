@@ -45,7 +45,7 @@
 
 .media-player-play {
   background: var(--media-player-primary);
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 .media-player-timeline {
@@ -104,7 +104,7 @@
   width: 7px;
   margin-left: -3px;
   margin-top: -3px;
-  border-radius: 100%;
+  border-radius: 50%;
   position: absolute;
 }
 
@@ -148,7 +148,7 @@
   position: absolute;
   margin-left: -3px;
   margin-bottom: -3px;
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 .media-player-badge {

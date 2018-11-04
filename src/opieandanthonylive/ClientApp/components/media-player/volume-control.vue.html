@@ -1,6 +1,6 @@
 <template>
   <div class="volume" style="position: relative">
-    <button class="media-player-button"><i class="fas fa-volume-up"></i></button>
+    <button class="media-player-button"><i class="fas" :class="volumeButtonClass"></i></button>
     <div class="media-player-volume-wrapper" @mousedown.prevent="dragVolume">
       <div class="media-player-volume-background" ref="sliderBackground">
         <div class="media-player-volume-position" :style="{ height: fmtPercentage }"></div>

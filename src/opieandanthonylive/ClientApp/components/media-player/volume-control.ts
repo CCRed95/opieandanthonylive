@@ -9,8 +9,18 @@ const audio = namespace('audio');
 @Component
 export default class Volume extends Vue {
 
-  @audio.State('volume') storeVolume!: number;
+  @audio.State('muted')   isMuted!: boolean;
+  @audio.Getter('volume') storeVolume!: number;
   @audio.Action('volume') setVolume!: (v: number) => Promise<any>;
+
+  get volumeButtonClass(): string {
+    if (this.storeVolume > 0.5)
+      return 'fa-volume-up';
+    else if (this.storeVolume > 0)
+      return 'fa-volume-down';
+    else
+      return 'fa-volume-mute';
+  }
 
   get fmtPercentage(): string {
     return `${this.storeVolume * 100.0}%`;
