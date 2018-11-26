@@ -1,24 +1,24 @@
-namespace opieandanthonylive {
+namespace opieandanthonylive
+{
+	using Microsoft.AspNetCore;
+	using Microsoft.AspNetCore.Hosting;
+	using Microsoft.Extensions.Configuration;
+	using Configuration;
 
-  using Microsoft.AspNetCore;
-  using Microsoft.AspNetCore.Hosting;
-  using Microsoft.Extensions.Configuration;
-  using opieandanthonylive.Configuration;
+	public static class Program
+	{
+		public static void Main(
+			string[] args)
+		{
+			var configuration = new ConfigurationBuilder()
+				.AddEnvironmentVariables(EnvironmentVariables.ENVIRONMENT_VARIABLE_PREFIX)
+				.Build();
 
-  static class Program {
-
-    static void Main(string[] args) {
-
-      var configuration = new ConfigurationBuilder()
-        .AddEnvironmentVariables(EnvironmentVariables.ENVIRONMENT_VARIABLE_PREFIX)
-        .Build();
-
-      WebHost.CreateDefaultBuilder(args)
-        .UseStartup<Startup>()
-        .UseConfiguration(configuration)
-        .Build()
-        .Run();
-    }
-
-  }
+			WebHost.CreateDefaultBuilder(args)
+				.UseStartup<Startup>()
+				.UseConfiguration(configuration)
+				.Build()
+				.Run();
+		}
+	}
 }

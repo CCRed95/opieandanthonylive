@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using Ccr.Dnc.Data.EntityFrameworkCore.Infrastucture;
 using Microsoft.EntityFrameworkCore;
-
 // ReSharper disable ConvertPropertyToExpressionBody
+
 namespace Ccr.Dnc.Data.EntityFrameworkCore
 {
   public class Repository<
@@ -15,33 +15,33 @@ namespace Ccr.Dnc.Data.EntityFrameworkCore
       : IRepository<
         TEntity,
         TKey>
-    where TEntity
-      : EntityBase
-    where TKey
-      : IComparable
-    where TContext
-    : DbContext
+			    where TEntity
+			      : EntityBase
+			    where TKey
+			      : IComparable
+			    where TContext
+						: DbContext
   {
     protected readonly TContext _context;
+		private DbSet<TEntity> _dbSet;
+	  private Func<TEntity, TKey> _primaryKeyFunc;
+	  private readonly EntityPrimaryKeyResolver<TEntity, TKey, TContext> _primaryKeyResolver;
+		private Expression<Func<TEntity, TKey>> _primaryKeyExpression;
+	  private Expression<Func<TEntity, IComparable>> _primaryKeyExpressionBase;
 
-    private DbSet<TEntity> _dbSet;
-    protected virtual DbSet<TEntity> DBSet
+
+		protected virtual DbSet<TEntity> DBSet
     {
       get => _dbSet
              ?? (_dbSet = _context.Set<TEntity>());
     }
 
-    private Func<TEntity, TKey> _primaryKeyFunc;
-    protected Func<TEntity, TKey> PrimaryKeyFunc
+	  protected Func<TEntity, TKey> PrimaryKeyFunc
     {
       get => _primaryKeyFunc
              ?? (_primaryKeyFunc = PrimaryKeyExpression.Compile());
     }
-
-
-    private readonly EntityPrimaryKeyResolver<TEntity, TKey, TContext> _primaryKeyResolver;
-
-    private Expression<Func<TEntity, TKey>> _primaryKeyExpression;
+		
     public virtual Expression<Func<TEntity, TKey>> PrimaryKeyExpression
     {
       get
@@ -54,7 +54,6 @@ namespace Ccr.Dnc.Data.EntityFrameworkCore
       }
     }
 
-    private Expression<Func<TEntity, IComparable>> _primaryKeyExpressionBase;
     public Expression<Func<TEntity, IComparable>> PrimaryKeyExpressionBase
     {
       get
@@ -149,16 +148,13 @@ namespace Ccr.Dnc.Data.EntityFrameworkCore
 
     public int Count()
     {
-      return DBSet
-        .Count();
+      return DBSet.Count();
     }
 
     public void Insert(
       TEntity entity)
     {
-      DBSet
-        .Add(
-          entity);
+      DBSet.Add(entity);
     }
 
     public void InsertOrAttach(
@@ -185,7 +181,6 @@ namespace Ccr.Dnc.Data.EntityFrameworkCore
       else
       {
         var x = _context.Update(existingEntity);
-
       }
     }
 

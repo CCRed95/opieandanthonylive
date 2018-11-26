@@ -110,8 +110,8 @@ namespace Ccr.Dnc.Core.Extensions
 
 		// definition of a valid C# identifier: http://msdn.microsoft.com/en-us/library/aa664670(v=vs.71).aspx
 		/// <summary>
-		/// Information on the standards of how the language specificiation 
-		/// consitutes a valid C# member identifier.
+		/// Information on the standards of how the language specification 
+		/// constitutes a valid C# member identifier.
 		/// </summary>
 		// ReSharper disable once RedundantArrayCreationExpression
 		private static readonly List<string> _csharpLanguageKeywords 
@@ -121,12 +121,12 @@ namespace Ccr.Dnc.Core.Extensions
 			"as",        "explicit",   "null",       "switch",
 			"base",      "extern",     "object",     "this",
 			"bool",      "false",      "operator",   "throw",
-			"breal",     "finally",    "out",        "true",
+			"break",     "finally",    "out",        "true",
 			"byte",      "fixed",      "override",   "try",
 			"case",      "float",      "params",     "typeof",
 			"catch",     "for",        "private",    "uint",
 			"char",      "foreach",    "protected",  "ulong",
-			"checked",   "goto",       "public",     "unchekeced",
+			"checked",   "goto",       "public",     "unchecked",
 			"class",     "if",         "readonly",   "unsafe",
 			"const",     "implicit",   "ref",        "ushort",
 			"continue",  "in",         "return",     "using",

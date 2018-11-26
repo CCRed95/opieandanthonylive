@@ -4,12 +4,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace opieandanthonylive.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "dbo");
+
             migrationBuilder.CreateTable(
                 name: "ArchiveFileTypeInfos",
+                schema: "dbo",
                 columns: table => new
                 {
                     ArchiveFileTypeInfoID = table.Column<int>(nullable: false)
@@ -23,7 +27,49 @@ namespace opieandanthonylive.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetRoles",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AudibleMediaItems",
+                schema: "dbo",
                 columns: table => new
                 {
                     AudibleMediaItemID = table.Column<int>(nullable: false)
@@ -45,6 +91,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ContentCreators",
+                schema: "dbo",
                 columns: table => new
                 {
                     ContentCreatorID = table.Column<int>(nullable: false)
@@ -58,6 +105,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "EmbeddedContentSources",
+                schema: "dbo",
                 columns: table => new
                 {
                     EmbeddedContentSourceID = table.Column<int>(nullable: false)
@@ -71,6 +119,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Genders",
+                schema: "dbo",
                 columns: table => new
                 {
                     GenderID = table.Column<int>(nullable: false)
@@ -85,6 +134,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "GuestAppearanceTypes",
+                schema: "dbo",
                 columns: table => new
                 {
                     GuestAppearanceTypeID = table.Column<int>(nullable: false)
@@ -98,6 +148,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ShowRundownAuthors",
+                schema: "dbo",
                 columns: table => new
                 {
                     ShowRundownAuthorID = table.Column<int>(nullable: false)
@@ -111,6 +162,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Shows",
+                schema: "dbo",
                 columns: table => new
                 {
                     ShowID = table.Column<int>(nullable: false)
@@ -123,7 +175,125 @@ namespace opieandanthonylive.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RoleId = table.Column<string>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalSchema: "dbo",
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserClaims",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "dbo",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserLogins",
+                schema: "dbo",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
+                    ProviderDisplayName = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "dbo",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserRoles",
+                schema: "dbo",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(nullable: false),
+                    RoleId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalSchema: "dbo",
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "dbo",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserTokens",
+                schema: "dbo",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Value = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "dbo",
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ArchiveAlbums",
+                schema: "dbo",
                 columns: table => new
                 {
                     ArchiveAlbumID = table.Column<int>(nullable: false)
@@ -141,6 +311,7 @@ namespace opieandanthonylive.Migrations
                     table.ForeignKey(
                         name: "FK_ArchiveAlbums_ContentCreators_ContentCreatorID",
                         column: x => x.ContentCreatorID,
+                        principalSchema: "dbo",
                         principalTable: "ContentCreators",
                         principalColumn: "ContentCreatorID",
                         onDelete: ReferentialAction.Restrict);
@@ -148,6 +319,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Guests",
+                schema: "dbo",
                 columns: table => new
                 {
                     FirstName = table.Column<string>(maxLength: 30, nullable: false),
@@ -169,6 +341,7 @@ namespace opieandanthonylive.Migrations
                     table.ForeignKey(
                         name: "FK_Guests_Genders_GenderID",
                         column: x => x.GenderID,
+                        principalSchema: "dbo",
                         principalTable: "Genders",
                         principalColumn: "GenderID",
                         onDelete: ReferentialAction.Restrict);
@@ -176,6 +349,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Hosts",
+                schema: "dbo",
                 columns: table => new
                 {
                     FirstName = table.Column<string>(nullable: true),
@@ -196,6 +370,7 @@ namespace opieandanthonylive.Migrations
                     table.ForeignKey(
                         name: "FK_Hosts_Genders_GenderID",
                         column: x => x.GenderID,
+                        principalSchema: "dbo",
                         principalTable: "Genders",
                         principalColumn: "GenderID",
                         onDelete: ReferentialAction.Restrict);
@@ -203,6 +378,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ShowMediaEntries",
+                schema: "dbo",
                 columns: table => new
                 {
                     ShowMediaEntryID = table.Column<int>(nullable: false)
@@ -210,14 +386,23 @@ namespace opieandanthonylive.Migrations
                     ShowID = table.Column<int>(nullable: true),
                     AirDate = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(maxLength: 400, nullable: false),
-                    Url = table.Column<string>(maxLength: 1000, nullable: true)
+                    EmbeddedContentSourceUrl = table.Column<string>(maxLength: 1000, nullable: true),
+                    EmbeddedContentSourceID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ShowMediaEntries", x => x.ShowMediaEntryID);
                     table.ForeignKey(
+                        name: "FK_ShowMediaEntries_EmbeddedContentSources_EmbeddedContentSourceID",
+                        column: x => x.EmbeddedContentSourceID,
+                        principalSchema: "dbo",
+                        principalTable: "EmbeddedContentSources",
+                        principalColumn: "EmbeddedContentSourceID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_ShowMediaEntries_Shows_ShowID",
                         column: x => x.ShowID,
+                        principalSchema: "dbo",
                         principalTable: "Shows",
                         principalColumn: "ShowID",
                         onDelete: ReferentialAction.Restrict);
@@ -225,6 +410,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ShowHosts",
+                schema: "dbo",
                 columns: table => new
                 {
                     ShowHostID = table.Column<int>(nullable: false)
@@ -238,19 +424,45 @@ namespace opieandanthonylive.Migrations
                     table.ForeignKey(
                         name: "FK_ShowHosts_Hosts_HostID",
                         column: x => x.HostID,
+                        principalSchema: "dbo",
                         principalTable: "Hosts",
                         principalColumn: "HostID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ShowHosts_Shows_ShowID",
                         column: x => x.ShowID,
+                        principalSchema: "dbo",
                         principalTable: "Shows",
                         principalColumn: "ShowID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
+                name: "ShowMediaSegmentContentTags",
+                schema: "dbo",
+                columns: table => new
+                {
+                    ShowMediaContentTagID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ShowMediaEntryID = table.Column<int>(nullable: true),
+                    SegmentTimeStart = table.Column<long>(nullable: true),
+                    SegmentTimeEnd = table.Column<long>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShowMediaSegmentContentTags", x => x.ShowMediaContentTagID);
+                    table.ForeignKey(
+                        name: "FK_ShowMediaSegmentContentTags_ShowMediaEntries_ShowMediaEntryID",
+                        column: x => x.ShowMediaEntryID,
+                        principalSchema: "dbo",
+                        principalTable: "ShowMediaEntries",
+                        principalColumn: "ShowMediaEntryID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ArchiveFiles",
+                schema: "dbo",
                 columns: table => new
                 {
                     ArchiveFileID = table.Column<int>(nullable: false)
@@ -273,18 +485,21 @@ namespace opieandanthonylive.Migrations
                     table.ForeignKey(
                         name: "FK_ArchiveFiles_ArchiveAlbums_ArchiveAlbumID",
                         column: x => x.ArchiveAlbumID,
+                        principalSchema: "dbo",
                         principalTable: "ArchiveAlbums",
                         principalColumn: "ArchiveAlbumID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ArchiveFiles_ArchiveFileTypeInfos_ArchiveFileTypeInfoID",
                         column: x => x.ArchiveFileTypeInfoID,
+                        principalSchema: "dbo",
                         principalTable: "ArchiveFileTypeInfos",
                         principalColumn: "ArchiveFileTypeInfoID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ArchiveFiles_Shows_ShowID",
                         column: x => x.ShowID,
+                        principalSchema: "dbo",
                         principalTable: "Shows",
                         principalColumn: "ShowID",
                         onDelete: ReferentialAction.Restrict);
@@ -292,6 +507,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ShowRundowns",
+                schema: "dbo",
                 columns: table => new
                 {
                     ShowRundownID = table.Column<int>(nullable: false)
@@ -309,12 +525,14 @@ namespace opieandanthonylive.Migrations
                     table.ForeignKey(
                         name: "FK_ShowRundowns_ArchiveFiles_ArchiveFileID",
                         column: x => x.ArchiveFileID,
+                        principalSchema: "dbo",
                         principalTable: "ArchiveFiles",
                         principalColumn: "ArchiveFileID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ShowRundowns_ShowRundownAuthors_ShowRundownAuthorID",
                         column: x => x.ShowRundownAuthorID,
+                        principalSchema: "dbo",
                         principalTable: "ShowRundownAuthors",
                         principalColumn: "ShowRundownAuthorID",
                         onDelete: ReferentialAction.Restrict);
@@ -322,6 +540,7 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateTable(
                 name: "GuestAppearances",
+                schema: "dbo",
                 columns: table => new
                 {
                     GuestAppearanceID = table.Column<int>(nullable: false)
@@ -339,24 +558,28 @@ namespace opieandanthonylive.Migrations
                     table.ForeignKey(
                         name: "FK_GuestAppearances_ArchiveFiles_ArchiveFileID",
                         column: x => x.ArchiveFileID,
+                        principalSchema: "dbo",
                         principalTable: "ArchiveFiles",
                         principalColumn: "ArchiveFileID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_GuestAppearances_Guests_GuestID",
                         column: x => x.GuestID,
+                        principalSchema: "dbo",
                         principalTable: "Guests",
                         principalColumn: "GuestID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_GuestAppearances_ShowMediaEntries_ShowMediaEntryID",
                         column: x => x.ShowMediaEntryID,
+                        principalSchema: "dbo",
                         principalTable: "ShowMediaEntries",
                         principalColumn: "ShowMediaEntryID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_GuestAppearances_ShowRundowns_ShowRundownID",
                         column: x => x.ShowRundownID,
+                        principalSchema: "dbo",
                         principalTable: "ShowRundowns",
                         principalColumn: "ShowRundownID",
                         onDelete: ReferentialAction.Restrict);
@@ -364,112 +587,192 @@ namespace opieandanthonylive.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArchiveAlbums_ContentCreatorID",
+                schema: "dbo",
                 table: "ArchiveAlbums",
                 column: "ContentCreatorID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArchiveFiles_ArchiveAlbumID",
+                schema: "dbo",
                 table: "ArchiveFiles",
                 column: "ArchiveAlbumID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArchiveFiles_ArchiveFileTypeInfoID",
+                schema: "dbo",
                 table: "ArchiveFiles",
                 column: "ArchiveFileTypeInfoID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArchiveFiles_ShowID",
+                schema: "dbo",
                 table: "ArchiveFiles",
                 column: "ShowID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArchiveFiles_ShowRundownID",
+                schema: "dbo",
                 table: "ArchiveFiles",
                 column: "ShowRundownID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoleClaims_RoleId",
+                schema: "dbo",
+                table: "AspNetRoleClaims",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "RoleNameIndex",
+                schema: "dbo",
+                table: "AspNetRoles",
+                column: "NormalizedName",
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserClaims_UserId",
+                schema: "dbo",
+                table: "AspNetUserClaims",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserLogins_UserId",
+                schema: "dbo",
+                table: "AspNetUserLogins",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_RoleId",
+                schema: "dbo",
+                table: "AspNetUserRoles",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                schema: "dbo",
+                table: "AspNetUsers",
+                column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                schema: "dbo",
+                table: "AspNetUsers",
+                column: "NormalizedUserName",
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "UIX_EmbeddedContentSource_EmbeddedContentSourceName",
+                schema: "dbo",
                 table: "EmbeddedContentSources",
                 column: "EmbeddedContentSourceName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "UIX_Gender_GenderName",
+                schema: "dbo",
                 table: "Genders",
                 column: "GenderName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_GuestAppearances_ArchiveFileID",
+                schema: "dbo",
                 table: "GuestAppearances",
                 column: "ArchiveFileID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GuestAppearances_GuestID",
+                schema: "dbo",
                 table: "GuestAppearances",
                 column: "GuestID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GuestAppearances_ShowMediaEntryID",
+                schema: "dbo",
                 table: "GuestAppearances",
                 column: "ShowMediaEntryID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GuestAppearances_ShowRundownID",
+                schema: "dbo",
                 table: "GuestAppearances",
                 column: "ShowRundownID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GuestAppearanceType_AppearanceTypeName",
+                schema: "dbo",
                 table: "GuestAppearanceTypes",
                 column: "AppearanceTypeName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Guests_GenderID",
+                schema: "dbo",
                 table: "Guests",
                 column: "GenderID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Hosts_GenderID",
+                schema: "dbo",
                 table: "Hosts",
                 column: "GenderID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShowHosts_HostID",
+                schema: "dbo",
                 table: "ShowHosts",
                 column: "HostID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ShowMediaEntries_EmbeddedContentSourceID",
+                schema: "dbo",
+                table: "ShowMediaEntries",
+                column: "EmbeddedContentSourceID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ShowMediaEntries_ShowID",
+                schema: "dbo",
                 table: "ShowMediaEntries",
                 column: "ShowID");
 
             migrationBuilder.CreateIndex(
                 name: "UIX_ShowMediaEntry_Title",
+                schema: "dbo",
                 table: "ShowMediaEntries",
                 column: "Title",
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_ShowMediaSegmentContentTags_ShowMediaEntryID",
+                schema: "dbo",
+                table: "ShowMediaSegmentContentTags",
+                column: "ShowMediaEntryID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ShowRundownAuthor_AuthorName",
+                schema: "dbo",
                 table: "ShowRundownAuthors",
                 column: "AuthorName");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShowRundowns_ArchiveFileID",
+                schema: "dbo",
                 table: "ShowRundowns",
                 column: "ArchiveFileID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShowRundowns_ShowRundownAuthorID",
+                schema: "dbo",
                 table: "ShowRundowns",
                 column: "ShowRundownAuthorID");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ArchiveFiles_ShowRundowns_ShowRundownID",
+                schema: "dbo",
                 table: "ArchiveFiles",
                 column: "ShowRundownID",
+                principalSchema: "dbo",
                 principalTable: "ShowRundowns",
                 principalColumn: "ShowRundownID",
                 onDelete: ReferentialAction.Restrict);
@@ -479,71 +782,124 @@ namespace opieandanthonylive.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_ArchiveAlbums_ContentCreators_ContentCreatorID",
+                schema: "dbo",
                 table: "ArchiveAlbums");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ArchiveFiles_ArchiveAlbums_ArchiveAlbumID",
+                schema: "dbo",
                 table: "ArchiveFiles");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ArchiveFiles_ArchiveFileTypeInfos_ArchiveFileTypeInfoID",
+                schema: "dbo",
                 table: "ArchiveFiles");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ArchiveFiles_Shows_ShowID",
+                schema: "dbo",
                 table: "ArchiveFiles");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ArchiveFiles_ShowRundowns_ShowRundownID",
+                schema: "dbo",
                 table: "ArchiveFiles");
 
             migrationBuilder.DropTable(
-                name: "AudibleMediaItems");
+                name: "AspNetRoleClaims",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "EmbeddedContentSources");
+                name: "AspNetUserClaims",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "GuestAppearances");
+                name: "AspNetUserLogins",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "GuestAppearanceTypes");
+                name: "AspNetUserRoles",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ShowHosts");
+                name: "AspNetUserTokens",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Guests");
+                name: "AudibleMediaItems",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ShowMediaEntries");
+                name: "GuestAppearances",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Hosts");
+                name: "GuestAppearanceTypes",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Genders");
+                name: "ShowHosts",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ContentCreators");
+                name: "ShowMediaSegmentContentTags",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ArchiveAlbums");
+                name: "AspNetRoles",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ArchiveFileTypeInfos");
+                name: "AspNetUsers",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Shows");
+                name: "Guests",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ShowRundowns");
+                name: "Hosts",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ArchiveFiles");
+                name: "ShowMediaEntries",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ShowRundownAuthors");
+                name: "Genders",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "EmbeddedContentSources",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "ContentCreators",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "ArchiveAlbums",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "ArchiveFileTypeInfos",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "Shows",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "ShowRundowns",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "ArchiveFiles",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "ShowRundownAuthors",
+                schema: "dbo");
         }
     }
 }

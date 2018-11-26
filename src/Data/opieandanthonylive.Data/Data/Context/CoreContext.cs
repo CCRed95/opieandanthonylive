@@ -65,19 +65,20 @@ namespace opieandanthonylive.Data.Context
     protected override void OnConfiguring(
       DbContextOptionsBuilder optionsBuilder)
     {
-      base.OnConfiguring(optionsBuilder);
+			base.OnConfiguring(optionsBuilder);
 
-      // var s = Configuration.GetConnectionString("DefaultConnectionString");
+			// var s = Configuration.GetConnectionString("DefaultConnectionString");
 
-      optionsBuilder.UseSqlServer(
-        "Server=(localdb)\\mssqllocaldb;Database=opieandanthonylive8;Trusted_Connection=true;MultipleActiveResultSets=true");
+			optionsBuilder.UseSqlServer(
+				"Data Source=184.168.47.17;Initial Catalog=opieandanthonylive11;Persist Security Info=True;User ID=oa_backend;Password=S7glr@78");
     }
-
 
     protected override void OnModelCreating(
       ModelBuilder modelBuilder)
     {
-      base.OnModelCreating(modelBuilder);
+	    modelBuilder.HasDefaultSchema("dbo");
+
+			base.OnModelCreating(modelBuilder);
 
 
       modelBuilder.ApplyConfiguration(
@@ -141,7 +142,6 @@ namespace opieandanthonylive.Data.Context
           .HasOne(t => t.ShowMediaEntry)
           .WithMany(t => t.GuestAppearances)
           .HasForeignKey(t => t.ShowMediaEntryID);
-
       });
 
       //modelBuilder.Entity<Guest>(builder =>
@@ -164,9 +164,7 @@ namespace opieandanthonylive.Data.Context
                .WithMany(h => h.ShowHosts)
                .HasForeignKey(sh => sh.HostID);
       });
-
-
-
+			
       //modelBuilder.Entity<Guest>(builder =>
       //{
       //  builder.HasOne(t => t.ShowAppearances)
@@ -174,10 +172,8 @@ namespace opieandanthonylive.Data.Context
       //         .HasForeignKey(t => t.ShowMediaEntryID);
 
       //});
-
     }
-
-    // protected override void OnModelCreating(
+		// protected override void OnModelCreating(
     //    DbModelBuilder modelBuilder)
     //{
     //	base.OnModelCreating(modelBuilder);
@@ -198,7 +194,5 @@ namespace opieandanthonylive.Data.Context
     //		//.WithMany(t => t.GuestApperances)
     //		//.HasForeignKey(t => t.ShowRundownID);
     //}
-
-
   }
 }

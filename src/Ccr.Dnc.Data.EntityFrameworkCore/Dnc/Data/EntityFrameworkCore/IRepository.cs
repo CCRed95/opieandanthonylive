@@ -50,8 +50,10 @@ namespace Ccr.Dnc.Data.EntityFrameworkCore
 
 	public interface IRepository<TEntity, TKey>
     : IRepository<TEntity>
-		  where TEntity : EntityBase
-      where TKey : IComparable
+		  where TEntity
+				: EntityBase
+      where TKey
+				: IComparable
 	{
 		[NotNull]
 		Expression<Func<TEntity, TKey>> PrimaryKeyExpression { get; }

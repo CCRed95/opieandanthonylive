@@ -30,7 +30,7 @@ namespace Ccr.Dnc.Data.EntityFrameworkCore
     ///   The instance of the entity in which to access the primary key from.
     /// </param>
     /// <returns>
-    ///   The value of the entity's primary key propery value, as type <see cref="IComparable"/>.
+    ///   The value of the entity's primary key property value, as type <see cref="IComparable"/>.
     /// </returns>
     IComparable GetPrimaryKeyBase(
       EntityBase _entityBase);
