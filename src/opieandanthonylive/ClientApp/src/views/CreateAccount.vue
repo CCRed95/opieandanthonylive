@@ -1,0 +1,31 @@
+<template>
+  <div class="col-md-5 mx-auto">
+    <div class="text-center my-5">
+      <h1 class="h1">Create account</h1>
+      <h6 class="h6 text-muted">Please enter your information</h6>
+    </div>
+    <form @submit.prevent="handleSubmit" novalidate>
+      <form-input v-for="input in inputs" :vm="input" :key="input.id" />
+      <div class="text-center my-5">
+        <loading-button type="submit" class="btn-primary btn-lg" :isLoading="isBusy">Create account</loading-button>
+      </div>
+    </form>
+    <div class="alert alert-danger" v-show="!!serverValidation">
+      {{ serverValidation }}
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
+import LoadingButton from '@/components/LoadingButton.vue';
+
+@Component({
+  components: {
+    LoadingButton,
+  },
+})
+export default class CreateAccount extends Vue {
+}
+</script>

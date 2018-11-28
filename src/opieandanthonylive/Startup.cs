@@ -1,12 +1,12 @@
 namespace opieandanthonylive {
 
   using System;
+  using System.IO;
   using System.Text;
   using Microsoft.AspNetCore.Authentication.JwtBearer;
   using Microsoft.AspNetCore.Builder;
   using Microsoft.AspNetCore.Hosting;
   using Microsoft.AspNetCore.Identity;
-  using Microsoft.AspNetCore.SpaServices.Webpack;
   using Microsoft.EntityFrameworkCore;
   using Microsoft.Extensions.Configuration;
   using Microsoft.Extensions.DependencyInjection;
@@ -109,31 +109,34 @@ namespace opieandanthonylive {
 
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+
       if (env.IsDevelopment()) {
         app.UseDeveloperExceptionPage();
-        app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
-          HotModuleReplacement = true
-        });
       } else {
-        app.UseExceptionHandler("/Home/Error");
         app.UseHsts();
       }
 
-      app.UseHttpsRedirection();
-      app.UseStaticFiles();
-      app.UseCookiePolicy();
-
       app.UseAuthentication();
+      app.UseHttpsRedirection();
 
-      app.UseMvc(routes => {
-        routes.MapRoute(
-            name: "default",
-            template: "{controller=Home}/{action=Index}/{id?}");
+      app.MapWhen(
+        x => x.Request.Path.Value.StartsWith("/api") == false,
+        builder => {
+          builder.Use(async (context, next) => {
+            await next();
+            if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value)) {
+              context.Request.Path = "/index.html";
+              await next();
+            }
+          })
+          .UseDefaultFiles()
+          .UseStaticFiles();
+        });
 
-        routes.MapSpaFallbackRoute(
-            name: "spa-fallback",
-            defaults: new { controller = "Home", action = "Index" });
-      });
+      app.UseMvcWithDefaultRoute();
+
     }
+
   }
+
 }
