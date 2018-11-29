@@ -33,6 +33,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <UpToDateCheckInput Include="$(SpaRoot)package-lock.json"/>
+    <UpToDateCheckInput Include="@(ClientSrc)"/>
+    <UpToDateCheckBuilt Include="$(SpaRoot)node_modules\.npm_timestamp"/>
+    <UpToDateCheckBuilt Include="$(MSBuildThisFileDirectory)obj\$(Configuration)\.vue_timestamp"/>
+  </ItemGroup>
+
+  <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
@@ -46,7 +53,7 @@
     <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
   </Target>
 
-  <Target Name="NpmInstall" DependsOnTargets="EnsureNodeEnv" Inputs="$(SpaRoot)package-lock.json" Outputs="$(SpaRoot)node_modules\.npm_timestamp">
+  <Target Name="NpmInstall" BeforeTargets="Build" DependsOnTargets="EnsureNodeEnv" Inputs="$(SpaRoot)package-lock.json" Outputs="$(SpaRoot)node_modules\.npm_timestamp">
     <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
 
@@ -57,7 +64,7 @@
     </Touch>
   </Target>
 
-  <Target Name="RunVueCli" BeforeTargets="Build" DependsOnTargets="NpmInstall" Inputs="@(ClientSrc)" Outputs="$(MSBuildThisFileDirectory)obj\$(Configuration)\.vue_timestamp" 
+  <Target Name="RunVueCli" AfterTargets="BeforeBuild" DependsOnTargets="NpmInstall" Inputs="@(ClientSrc)" Outputs="$(MSBuildThisFileDirectory)obj\$(Configuration)\.vue_timestamp" 
           Condition=" '$(Configuration)' == 'Debug'">
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run $(NpmBuild)" />
 
