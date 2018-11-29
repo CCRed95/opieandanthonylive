@@ -27,8 +27,8 @@
     public EntityDeclaration(
       int lineNumber,
       TValue entity)
-      : base(
-        lineNumber)
+	      : base(
+	        lineNumber)
     {
       Entity = entity;
     }

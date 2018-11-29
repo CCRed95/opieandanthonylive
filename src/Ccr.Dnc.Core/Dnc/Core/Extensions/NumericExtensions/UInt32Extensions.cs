@@ -22,7 +22,7 @@ namespace Ccr.Dnc.Core.Extensions.NumericExtensions
 		///		method's subject, the <paramref name="this"/> parameter.
 		/// </param>
 		/// <returns>
-		///		Compares the extention method's <see cref="UInt32"/> subject and the <paramref name="value"/> 
+		///		Compares the extension method's <see cref="UInt32"/> subject and the <paramref name="value"/> 
 		///		parameter, and returns the largest numeric <see cref="UInt32"/> value of the two. 
 		/// </returns>
 		public static UInt32 Smallest(
@@ -47,7 +47,7 @@ namespace Ccr.Dnc.Core.Extensions.NumericExtensions
 		///		method's subject, the <paramref name="this"/> parameter.
 		/// </param>
 		/// <returns>
-		///		Compares the extention method's <see cref="UInt32"/> subject and the <paramref name="value"/> 
+		///		Compares the extension method's <see cref="UInt32"/> subject and the <paramref name="value"/> 
 		///		parameter, and returns the largest numeric <see cref="UInt32"/> value of the two. 
 		/// </returns>
 		public static UInt32 Largest(
@@ -69,7 +69,7 @@ namespace Ccr.Dnc.Core.Extensions.NumericExtensions
 		/// </param>
 		/// <param name="startRange">
 		///		An instance of the type <see cref="UInt32Range"/>, describing a range of numeric values in 
-		///		which the linear re-mapping uses as the inital range of the subject.
+		///		which the linear re-mapping uses as the initial range of the subject.
 		/// </param>
 		/// <param name="endRange">
 		///		An instance of the type <see cref="UInt32Range"/>, describing a range of numeric values in

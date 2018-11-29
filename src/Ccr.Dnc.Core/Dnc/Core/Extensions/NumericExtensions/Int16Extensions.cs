@@ -23,7 +23,7 @@ namespace Ccr.Dnc.Core.Extensions.NumericExtensions
 		///		method's subject, the <paramref name="this"/> parameter.
 		/// </param>
 		/// <returns>
-		///		Compares the extention method's <see cref="Int16"/> subject and the <paramref name="value"/> 
+		///		Compares the extension method's <see cref="Int16"/> subject and the <paramref name="value"/> 
 		///		parameter, and returns the largest numeric <see cref="Int16"/> value of the two. 
 		/// </returns>
 		public static Int16 Smallest(
@@ -48,7 +48,7 @@ namespace Ccr.Dnc.Core.Extensions.NumericExtensions
 		///		method's subject, the <paramref name="this"/> parameter.
 		/// </param>
 		/// <returns>
-		///		Compares the extention method's <see cref="Int16"/> subject and the <paramref name="value"/> 
+		///		Compares the extension method's <see cref="Int16"/> subject and the <paramref name="value"/> 
 		///		parameter, and returns the largest numeric <see cref="Int16"/> value of the two. 
 		/// </returns>
 		public static Int16 Largest(
@@ -70,7 +70,7 @@ namespace Ccr.Dnc.Core.Extensions.NumericExtensions
 		/// </param>
 		/// <param name="startRange">
 		///		An instance of the type <see cref="Int16Range"/>, describing a range of numeric values in 
-		///		which the linear re-mapping uses as the inital range of the subject.
+		///		which the linear re-mapping uses as the initial range of the subject.
 		/// </param>
 		/// <param name="endRange">
 		///		An instance of the type <see cref="Int16Range"/>, describing a range of numeric values in

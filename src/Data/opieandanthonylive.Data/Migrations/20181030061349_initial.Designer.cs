@@ -10,13 +10,14 @@ using opieandanthonylive.Data.Context;
 namespace opieandanthonylive.Migrations
 {
     [DbContext(typeof(CoreContext))]
-    [Migration("20181004014055_add-auth")]
-    partial class addauth
+    [Migration("20181030061349_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("dbo")
                 .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);

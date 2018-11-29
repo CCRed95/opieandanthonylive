@@ -1,142 +1,188 @@
-namespace opieandanthonylive {
-
-  using System;
+namespace opieandanthonylive
+{
+	using Auth;
+	using Data.Context;
+	using Microsoft.AspNetCore.Authentication.JwtBearer;
+	using Microsoft.AspNetCore.Builder;
+	using Microsoft.AspNetCore.Hosting;
+	using Microsoft.AspNetCore.Identity;
+	using Microsoft.EntityFrameworkCore;
+	using Microsoft.Extensions.Configuration;
+	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.IdentityModel.Tokens;
+	using System.Text;
+	using System;
+  using Ccr.Dnc.Core.Extensions;
+  using Microsoft.EntityFrameworkCore.Infrastructure;
+  using Microsoft.EntityFrameworkCore.Storage;
+  using static opieandanthonylive.Configuration.EnvironmentVariables;
   using System.IO;
-  using System.Text;
-  using Microsoft.AspNetCore.Authentication.JwtBearer;
-  using Microsoft.AspNetCore.Builder;
-  using Microsoft.AspNetCore.Hosting;
-  using Microsoft.AspNetCore.Identity;
-  using Microsoft.EntityFrameworkCore;
-  using Microsoft.Extensions.Configuration;
-  using Microsoft.Extensions.DependencyInjection;
-  using Microsoft.IdentityModel.Tokens;
-  using opieandanthonylive.Auth;
-  using opieandanthonylive.Configuration;
-  using opieandanthonylive.Data.Context;
 
-  public partial class Startup {
+  public class Startup
+	{
+		public IConfiguration Configuration { get; }
 
-    public IConfiguration Configuration { get; }
+		public Startup(IConfiguration configuration)
+		{
+			Configuration = configuration;
+		}
 
-    public Startup(IConfiguration configuration) {
-      Configuration = configuration;
-    }
+		public void ConfigureServices(
+			IServiceCollection services)
+		{
+			services
+				.AddDbContext<CoreContext>(options =>
+					options
+						.UseSqlServer(
+							Configuration
+								.GetConnectionString("DefaultConnection"),
+							b => b.MigrationsAssembly("opieandanthonylive.Data")));
 
-    public void ConfigureServices(IServiceCollection services) {
+			services.Configure<CookiePolicyOptions>(options =>
+			{
+				options.CheckConsentNeeded = context => true;
+				options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+			});
 
-      services.AddDbContext<CoreContext>(options =>
-        options.UseSqlServer(
-          Configuration.GetConnectionString("DefaultConnection"),
-          b => b.MigrationsAssembly("opieandanthonylive.Data")));
+			ConfigureIdentity(services);
+			ConfigureJwtAuth(services);
 
-      services.Configure<CookiePolicyOptions>(options => {
-        options.CheckConsentNeeded = context => true;
-        options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
-      });
+			services.AddMvc()
+			        .SetCompatibilityVersion(
+				        Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+		}
 
-      ConfigureIdentity(services);
-      ConfigureJwtAuth(services);
+		private static void ConfigureIdentity(
+			IServiceCollection services)
+		{
+			var identity = services.AddIdentityCore<IdentityUser>(o =>
+			{
+				o.Password.RequireDigit = false;
+				o.Password.RequireLowercase = false;
+				o.Password.RequireUppercase = false;
+				o.Password.RequireNonAlphanumeric = false;
+				o.Password.RequiredLength = 6;
+			});
 
-      services.AddMvc()
-        .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
-    }
+			var _ = new IdentityBuilder(
+					identity.UserType, 
+					typeof(IdentityRole), 
+					identity.Services)
+				.AddEntityFrameworkStores<CoreContext>()
+				.AddDefaultTokenProviders();
+		}
 
-    static void ConfigureIdentity(IServiceCollection services) {
+		private void ConfigureJwtAuth(
+			IServiceCollection services)
+		{
+			T GetConfigurationValue<T>(
+				string environmentVariableName)
+			{
+				var value = Configuration.GetValue<T>(
+					environmentVariableName);
 
-      /* This has got to be one of the weirdest patterns for configuration */
-      var identity = services.AddIdentityCore<IdentityUser>(o => {
-        o.Password.RequireDigit = false;
-        o.Password.RequireLowercase = false;
-        o.Password.RequireUppercase = false;
-        o.Password.RequireNonAlphanumeric = false;
-        o.Password.RequiredLength = 6;
-      });
+				if (value == null)
+					throw new ApplicationException(
+						$"Missing configuration value {environmentVariableName.SQuote()}\n\n. Are you missing "
+						+ $"an environment variable?");
+				
+				return value;
+			}
 
-      new IdentityBuilder(identity.UserType, typeof(IdentityRole), identity.Services)
-        .AddEntityFrameworkStores<CoreContext>().AddDefaultTokenProviders();
-    }
+			var JwtIssuer = GetConfigurationValue<string>(JWT_ISSUER);
+			var JwtAudience = GetConfigurationValue<string>(JWT_AUDIENCE);
+			var jwtSecretKey = GetConfigurationValue<string>(JWT_SECRET);
 
-    void ConfigureJwtAuth(IServiceCollection services) {
+			var jwtSigningKey = new SymmetricSecurityKey(
+				Encoding.ASCII.GetBytes(jwtSecretKey));
 
-      T GetConfigurationValue<T>(string environmentVariableName) {
-        var value = Configuration.GetValue<T>(environmentVariableName);
-        if (value == null) {
-          throw new ApplicationException
-            ( $"Missing configuration value '{environmentVariableName}'\n\n"
-            + "Are you missing an environment variable?"
-            );
-        }
-        return value;
-      }
+			services.Configure<JwtIssuerOptions>(options =>
+			{
+				options.Issuer = JwtIssuer;
+				options.Audience = JwtAudience;
+				options.Credentials = new SigningCredentials(
+					jwtSigningKey, 
+					SecurityAlgorithms.HmacSha256);
+			});
 
-      var JwtIssuer = GetConfigurationValue<string>(EnvironmentVariables.JWT_ISSUER);
-      var JwtAudience = GetConfigurationValue<string>(EnvironmentVariables.JWT_AUDIENCE);
-      var jwtSecretKey = GetConfigurationValue<string>(EnvironmentVariables.JWT_SECRET);
+			var tokenValidationParameters = new TokenValidationParameters
+			{
+				ValidateIssuer = true,
+				ValidIssuer = JwtIssuer,
 
-      var jwtSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSecretKey));
+				ValidateAudience = true,
+				ValidAudience = JwtAudience,
 
-      services.Configure<JwtIssuerOptions>(options => {
-        options.Issuer = JwtIssuer;
-        options.Audience = JwtAudience;
-        options.Credentials = new SigningCredentials(jwtSigningKey, SecurityAlgorithms.HmacSha256);
-      });
+				ValidateIssuerSigningKey = true,
+				IssuerSigningKey = jwtSigningKey,
 
-      var tokenValidationParameters = new TokenValidationParameters {
-        ValidateIssuer = true,
-        ValidIssuer = JwtIssuer,
+				RequireExpirationTime = true,
+				ValidateLifetime = true,
 
-        ValidateAudience = true,
-        ValidAudience = JwtAudience,
+				ClockSkew = TimeSpan.FromMinutes(5),
+			};
 
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = jwtSigningKey,
+			services
+				.AddAuthentication(
+					JwtBearerDefaults.AuthenticationScheme)
+				.AddJwtBearer(options =>
+				{
+					options.ClaimsIssuer = JwtIssuer;
+					options.TokenValidationParameters = tokenValidationParameters;
+					options.SaveToken = true;
+				});
 
-        RequireExpirationTime = true,
-        ValidateLifetime = true,
-        ClockSkew = TimeSpan.FromMinutes(5),
-      };
+			services.AddAuthorization();
+		}
 
-      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options => {
-          options.ClaimsIssuer = JwtIssuer;
-          options.TokenValidationParameters = tokenValidationParameters;
-          options.SaveToken = true;
-        });
+		public void Configure(
+			IApplicationBuilder app, 
+			IHostingEnvironment env)
+		{
+			if (env.IsDevelopment())
+			{
+				app.UseDeveloperExceptionPage();
+			}
+			else
+			{
+				app.UseExceptionHandler("/Home/Error");
+				app.UseHsts();
+			}
 
-      services.AddAuthorization();
-    }
+			using (var serviceScope = app.ApplicationServices
+																	 .GetService<IServiceScopeFactory>()
+																	 .CreateScope())
+			{
+				serviceScope
+					.ServiceProvider
+					.GetRequiredService<CoreContext>()
+					.Database
+					.GetService<IDatabaseCreator>()
+					.As<RelationalDatabaseCreator>()
+					.CreateTables();
+			}
 
+			app.UseHttpsRedirection();
+			app.UseAuthentication();
 
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+		 app.MapWhen(
+			 x => x.Request.Path.Value.StartsWith("/api") == false,
+			 builder =>
+			 {
+				 builder.Use(async (context, next) =>
+				 {
+					 await next();
+					 if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+					 {
+						 context.Request.Path = "/index.html";
+						 await next();
+					 }
+				 })
+				 .UseDefaultFiles()
+				 .UseStaticFiles();
+			 });
 
-      if (env.IsDevelopment()) {
-        app.UseDeveloperExceptionPage();
-      } else {
-        app.UseHsts();
-      }
-
-      app.UseAuthentication();
-      app.UseHttpsRedirection();
-
-      app.MapWhen(
-        x => x.Request.Path.Value.StartsWith("/api") == false,
-        builder => {
-          builder.Use(async (context, next) => {
-            await next();
-            if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value)) {
-              context.Request.Path = "/index.html";
-              await next();
-            }
-          })
-          .UseDefaultFiles()
-          .UseStaticFiles();
-        });
-
-      app.UseMvcWithDefaultRoute();
-
-    }
-
-  }
-
+			app.UseMvcWithDefaultRoute();
+		}
+	}
 }
