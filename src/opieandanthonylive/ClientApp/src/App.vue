@@ -15,14 +15,6 @@
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
             Home
           </router-link>
-          <router-link to="counter" class="mdc-list-item" href="#" tabindex="0" aria-selected="true">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">plus_one</i>
-            Counter
-          </router-link>
-          <router-link to="fetchdata" class="mdc-list-item" href="#" tabindex="0" aria-selected="true">
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">cloud_download</i>
-            Fetch Data
-          </router-link>
 
           <hr class="mdc-list-divider">
 

@@ -149,6 +149,7 @@ namespace opieandanthonylive
 				app.UseHsts();
 			}
 
+      /*
 			using (var serviceScope = app.ApplicationServices
 																	 .GetService<IServiceScopeFactory>()
 																	 .CreateScope())
@@ -161,6 +162,7 @@ namespace opieandanthonylive
 					.As<RelationalDatabaseCreator>()
 					.CreateTables();
 			}
+      */
 
 			app.UseHttpsRedirection();
 			app.UseAuthentication();
