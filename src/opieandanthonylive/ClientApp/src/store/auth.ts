@@ -35,22 +35,15 @@ interface State {
   authState: AuthState;
 }
 
-export const loadState = (): State => {
-  const token = localStorage.getItem('auth-token');
-  return token == null
-    ? { authState: { kind: 'signed-out' } }
-    : { authState: { kind: 'signed-in', token } };
-};
-
 const getters = {
 
   isSignedIn: (s: State) =>
     s.authState.kind === 'signed-in',
 
   username: (s: State) =>
-    s.authState.kind === 'signed-in' ?
-    decodeJwt(s.authState.token).sub :
-    null,
+    s.authState.kind === 'signed-in'
+      ? decodeJwt(s.authState.token).sub
+      : null,
 
 };
 
@@ -112,6 +105,13 @@ const actions = {
       password: payload.password,
     })),
 
+};
+
+export const loadState = (): State => {
+  const token = localStorage.getItem('auth-token');
+  return token == null
+    ? { authState: { kind: 'signed-out' } }
+    : { authState: { kind: 'signed-in', token } };
 };
 
 export const createModule = (state: State): Module<State, RootState> => ({

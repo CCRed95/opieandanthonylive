@@ -1,26 +1,19 @@
 import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
+import { Component } from 'vue-property-decorator';
 import { MDCModalDrawerFoundation, util } from '@material/drawer';
 import { FocusTrap } from 'focus-trap';
 
 @Component
 export default class ModalDrawer extends Vue {
 
-  public classes: any;
+  public classes: any = {};
 
   private foundation: any;
   private previousFocus: any;
   private focusTrap?: FocusTrap;
 
-  public data() {
-    return {
-      classes: {},
-    };
-  }
-
   public mounted() {
     this.focusTrap = util.createFocusTrapInstance(this.drawer);
-
     this.foundation = new MDCModalDrawerFoundation(this.adapter);
     this.foundation.init();
   }
@@ -77,9 +70,9 @@ export default class ModalDrawer extends Vue {
         }
       },
 
-      addClass: (className: string) =>  self.$set(self.classes, className, true),
+      addClass:    (className: string) =>  self.$set(self.classes, className, true),
       removeClass: (className: string) =>  self.$delete(self.classes, className),
-      hasClass: (className: string): boolean => className in self.classes,
+      hasClass:    (className: string): boolean => className in self.classes,
 
       elementHasClass: (element: Element, className: string): boolean =>
         element.classList.contains(className),

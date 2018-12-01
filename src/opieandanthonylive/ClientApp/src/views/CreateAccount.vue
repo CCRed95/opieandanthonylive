@@ -1,29 +1,37 @@
 <template>
-  <div class="col-md-5 mx-auto">
-    <div class="text-center my-5">
-      <h1 class="h1">Create account</h1>
-      <h6 class="h6 text-muted">Please enter your information</h6>
-    </div>
+  <div>
+
+    <mdc-h4>Create account</mdc-h4>
+
     <form @submit.prevent="handleSubmit" novalidate>
-      <form-input v-for="input in inputs" :vm="input" :key="input.id" />
-      <div class="text-center my-5">
-        <loading-button type="submit" class="btn-primary btn-lg" :isLoading="isBusy">Create account</loading-button>
-      </div>
+      <mdc-text-field />
+      <br/>
+      <mdc-text-field />
+      <br/>
+      <mdc-text-field />
+      <br/>
+      <mdc-text-field />
     </form>
-    <div class="alert alert-danger" v-show="!!serverValidation">
-      {{ serverValidation }}
+
+    <div class="">
+      alert
     </div>
+
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import LoadingButton from '@/components/LoadingButton.vue';
+import MdcH4 from '@/components/mdc/H4.vue';
+import MdcSubtitle1 from '@/components/mdc/Subtitle1.vue';
+import MdcTextField from '@/components/mdc/TextField.vue';
 
 @Component({
   components: {
-    LoadingButton,
+    MdcH4,
+    MdcSubtitle1,
+    MdcTextField,
   },
 })
 export default class CreateAccount extends Vue {
