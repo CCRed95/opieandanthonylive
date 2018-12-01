@@ -19,6 +19,7 @@
     "@material/animation": "^0.41.0",
     "@material/button": "^0.41.0",
     "@material/drawer": "^0.41.0",
+    "@material/floating-label": "^0.41.0",
     "@material/list": "^0.41.0",
     "@material/textfield": "^0.41.0",
     "@material/theme": "^0.41.0",

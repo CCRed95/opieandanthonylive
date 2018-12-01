@@ -4,13 +4,13 @@
     <mdc-h4>Create account</mdc-h4>
 
     <form @submit.prevent="handleSubmit" novalidate>
-      <mdc-text-field />
+      <mdc-text-field type="text" label="Username" />
       <br/>
-      <mdc-text-field />
+      <mdc-text-field type="email" label="Email" />
       <br/>
-      <mdc-text-field />
+      <mdc-text-field type="password" label="Password"/>
       <br/>
-      <mdc-text-field />
+      <mdc-text-field type="password" label="Confirm password"/>
     </form>
 
     <div class="">

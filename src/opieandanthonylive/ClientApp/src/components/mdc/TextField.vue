@@ -6,15 +6,16 @@
 
     <input
       ref="input"
-      type="text"
-      id="my-text-field"
+      :id="id"
+      :type="type"
       class="mdc-text-field__input">
 
     <label
+      v-if="hasLabel"
       ref="label"
-      class="mdc-floating-label"
-      for="my-text-field">
-      Hint text
+      :class="labelClasses"
+      :for="id">
+      {{ label }}
     </label>
 
     <div
@@ -28,31 +29,71 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
+import { MDCFloatingLabelFoundation } from '@material/floating-label';
 import { MDCTextFieldFoundation } from '@material/textfield';
 
 @Component
 export default class TextField extends Vue {
 
+  @Prop(String) public id?: string;
+  @Prop(String) public type?: string;
+  @Prop(String) public label?: string;
+
   public rootClasses: any = {
     'mdc-text-field': true,
   };
 
+  public labelClasses: any = {
+    'mdc-floating-label': true,
+  };
+
   private foundation: any;
-  private previousFocus: any;
+  private labelFoundation: any;
 
   public mounted() {
+    if (this.hasLabel) {
+      this.labelFoundation = new MDCFloatingLabelFoundation(this.labelAdapter);
+      this.labelFoundation.init();
+    }
+
     this.foundation = new MDCTextFieldFoundation(this.adapter);
     this.foundation.init();
   }
 
   public beforeDestroy() {
     this.foundation.destroy();
+
+    if (this.labelFoundation) {
+      this.labelFoundation.destroy();
+    }
+  }
+
+  private get hasLabel(): boolean {
+    return !!this.label;
+  }
+
+  private get labelAdapter() {
+    const self = this;
+    return {
+
+      addClass:    (className: string) => self.$set(self.labelClasses, className, true),
+      removeClass: (className: string) => self.$delete(self.labelClasses, className),
+
+      getWidth: () =>
+        (this.$refs.label as HTMLElement).offsetWidth,
+
+      registerInteractionHandler: (evtType: string, handler: (ev: Event) => undefined) =>
+        (this.$refs.label as Element).addEventListener(evtType, handler),
+
+      deregisterInteractionHandler: (evtType: string, handler: (ev: Event) => undefined) =>
+        (this.$refs.label as Element).removeEventListener(evtType, handler),
+
+    };
   }
 
   private get adapter() {
     const self = this;
-
     return {
 
       addClass:    (className: string) => self.$set(self.rootClasses, className, true),
@@ -71,23 +112,18 @@ export default class TextField extends Vue {
       deregisterInputInteractionHandler: (evtType: string, handler: (ev: Event) => undefined) =>
         (self.$refs.input as Element).removeEventListener(evtType, handler),
 
-      /**
-       * Registers a validation attribute change listener on the input element.
-       * Handler accepts list of attribute names.
-       * @param {function(!Array<string>): undefined} handler
-       * @return {!MutationObserver}
-       */
       registerValidationAttributeChangeHandler: (handler: (attributes: string[]) => undefined): MutationObserver => {
-        const observer = new MutationObserver((mutations) => {
-          const attributes = mutations
-            .filter((x) => x !== null)
-            .map((x) => x.attributeName) as string[];
-          handler(attributes);
-        });
+
+        const getAttributeNames = (mutations: MutationRecord[]): string[] =>
+          mutations.filter((x) => x !== null).map((x) => x.attributeName) as string[];
+
+        const observer = new MutationObserver((mutations) =>
+          handler(getAttributeNames(mutations)));
 
         observer.observe(this.$refs.input as Element, { attributes: true });
 
         return observer;
+
       },
 
       deregisterValidationAttributeChangeHandler: (observer: MutationObserver) =>
@@ -117,33 +153,17 @@ export default class TextField extends Vue {
        */
       setLineRippleTransformOrigin: (normalizedX: number) => { /* TODO */ },
 
-      /**
-       * Only implement if label exists.
-       * Shakes label if shouldShake is true.
-       * @param {boolean} shouldShake
-       */
-      shakeLabel: (shouldShake: boolean) => { /* TODO */ },
-
-      /**
-       * Only implement if label exists.
-       * Floats the label above the input element if shouldFloat is true.
-       * @param {boolean} shouldFloat
-       */
-      floatLabel: (shouldFloat: boolean) => { /* TODO */ },
-
-      /**
-       * Returns true if label element exists, false if it doesn't.
-       * @return {boolean}
-       */
       hasLabel: () =>
-        !!this.$refs.label,
+        this.hasLabel,
 
-      /**
-       * Only implement if label exists.
-       * Returns width of label in pixels.
-       * @return {number}
-       */
-      getLabelWidth: () => { /* TODO */ },
+      shakeLabel: (shouldShake: boolean) =>
+        self.labelFoundation.shake(shouldShake),
+
+      floatLabel: (shouldFloat: boolean) =>
+        this.labelFoundation.float(shouldFloat),
+
+      getLabelWidth: () =>
+        this.labelFoundation.getWidth(),
 
       /**
        * Returns true if outline element exists, false if it doesn't.
