@@ -21,7 +21,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { namespace } from 'vuex-class';
 import { Component, Prop } from 'vue-property-decorator';
 import MediaPlayer from '@/components/media-player/media-player';
 import MainToolbar from '@/components/MainToolbar.vue';

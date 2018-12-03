@@ -5,14 +5,14 @@
       @click="$emit('nav-clicked')" />
 
     <v-toolbar-title>
-      OAAL
+      {{ routeName }}
     </v-toolbar-title>
 
     <v-spacer />
     
     <v-menu offset-y offset-x>
-      <v-btn icon primary slot="activator">
-        <v-icon>
+      <v-btn icon slot="activator">
+        <v-icon large>
           mdi-account-circle
         </v-icon>
       </v-btn>
@@ -40,9 +40,11 @@ import { Component } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
 const auth = namespace('auth');
+const route = namespace('route');
 
 @Component
 export default class MainToolbar extends Vue {
   @auth.Getter('isSignedIn') public isSignedIn!: boolean;
+  @route.State('name')        public routeName!: string;
 }
 </script>

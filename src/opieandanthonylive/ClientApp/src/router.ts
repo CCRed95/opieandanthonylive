@@ -21,9 +21,9 @@ export const mkRouter = <S>(store: Store<S>) => {
       : next();
 
   const routes = [
-    { path: '/',          component: Home },
-    { path: SIGN_IN,        beforeEnter: authGuard, component: () => import(/* webpackChunkName: "sign-in" */        './views/SignIn.vue') },
-    { path: CREATE_ACCOUNT, beforeEnter: authGuard, component: () => import(/* webpackChunkName: "create-account" */ './views/CreateAccount.vue') },
+    { path: '/',            name: 'OOAL',           component: Home },
+    { path: SIGN_IN,        name: 'Sign in',        beforeEnter: authGuard, component: () => import(/* webpackChunkName: "sign-in" */        './views/SignIn.vue') },
+    { path: CREATE_ACCOUNT, name: 'Create account', beforeEnter: authGuard, component: () => import(/* webpackChunkName: "create-account" */ './views/CreateAccount.vue') },
   ];
 
   return new VueRouter({mode: 'history', base: process.env.BASE_URL, routes});
