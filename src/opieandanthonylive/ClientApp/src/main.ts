@@ -1,11 +1,10 @@
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 
-import './theme.scss';
-
 import App from './App.vue';
 import { store } from './store';
 import { mkRouter } from './router';
+import './plugins/vuetify';
 
 Vue.config.productionTip = false;
 
