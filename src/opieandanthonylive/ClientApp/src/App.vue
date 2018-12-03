@@ -7,7 +7,7 @@
     <main-toolbar @nav-clicked="isDrawerOpen = !isDrawerOpen"/>
 
     <v-content>
-      <v-container fluid>
+      <v-container fluid class="app-container">
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -18,6 +18,12 @@
 
   </v-app>
 </template>
+
+<style>
+.app-container {
+  height: 100%;
+}
+</style>
 
 <script lang="ts">
 import Vue from 'vue';
