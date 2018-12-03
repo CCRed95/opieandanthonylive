@@ -33,7 +33,7 @@
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
-  padding: 10px 25px;
+  padding: 10px 25px 25px 25px;
 }
 </style>
 
