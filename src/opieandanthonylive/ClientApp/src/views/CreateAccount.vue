@@ -1,5 +1,5 @@
 <template>
-  <v-card raised>
+  <v-card raised class="mt-4" style="max-width: 500px; margin-left: auto; margin-right: auto;">
     <v-form v-model="valid">
 
       <v-card-title style="text-align: center;">
@@ -33,6 +33,10 @@
           required />
 
       </v-card-text>
+
+      <v-card-actions>
+        <v-btn color="primary">Submit</v-btn>
+      </v-card-actions>
 
     </v-form>
   </v-card>
