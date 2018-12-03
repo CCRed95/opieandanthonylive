@@ -2,7 +2,7 @@
   <v-card raised class="mt-4" style="max-width: 500px; margin-left: auto; margin-right: auto;">
     <v-form v-model="valid">
 
-      <v-card-title style="text-align: center;">
+      <v-card-title class="text-md-center">
         <h5 class="headline">Create account</h5>
       </v-card-title>
 

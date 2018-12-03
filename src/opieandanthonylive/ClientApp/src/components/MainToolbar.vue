@@ -1,7 +1,13 @@
 <template>
   <v-toolbar app>
-    <v-toolbar-side-icon @click="$emit('nav-clicked')" />
-    <v-toolbar-title>opieandanthonylive</v-toolbar-title>
+
+    <v-toolbar-side-icon
+      @click="$emit('nav-clicked')" />
+
+    <v-toolbar-title>
+      OAAL
+    </v-toolbar-title>
+
     <v-spacer />
     
     <v-menu offset-y offset-x>
@@ -10,11 +16,16 @@
           mdi-account-circle
         </v-icon>
       </v-btn>
-      <v-list>
+      <v-list v-if="isSignedIn">
         <v-list-tile>
+          <v-list-tile-title>Sign out</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+      <v-list v-else>
+        <v-list-tile to="/sign-in">
           <v-list-tile-title>Sign in</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile>
+        <v-list-tile to="/create-account">
           <v-list-tile-title>Create account</v-list-tile-title>
         </v-list-tile>
       </v-list>
@@ -26,8 +37,12 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
+
+const auth = namespace('auth');
 
 @Component
 export default class MainToolbar extends Vue {
+  @auth.Getter('isSignedIn') public isSignedIn!: boolean;
 }
 </script>
