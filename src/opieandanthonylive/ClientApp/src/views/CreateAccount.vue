@@ -1,13 +1,30 @@
 <template>
   <div class="create-account-container">
     <v-card raised class="create-account">
-      <v-form ref="form" v-model="valid">
+      <v-form ref="form" v-model="valid" @submit.prevent="submit">
         <v-card-text>
-
-          <v-text-field v-model="username"        :rules="usernameRules"                 label="Username"         required />
-          <v-text-field v-model="email"           :rules="emailRules"                    label="E-mail"           required />
-          <v-text-field v-model="password"        :rules="passwordRules"                 label="Password"         required />
-          <v-text-field v-model="confirmPassword" :error-messages="passwordMatchError" label="Confirm password" required />
+          <v-text-field
+            v-model="username"
+            :rules="usernameRules"
+            label="Username"
+            required />
+          <v-text-field
+            v-model="email"
+            :rules="emailRules"
+            label="E-mail"
+            required />
+          <v-text-field
+            v-model="password"
+            :rules="passwordRules"
+            type="password"
+            label="Password"
+            required />
+          <v-text-field
+            v-model="confirmPassword"
+            :error-messages="passwordMatchError"
+            type="password"
+            label="Confirm password"
+            required />
         </v-card-text>
 
         <v-card-actions>
