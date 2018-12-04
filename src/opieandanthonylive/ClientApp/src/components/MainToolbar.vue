@@ -18,7 +18,7 @@
       </v-btn>
       <v-list v-if="isSignedIn">
         <v-list-tile>
-          <v-list-tile-title>Sign out</v-list-tile-title>
+          <v-list-tile-title @click="signOut">Sign out</v-list-tile-title>
         </v-list-tile>
       </v-list>
       <v-list v-else>
@@ -44,7 +44,8 @@ const route = namespace('route');
 
 @Component
 export default class MainToolbar extends Vue {
+  @auth.Mutation('signOut')  public signOut!: () => void;
   @auth.Getter('isSignedIn') public isSignedIn!: boolean;
-  @route.State('name')        public routeName!: string;
+  @route.State('name')       public routeName!: string;
 }
 </script>
