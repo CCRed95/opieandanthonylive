@@ -7,12 +7,12 @@
           <v-text-field v-model="username"        :rules="usernameRules"                 label="Username"         required />
           <v-text-field v-model="email"           :rules="emailRules"                    label="E-mail"           required />
           <v-text-field v-model="password"        :rules="passwordRules"                 label="Password"         required />
-          <v-text-field v-model="confirmPassword" :error-messages="passwordMatchError()" label="Confirm password" required />
+          <v-text-field v-model="confirmPassword" :error-messages="passwordMatchError" label="Confirm password" required />
         </v-card-text>
 
         <v-card-actions>
           <p class="server-validation error--text">{{ serverValidation }}</p>
-          <v-btn color="primary" @click="submit">submit</v-btn>
+          <v-btn color="primary" @click="submit" :loading="isBusy">submit</v-btn>
         </v-card-actions>
 
       </v-form>
@@ -29,10 +29,7 @@
 .create-account {
   width: 500px;
   max-width: 90vw;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto;
   padding: 10px 25px 25px 25px;
 }
 
@@ -66,7 +63,8 @@ export default class CreateAccount extends Vue {
   @route.State('from')
   public prevRoute!: Route;
 
-  public valid!: boolean;
+  public valid: boolean = false;
+  public isBusy: boolean = false;
   public serverValidation: string = '';
 
   public username:        string = '';
@@ -88,8 +86,8 @@ export default class CreateAccount extends Vue {
     (v: string) => v.length >= 6 || 'Password must have at least 6 characters',
   ];
 
-  public passwordMatchError() {
-    return this.password === this.confirmPassword || 'Passwords must match';
+  get passwordMatchError() {
+    return this.password === this.confirmPassword ? [] : ['Passwords must match'];
   }
 
   public async submit() {
@@ -100,6 +98,8 @@ export default class CreateAccount extends Vue {
     }
 
     try {
+      this.isBusy = true;
+
       await this.submitAction({
         email: this.email,
         username: this.username,
@@ -113,6 +113,8 @@ export default class CreateAccount extends Vue {
       this.serverValidation = e.kind === 'username-already-exists'
         ? `Username '${e.username}' already taken`
         : 'Unknown error occurred';
+    } finally {
+      this.isBusy = false;
     }
 
   }
