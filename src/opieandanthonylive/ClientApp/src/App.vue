@@ -2,6 +2,48 @@
   <v-app dark>
 
     <v-navigation-drawer app v-model="isDrawerOpen">
+
+      <v-toolbar>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title>
+              O&A RADIO
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+
+      <v-list>
+        <v-list-group value="true">
+          <v-list-tile slot="activator">
+            <v-list-tile-title>ARCHIVES</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile v-for="(show, i) in shows" :key="i">
+            <v-list-tile-action />
+            <v-list-tile-title v-text="show" />
+          </v-list-tile>
+        </v-list-group>
+      </v-list>
+
+      <v-list>
+        <v-list-tile v-for="(sort, i) in sorts" :key="i">
+          <v-list-tile-action />
+          <v-list-tile-title v-text="sort" />
+        </v-list-tile>
+      </v-list>
+
+      <v-list>
+        <v-list-group value="true">
+          <v-list-tile slot="activator">
+            <v-list-tile-title>PLAYLISTS</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile v-for="(playlist, i) in playlists" :key="i">
+            <v-list-tile-action />
+            <v-list-tile-title v-text="playlist" />
+          </v-list-tile>
+        </v-list-group>
+      </v-list>
+
     </v-navigation-drawer>
 
     <main-toolbar @nav-clicked="isDrawerOpen = !isDrawerOpen"/>
@@ -39,5 +81,27 @@ import MainToolbar from '@/components/MainToolbar.vue';
 })
 export default class App extends Vue {
   public isDrawerOpen: boolean | null = null;
+
+  public shows = [
+    'Opie and Anthony',
+    'Ron and Fez',
+    'Ricky Gervais Show',
+    'Cumtown',
+    'Than and Sam Show',
+  ];
+
+  public sorts = [
+    'By Date',
+    'By Artist',
+    'By Search Term',
+    'Radio',
+  ];
+
+  public playlists = [
+    'Playlist 1',
+    'Playlist 2',
+    'Playlist 3',
+  ];
+
 }
 </script>
