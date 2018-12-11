@@ -43,7 +43,7 @@ export default class Controls extends Vue {
   @audio.Getter('isPlaying') private isPlaying!: boolean;
 
   get playClass() {
-    return this.isPlaying
+    return this.isPlaying || this.isLoading
       ? 'mdi-pause'
       : 'mdi-play';
   }
