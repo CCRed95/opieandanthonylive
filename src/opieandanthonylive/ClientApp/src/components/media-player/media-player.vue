@@ -4,6 +4,7 @@
     <badge/>
     <controls/>
     <volume-control/>
+    <slider style="flex: 1;"/>
     <timeline/>
     <playlist/>
   </div>
@@ -14,8 +15,9 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 
+import Slider from './slider.vue';
 import Controls from './controls.vue';
-import Timeline from './timeline';
+import Timeline from './timeline.vue';
 import VolumeControl from './volume-control';
 import Badge from './badge';
 import Playlist from './playlist';
@@ -27,6 +29,7 @@ import Playlist from './playlist';
     VolumeControl,
     Badge,
     Playlist,
+    Slider,
   },
 })
 export default class MediaPlayerComponent extends Vue {
@@ -35,15 +38,6 @@ export default class MediaPlayerComponent extends Vue {
 </script>
 
 <style>
-:root {
-  --media-player-primary: #3b8bfd;
-  --media-player-border: #292929;
-  --media-player-background: #363c43;
-  --media-player-text: white;
-  --media-player-slider-background: #cccccc;
-  --media-player-button: var(--media-player-text);
-}
-
 .media-player {
   width: 100%;
   height: 100%;
@@ -103,24 +97,22 @@ export default class MediaPlayerComponent extends Vue {
 
 .media-player-timeline-background {
   width: 100%;
-  height: 1px;
-  background: var(--media-player-slider-background);
   position: absolute;
+  height: 4px;
+  border-radius: 4px;
 }
 
 .media-player-timeline-position {
-  height: 1px;
-  background: var(--media-player-primary);
   position: absolute;
+  height: 4px;
+  border-radius: 4px;
 }
 
 .media-player-timeline-handle {
-  border: 1px solid var(--media-player-primary);
-  background: var(--media-player-primary);
-  height: 7px;
-  width: 7px;
-  margin-left: -3px;
-  margin-top: -3px;
+  height: 11px;
+  width: 11px;
+  margin-left: -4px;
+  margin-top: -4px;
   border-radius: 50%;
   position: absolute;
 }

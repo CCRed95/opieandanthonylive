@@ -5,7 +5,7 @@
       <v-icon>mdi-shuffle-variant</v-icon>
     </v-btn>
 
-    <v-btn icon @click="prev">
+    <v-btn icon flat @click="prev">
       <v-icon>mdi-step-backward</v-icon>
     </v-btn>
 
@@ -13,7 +13,7 @@
       <v-icon>mdi-play</v-icon>
     </v-btn>
 
-    <v-btn icon @click="next">
+    <v-btn icon flat @click="next">
       <v-icon>mdi-step-forward</v-icon>
     </v-btn>
 
