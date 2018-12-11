@@ -1,5 +1,5 @@
 <template>
-  <div class="slider-wrapper">
+  <div class="slider-wrapper" ref="sliderWrapper" @mousedown.prevent="beginDragging">
     <div class="slider-center-wrapper">
       <div class="slider-background secondary"></div>
       <div class="slider-value primary"            :style="{ width: valueFmt }"></div>
@@ -11,14 +11,33 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import { clamp, drag } from '@/util';
 
 @Component
 export default class Slider extends Vue {
 
   private value: number = 0.5;
+  private dragValue: number = 0.0;
+  private isDragging: boolean = false;
 
   public get valueFmt() {
-    return `${this.value * 100}%`;
+    return `${(this.isDragging ? this.dragValue : this.value) * 100}%`;
+  }
+
+  public beginDragging(event: MouseEvent) {
+    const div = this.$refs.sliderWrapper as HTMLDivElement;
+
+    const onMove = (ev: MouseEvent) => {
+      const width = div.clientWidth;
+      const left = div.getBoundingClientRect().left;
+      const offset = clamp(0, ev.clientX - left, width);
+      this.dragValue = offset / width;
+    };
+
+    const onGrab = () => { this.isDragging = true; onMove(event); };
+    const onDrop = () => { this.isDragging = false; this.value = this.dragValue; this.$emit('drag-drop'); };
+
+    drag(onGrab, onMove, onDrop);
   }
 
 }
@@ -55,11 +74,11 @@ export default class Slider extends Vue {
 }
 
 .slider-handle {
-  height: 12px;
-  width: 12px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   position: absolute;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translate(-50%, -50%);
 }
 
 </style>
