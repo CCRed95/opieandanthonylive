@@ -5,7 +5,7 @@
       <v-icon>mdi-shuffle-variant</v-icon>
     </v-btn>
 
-    <v-btn icon flat @click="prev">
+    <v-btn icon small flat @click="prev">
       <v-icon>mdi-step-backward</v-icon>
     </v-btn>
 

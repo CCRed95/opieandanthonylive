@@ -1,8 +1,8 @@
 <template>
   <div class="media-player-timeline">
-    <span>{{ fmtElapsed }}</span>
-    <slider class="media-player-slider" v-model="progress" @drag="onDrag" @dragging="onDragging" @dragged="onDragged" />
-    <span>{{ fmtDuration }}</span>
+    <span class="media-player-elapsed">{{ fmtElapsed }}</span>
+    <slider class="media-player-slider" :value="progress" @drag="onDrag" @dragging="onDragging" @dragged="onDragged" />
+    <span class="media-player-duration">{{ fmtDuration }}</span>
   </div>
 </template>
 
@@ -86,6 +86,16 @@ export default class Timeline extends Vue {
 .media-player-timeline {
   display: flex;
   align-items: center;
+  font-size: 13px;
+}
+
+.media-player-duration {
+  width: 60px;
+}
+
+.media-player-elapsed {
+  width: 60px;
+  text-align: right;
 }
 
 .media-player-slider {
