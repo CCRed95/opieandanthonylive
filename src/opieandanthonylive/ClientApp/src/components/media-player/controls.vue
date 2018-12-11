@@ -1,20 +1,61 @@
 <template>
   <div class="media-player-controls">
 
-    <button class="media-player-button" @click="prev">
-      <i class="fas fa-step-backward"></i>
-    </button>
+    <v-btn icon disabled>
+      <v-icon>mdi-shuffle-variant</v-icon>
+    </v-btn>
 
-    <button class="media-player-button media-player-play" @click="playOrPause">
-      <i class="fas" :class="[{'fa-spin': isLoading}, playClass]">
-      </i>
-    </button>
+    <v-btn icon @click="prev">
+      <v-icon>mdi-step-backward</v-icon>
+    </v-btn>
 
-    <button class="media-player-button" @click="next">
-      <i class="fas fa-step-forward"></i>
-    </button>
+    <v-btn outline icon large @click="playOrPause">
+      <v-icon>mdi-play</v-icon>
+    </v-btn>
+
+    <v-btn icon @click="next">
+      <v-icon>mdi-step-forward</v-icon>
+    </v-btn>
+
+    <v-btn icon disabled>
+      <v-icon>mdi-repeat</v-icon>
+    </v-btn>
 
   </div>
   </template>
 
-<script src="./controls.ts"></script>
+<script lang="ts">
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
+
+const audio = namespace('audio');
+
+@Component
+export default class Controls extends Vue {
+
+  @audio.Action('pause') public pause!: () => Promise<any>;
+  @audio.Action('play')  public play!: () => Promise<any>;
+  @audio.Action('prev')  public prev!: () => Promise<any>;
+  @audio.Action('next')  public next!: () => Promise<any>;
+
+  @audio.Getter('isLoading') private isLoading!: boolean;
+  @audio.Getter('isPlaying') private isPlaying!: boolean;
+
+  get playClass() {
+    return (
+      this.isLoading
+        ? 'fa-sync'
+        : this.isPlaying
+          ? 'fa-pause'
+          : 'fa-play'
+    );
+  }
+
+  public playOrPause() {
+    this.isPlaying || this.isLoading ? this.pause() : this.play();
+  }
+
+}
+
+</script>

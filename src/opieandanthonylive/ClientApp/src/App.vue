@@ -12,7 +12,7 @@
       </v-container>
     </v-content>
 
-    <v-footer app>
+    <v-footer app height="64px">
       <media-player />
     </v-footer>
 
@@ -28,7 +28,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import MediaPlayer from '@/components/media-player/media-player';
+import MediaPlayer from '@/components/media-player/media-player.vue';
 import MainToolbar from '@/components/MainToolbar.vue';
 
 @Component({

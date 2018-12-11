@@ -34,10 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Include="$(SpaRoot)package-lock.json"/>
-    <UpToDateCheckInput Include="@(ClientSrc)"/>
-    <UpToDateCheckBuilt Include="$(SpaRoot)node_modules\.npm_timestamp"/>
-    <UpToDateCheckBuilt Include="$(MSBuildThisFileDirectory)obj\$(Configuration)\.vue_timestamp"/>
+    <UpToDateCheckInput Include="$(SpaRoot)package-lock.json" />
+    <UpToDateCheckInput Include="@(ClientSrc)" />
+    <UpToDateCheckBuilt Include="$(SpaRoot)node_modules\.npm_timestamp" />
+    <UpToDateCheckBuilt Include="$(MSBuildThisFileDirectory)obj\$(Configuration)\.vue_timestamp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,8 +65,7 @@
     </Touch>
   </Target>
 
-  <Target Name="RunVueCli" AfterTargets="BeforeBuild" DependsOnTargets="NpmInstall" Inputs="@(ClientSrc)" Outputs="$(MSBuildThisFileDirectory)obj\$(Configuration)\.vue_timestamp" 
-          Condition=" '$(Configuration)' == 'Debug'">
+  <Target Name="RunVueCli" AfterTargets="BeforeBuild" DependsOnTargets="NpmInstall" Inputs="@(ClientSrc)" Outputs="$(MSBuildThisFileDirectory)obj\$(Configuration)\.vue_timestamp" Condition=" '$(Configuration)' == 'Debug'">
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run $(NpmBuild)" />
 
     <Touch Files="$(MSBuildThisFileDirectory)obj\$(Configuration)\.vue_timestamp" AlwaysCreate="true">
