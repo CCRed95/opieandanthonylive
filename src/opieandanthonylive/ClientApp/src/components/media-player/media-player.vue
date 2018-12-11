@@ -3,7 +3,7 @@
   <div class="media-player">
     <badge style="margin: 0 10px;"/>
     <controls style="margin: 0 10px;"/>
-    <volume style="width: 200px; margin: 0 10px;"/>
+    <volume style="width: 140px; margin: 0 10px;"/>
     <timeline style="flex: 1; margin: 0 10px;"/>
     <playlist/>
   </div>

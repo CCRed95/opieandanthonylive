@@ -10,10 +10,10 @@
     </v-btn>
 
     <v-btn outline icon @click="playOrPause">
-      <v-icon>mdi-play</v-icon>
+      <v-icon>{{ playClass }}</v-icon>
     </v-btn>
 
-    <v-btn icon flat @click="next">
+    <v-btn icon @click="next">
       <v-icon>mdi-step-forward</v-icon>
     </v-btn>
 
@@ -43,13 +43,9 @@ export default class Controls extends Vue {
   @audio.Getter('isPlaying') private isPlaying!: boolean;
 
   get playClass() {
-    return (
-      this.isLoading
-        ? 'fa-sync'
-        : this.isPlaying
-          ? 'fa-pause'
-          : 'fa-play'
-    );
+    return this.isPlaying
+      ? 'mdi-pause'
+      : 'mdi-play';
   }
 
   public playOrPause() {
