@@ -9,7 +9,7 @@
       <v-icon>mdi-step-backward</v-icon>
     </v-btn>
 
-    <v-btn outline icon large @click="playOrPause">
+    <v-btn outline icon @click="playOrPause">
       <v-icon>mdi-play</v-icon>
     </v-btn>
 

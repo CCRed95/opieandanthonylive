@@ -1,12 +1,8 @@
 <template>
   <div class="media-player-timeline">
-    <div class="media-player-elapsed">{{ fmtElapsed }}</div>
-    <div class="media-player-timeline-wrapper" ref="timelineWrapper" @mousedown.prevent="startSeeking">
-      <div class="media-player-timeline-background secondary"></div>
-      <div class="media-player-timeline-position primary" :style="{ width: percentage }"></div>
-      <div class="media-player-timeline-handle primary lighten-1" :style="{ left: percentage }"></div>
-    </div>
-    <div class="media-player-duration">{{ fmtDuration }}</div>
+    <span>{{ fmtElapsed }}</span>
+    <slider class="media-player-slider" v-model="progress" @drag="onDrag" @dragging="onDragging" @dragged="onDragged" />
+    <span>{{ fmtDuration }}</span>
   </div>
 </template>
 
@@ -16,6 +12,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
+import Slider from './slider.vue';
 import { clamp, drag } from '@/util';
 
 const audio = namespace('audio');
@@ -35,7 +32,11 @@ const fmtTime = (isEmpty: boolean, n: number) => {
   return `${fmt(hours)}:${fmt(minutes)}:${fmt(seconds)}`;
 };
 
-@Component
+@Component({
+  components: {
+    Slider,
+  },
+})
 export default class Timeline extends Vue {
 
   private isSeeking = false;
@@ -60,25 +61,36 @@ export default class Timeline extends Vue {
     return fmtTime(this.isEmpty, this.duration);
   }
 
-  public get percentage(): string {
-    return this.isEmpty ? '0%' : `${100.0 * this.elapsed / this.duration}%`;
+  public get progress() {
+    return this.elapsed / this.duration;
   }
 
-  public startSeeking(event: MouseEvent) {
-    const div = this.$refs.timelineWrapper as HTMLDivElement;
+  public onDrag(value: number) {
+    this.isSeeking = true;
+  }
 
-    const onMove = (ev: MouseEvent) => {
-      const width = div.clientWidth;
-      const left = div.getBoundingClientRect().left;
-      const offset = clamp(0, ev.clientX - left, width);
-      this.seekElapsed = offset / width * this.duration;
-    };
+  public onDragging(value: number) {
+    this.seekElapsed = value * this.duration;
+  }
 
-    const onGrab = () => { this.isSeeking = true; onMove(event); };
-    const onDrop = () => { this.isSeeking = false; this.seek(this.seekElapsed); };
-
-    drag(onGrab, onMove, onDrop);
+  public async onDragged(value: number) {
+    this.isSeeking = false;
+    await this.seek(value * this.duration);
   }
 
 }
 </script>
+
+<style>
+
+.media-player-timeline {
+  display: flex;
+  align-items: center;
+}
+
+.media-player-slider {
+  flex: 1;
+  margin: 0 10px;
+}
+
+</style>

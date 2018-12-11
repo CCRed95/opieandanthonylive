@@ -12,7 +12,7 @@
       </v-container>
     </v-content>
 
-    <v-footer app height="64px">
+    <v-footer app height="50px">
       <media-player />
     </v-footer>
 

@@ -10,13 +10,14 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 import { clamp, drag } from '@/util';
 
 @Component
 export default class Slider extends Vue {
 
-  private value: number = 0.5;
+  @Prop(Number) public value!: number;
+
   private dragValue: number = 0.0;
   private isDragging: boolean = false;
 
@@ -32,10 +33,15 @@ export default class Slider extends Vue {
       const left = div.getBoundingClientRect().left;
       const offset = clamp(0, ev.clientX - left, width);
       this.dragValue = offset / width;
+      this.$emit('dragging', this.dragValue);
     };
 
-    const onGrab = () => { this.isDragging = true; onMove(event); };
-    const onDrop = () => { this.isDragging = false; this.value = this.dragValue; this.$emit('drag-drop'); };
+    const onGrab = () => { this.isDragging = true; onMove(event); this.$emit('drag'); };
+    const onDrop = () => {
+      this.isDragging = false;
+      this.value = this.dragValue;
+      this.$emit('dragged', this.value);
+    };
 
     drag(onGrab, onMove, onDrop);
   }
