@@ -18,9 +18,9 @@
           <v-list-tile slot="activator">
             <v-list-tile-title>ARCHIVES</v-list-tile-title>
           </v-list-tile>
-          <v-list-tile v-for="(show, i) in shows" :key="i">
+          <v-list-tile v-for="(show, i) in shows" :key="i" :to="show.to">
             <v-list-tile-action />
-            <v-list-tile-title v-text="show" />
+            <v-list-tile-title v-text="show.name" />
           </v-list-tile>
         </v-list-group>
       </v-list>
@@ -71,7 +71,7 @@
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import MediaPlayer from '@/components/media-player/media-player.vue';
-import MainToolbar from '@/components/MainToolbar.vue';
+import MainToolbar from '@/components/main-toolbar.vue';
 
 @Component({
   components: {
@@ -83,11 +83,11 @@ export default class App extends Vue {
   public isDrawerOpen: boolean | null = null;
 
   public shows = [
-    'Opie and Anthony',
-    'Ron and Fez',
-    'Ricky Gervais Show',
-    'Cumtown',
-    'Than and Sam Show',
+    { name: 'Opie and Anthony',   to: '/shows/opieandanthony' },
+    { name: 'Ron and Fez',        to: '/' },
+    { name: 'Ricky Gervais Show', to: '/' },
+    { name: 'Cumtown',            to: '/' },
+    { name: 'Than and Sam Show',  to: '/' },
   ];
 
   public sorts = [

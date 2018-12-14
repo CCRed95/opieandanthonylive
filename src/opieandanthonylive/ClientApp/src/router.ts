@@ -5,7 +5,8 @@ import Router, {NavigationGuard, RouteConfig } from 'vue-router';
 import { Store } from 'vuex';
 import VueRouter from 'vue-router';
 
-import Home from './views/Home.vue';
+import Home from './views/home.vue';
+import Show from './views/show.vue';
 
 Vue.use(Router);
 
@@ -21,9 +22,10 @@ export const mkRouter = <S>(store: Store<S>) => {
       : next();
 
   const routes = [
-    { path: '/',            name: 'OOAL',           component: Home },
-    { path: SIGN_IN,        name: 'Sign in',        beforeEnter: authGuard, component: () => import(/* webpackChunkName: "sign-in" */        './views/SignIn.vue') },
-    { path: CREATE_ACCOUNT, name: 'Create account', beforeEnter: authGuard, component: () => import(/* webpackChunkName: "create-account" */ './views/CreateAccount.vue') },
+    { path: '/',                     name: 'opieandanthonylive', component: Home },
+    { path: '/shows/opieandanthony', name: 'O&A',                component: Show },
+    { path: SIGN_IN,                 name: 'Sign in',        beforeEnter: authGuard, component: () => import(/* webpackChunkName: "sign-in" */        './views/sign-in.vue') },
+    { path: CREATE_ACCOUNT,          name: 'Create account', beforeEnter: authGuard, component: () => import(/* webpackChunkName: "create-account" */ './views/create-account.vue') },
   ];
 
   return new VueRouter({mode: 'history', base: process.env.BASE_URL, routes});
