@@ -83,11 +83,11 @@ export default class App extends Vue {
   public isDrawerOpen: boolean | null = null;
 
   public shows = [
-    { name: 'Opie and Anthony',   to: '/shows/opieandanthony' },
-    { name: 'Ron and Fez',        to: '/' },
-    { name: 'Ricky Gervais Show', to: '/' },
-    { name: 'Cumtown',            to: '/' },
-    { name: 'Than and Sam Show',  to: '/' },
+    { name: 'Opie and Anthony',   to: '/shows/1/by-artist' },
+    { name: 'Ron and Fez',        to: '/shows/2/by-artist' },
+    { name: 'Ricky Gervais Show', to: '/shows/3/by-artist' },
+    { name: 'Cumtown',            to: '/shows/4/by-artist' },
+    { name: 'Than and Sam Show',  to: '/shows/5/by-artist' },
   ];
 
   public sorts = [

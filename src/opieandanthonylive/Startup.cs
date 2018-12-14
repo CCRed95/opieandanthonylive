@@ -17,6 +17,7 @@ namespace opieandanthonylive
   using Microsoft.EntityFrameworkCore.Storage;
   using static opieandanthonylive.Configuration.EnvironmentVariables;
   using System.IO;
+  using opieandanthonylive.Controllers;
 
   public class Startup
 	{
@@ -50,6 +51,8 @@ namespace opieandanthonylive
 			services.AddMvc()
 			        .SetCompatibilityVersion(
 				        Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+
+      services.AddScoped<IGuestsService, HardcodedGuestsService>();
 		}
 
 		private static void ConfigureIdentity(

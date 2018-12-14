@@ -1,12 +1,12 @@
 <template>
   <v-card>
-    <v-responsive>
+    <v-responsive :aspect-ratio="1/1">
       <v-img :src="image"></v-img>
     </v-responsive>
     <v-card-title>
       <div>
         <span>{{ name }}</span><br>
-        <span class="grey--text">{{ fmtNShows }}</span>
+        <span class="grey--text">{{ fmtShows }}</span>
       </div>
     </v-card-title>
   </v-card>
@@ -20,10 +20,12 @@ import { Component, Prop } from 'vue-property-decorator';
 export default class GuestCard extends Vue {
   @Prop(String) private image!:  string;
   @Prop(String) private name!:   string;
-  @Prop(Number) private nShows!: number;
+  @Prop(Number) private shows!: number;
 
-  private get fmtNShows() {
-    return `${this.nShows} shows`;
+  private get fmtShows() {
+    return this.shows === 0
+      ? ''
+      : `${this.shows} shows`;
   }
 }
 </script>

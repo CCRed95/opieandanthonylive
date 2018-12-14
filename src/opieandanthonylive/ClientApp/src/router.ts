@@ -22,10 +22,35 @@ export const mkRouter = <S>(store: Store<S>) => {
       : next();
 
   const routes = [
-    { path: '/',                     name: 'opieandanthonylive', component: Home },
-    { path: '/shows/opieandanthony', name: 'O&A',                component: Show },
-    { path: SIGN_IN,                 name: 'Sign in',        beforeEnter: authGuard, component: () => import(/* webpackChunkName: "sign-in" */        './views/sign-in.vue') },
-    { path: CREATE_ACCOUNT,          name: 'Create account', beforeEnter: authGuard, component: () => import(/* webpackChunkName: "create-account" */ './views/create-account.vue') },
+    { path: '/',            name: 'opieandanthonylive', component: Home },
+    { path: SIGN_IN,        name: 'Sign in',        beforeEnter: authGuard, component: () => import(/* webpackChunkName: "sign-in" */        './views/sign-in.vue') },
+    { path: CREATE_ACCOUNT, name: 'Create account', beforeEnter: authGuard, component: () => import(/* webpackChunkName: "create-account" */ './views/create-account.vue') },
+
+    {
+      path: '/shows/:showId',
+      redirect: '/shows/:showId/by-artist',
+      component: Show,
+      children: [
+        {
+          path: '',
+          props: true,
+          component: () => import(/* webpackChunkName: "show-guest-cards" */ './components/guest-cards.vue'),
+        },
+        {
+          path: 'by-artist',
+          props: true,
+          component: () => import(/* webpackChunkName: "show-guest-cards" */ './components/guest-cards.vue'),
+        },
+        {
+          path: 'by-date',
+          component: Home,
+        },
+        {
+          path: 'by-timeline',
+          component: Home,
+        },
+      ],
+    },
   ];
 
   return new VueRouter({mode: 'history', base: process.env.BASE_URL, routes});
