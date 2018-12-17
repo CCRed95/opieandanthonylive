@@ -30,7 +30,7 @@ const unknownArtist: Artist = {
   shows: 0,
 };
 
-const initialArtists = 
+const initialArtists =
   initArray(unknownArtist, 12);
 
 @Component({
@@ -46,9 +46,9 @@ export default class GuestCards extends Vue {
   private artists = initialArtists;
 
   @Watch('$route')
-  private onRouteChanged() {
+  private async onRouteChanged() {
     this.artists = initialArtists;
-    this.fetchData();
+    await this.fetchData();
   }
 
   private async created() {
