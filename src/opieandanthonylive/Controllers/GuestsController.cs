@@ -138,6 +138,7 @@
             Shows = r.Next(0, 1000),
           })
           .OrderByDescending(x => x.Shows)
+          .Take(24)
       );
 
     }
