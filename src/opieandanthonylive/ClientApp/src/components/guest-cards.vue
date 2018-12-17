@@ -11,6 +11,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop, Watch } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
 
 import GuestCard from '@/components/guest-card.vue';
 import Axios from 'axios';
@@ -33,6 +34,8 @@ const unknownArtist: Artist = {
 const initialArtists =
   initArray(unknownArtist, 12);
 
+const error = namespace('error');
+
 @Component({
   components: {
     GuestCard,
@@ -42,6 +45,8 @@ export default class GuestCards extends Vue {
 
   // Not a mistake. Vue shits itself in the dev console otherwise.
   @Prop(String) private showId!: number;
+
+  @error.Mutation('error') private error!: (msg: string) => void;
 
   private artists = initialArtists;
 
@@ -59,8 +64,8 @@ export default class GuestCards extends Vue {
     try {
       const response = await Axios.get(`/api/shows/${this.showId}/guests`);
       this.artists = response.data;
-    } catch {
-      alert('whoops');
+    } catch (e) {
+      this.error('Something went wrong!');
     }
   }
 

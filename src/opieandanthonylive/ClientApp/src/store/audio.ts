@@ -96,19 +96,7 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
       return;
     }
 
-    try {
-      await audio.play();
-    } catch (e) {
-      if (e.code === e.ABORT_ERR) {
-        // This only ever seems to occur when the `play()` action is
-        // disrupted, for example by changing `audio.src`.  As best as I can
-        // tell, ignoring this error is harmless.
-        return;
-      } else {
-        // TOOD: Better error reporting capabilities.
-        alert(e);
-      }
-    }
+    await audio.play();
   },
 
   prev: async (ctx: ActionContext<State<M>, RootState>) => {
