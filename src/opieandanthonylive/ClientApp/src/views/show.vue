@@ -25,6 +25,5 @@ import GuestCards from '@/components/guest-cards.vue';
   },
 })
 export default class Show extends Vue {
-  @Prop(Number) private showId!: number;
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <v-container grid-list-lg fluid>
     <v-layout row wrap>
-      <v-flex xs6 sm3 md2 v-for="i in artists" :key="i">
-        <guest-card :image="i.image" :name="i.name" :shows="i.shows" />
+      <v-flex xs6 sm3 md2 v-for="(a, i) in artists" :key="i">
+        <guest-card :image="a.image" :name="a.name" :shows="a.shows" />
       </v-flex>
     </v-layout>
   </v-container>
@@ -37,7 +37,8 @@ const unknownArtist: Artist = {
 })
 export default class GuestCards extends Vue {
 
-  @Prop(Number) private showId!: number;
+  // Not a mistake. Vue shits itself in the dev console otherwise.
+  @Prop(String) private showId!: number;
 
   private artists: Artist[] =
     initArray(unknownArtist, 12);
