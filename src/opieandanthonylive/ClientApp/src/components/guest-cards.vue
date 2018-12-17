@@ -30,6 +30,9 @@ const unknownArtist: Artist = {
   shows: 0,
 };
 
+const initialArtists = 
+  initArray(unknownArtist, 12);
+
 @Component({
   components: {
     GuestCard,
@@ -40,11 +43,11 @@ export default class GuestCards extends Vue {
   // Not a mistake. Vue shits itself in the dev console otherwise.
   @Prop(String) private showId!: number;
 
-  private artists: Artist[] =
-    initArray(unknownArtist, 12);
+  private artists = initialArtists;
 
   @Watch('$route')
   private onRouteChanged() {
+    this.artists = initialArtists;
     this.fetchData();
   }
 
