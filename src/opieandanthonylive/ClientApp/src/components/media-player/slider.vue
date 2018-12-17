@@ -39,7 +39,6 @@ export default class Slider extends Vue {
     const onGrab = () => { this.isDragging = true; onMove(event); this.$emit('drag'); };
     const onDrop = () => {
       this.isDragging = false;
-      this.value = this.dragValue;
       this.$emit('dragged', this.value);
     };
 
