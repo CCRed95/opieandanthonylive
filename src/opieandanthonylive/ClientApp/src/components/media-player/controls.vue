@@ -1,8 +1,8 @@
 <template>
   <div class="media-player-controls">
 
-    <v-btn icon disabled>
-      <v-icon>mdi-shuffle-variant</v-icon>
+    <v-btn icon @click="toggleShuffle">
+      <v-icon :color="this.shuffle ? 'primary' : ''">mdi-shuffle-variant</v-icon>
     </v-btn>
 
     <v-btn icon small flat @click="prev">
@@ -48,7 +48,7 @@ export default class Controls extends Vue {
   @audio.State('repeat')  private repeat!: boolean;
   @audio.Mutation('repeat') private setRepeat!: (v: boolean) => void;
 
-  private get playClass() {
+  get playClass() {
     return this.isPlaying || this.isLoading
       ? 'mdi-pause'
       : 'mdi-play';
@@ -61,6 +61,11 @@ export default class Controls extends Vue {
   private toggleRepeat() {
     this.setRepeat(!this.repeat);
   }
+
+  private toggleShuffle() {
+    this.setShuffle(!this.shuffle);
+  }
+
 
 }
 

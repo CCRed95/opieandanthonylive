@@ -1,7 +1,7 @@
 import { ActionContext, Store } from 'vuex';
 
 import { RootState } from './types';
-import { max, clamp } from '../util';
+import { clamp, max, randomInt } from '../util';
 
 export interface Track<M> {
   url: string;
@@ -23,6 +23,7 @@ interface State<M> {
   volume: number;
   playlist: Playlist<M>;
   repeat: boolean;
+  shuffle: boolean;
 }
 
 const mkGetters = <M>() => ({
@@ -48,12 +49,13 @@ const mkMutations = <M>() => ({
   muted:    (s: State<M>, b: boolean)             => s.muted = b,
   volume:   (s: State<M>, v: number)              => s.volume = v,
   repeat:   (s: State<M>, v: boolean)             => s.repeat = v,
+  shuffle:  (s: State<M>, v: boolean)             => s.shuffle = v,
 
   prev: (s: State<M>) =>
     s.playlist.index = max(0, s.playlist.index - 1),
 
-  next: (s: State<M>) =>
-    s.playlist.index = (s.playlist.index + 1) % s.playlist.tracks.length,
+  currentTrack: (s: State<M>, v: number) =>
+    s.playlist.index = v % s.playlist.tracks.length,
 
   add: (s: State<M>, t: Track<M>) =>
     s.playlist.tracks.push(t),
@@ -125,17 +127,37 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
     }
   },
 
+  currentTrack: async (ctx: ActionContext<State<M>, RootState>, v: number) => {
+    ctx.commit('currentTrack', v);
+    audio.src = ctx.state.playlist.tracks[ctx.state.playlist.index].url;
+  },
+
   next: async (ctx: ActionContext<State<M>, RootState>) => {
     const playlist = ctx.state.playlist;
     if (playlist.tracks.length === 0) {
       return;
     }
 
-    ctx.commit('next');
-    audio.src = playlist.tracks[playlist.index].url;
+    /* -1 used as a sentinel to stop playback. */
+    const minTrack = ctx.state.repeat ? 0 : -1;
 
-    if (ctx.state.repeat || playlist.index > 0) {
+    const nextTrack = ctx.state.shuffle
+      ? randomInt(minTrack, playlist.tracks.length)
+      : (playlist.index + 1) % playlist.tracks.length;
+
+    await ctx.dispatch('currentTrack', max(nextTrack, 0));
+
+    const shouldPlay
+      = ctx.state.repeat                      // always on repeat, OR -
+     || ctx.state.shuffle && nextTrack !== -1 // if shuffling and sentinel isn't chosen, OR -
+     || nextTrack > 0;                        // we haven't wrapped around from the end.
+
+    if (shouldPlay) {
+      await ctx.dispatch('seek', 0);
       await ctx.dispatch('play');
+    } else {
+      await ctx.dispatch('pause');
+      await ctx.dispatch('seek', 0);
     }
   },
 
@@ -163,6 +185,7 @@ export const mkPlugin = <M>(
     volume:   audio.volume,
     playlist: { index: 0, tracks: [] },
     repeat:   false,
+    shuffle:  false,
   };
 
   s.registerModule(moduleName, {

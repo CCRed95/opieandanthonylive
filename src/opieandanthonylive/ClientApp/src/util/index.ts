@@ -25,6 +25,12 @@ export const maybe = <A, B>(a: A | undefined, b: B, f: (a: A) => B): B =>
 export const maybeStr = <A>(a: A | undefined, f: (a: A) => string) =>
   maybe(a, '', f);
 
+export const randomInt = (from: number, to: number) => {
+  from = Math.ceil(from);
+  to   = Math.floor(to);
+  return Math.floor(Math.random() * (to - from)) + from;
+};
+
 export const drag = (
   onGrab: () => void,
   onMove: (ev: MouseEvent) => void,
