@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import * as audio from './audio';
 import * as auth from './auth';
+import { error } from './error';
 
 Vue.use(Vuex);
 
@@ -42,6 +43,7 @@ const tracks: Array<audio.Track<Metadata>> = [
 export const store = new Vuex.Store({
   modules: {
     auth: auth.createModule(auth.loadState()),
+    error,
   },
 
   plugins: [

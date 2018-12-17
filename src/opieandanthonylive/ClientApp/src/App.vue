@@ -58,6 +58,11 @@
       <media-player />
     </v-footer>
 
+    <v-snackbar v-model="snackbar" vertical bottom :timeout="6000">
+      {{ error }}
+      <v-btn color="error" flat @click="snackbar=false;">Close</v-btn>
+    </v-snackbar>
+
   </v-app>
 </template>
 
@@ -69,9 +74,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
+import { Component, Prop, Watch } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
+
 import MediaPlayer from '@/components/media-player/media-player.vue';
 import MainToolbar from '@/components/main-toolbar.vue';
+
+const error = namespace('error');
 
 @Component({
   components: {
@@ -80,9 +89,10 @@ import MainToolbar from '@/components/main-toolbar.vue';
   },
 })
 export default class App extends Vue {
-  public isDrawerOpen: boolean | null = null;
 
-  public shows = [
+  private isDrawerOpen: null | boolean = null;
+
+  private shows = [
     { name: 'Opie and Anthony',   to: '/shows/1/by-artist' },
     { name: 'Ron and Fez',        to: '/shows/2/by-artist' },
     { name: 'Ricky Gervais Show', to: '/shows/3/by-artist' },
@@ -90,18 +100,23 @@ export default class App extends Vue {
     { name: 'Than and Sam Show',  to: '/shows/5/by-artist' },
   ];
 
-  public sorts = [
+  private sorts = [
     'By Date',
     'By Artist',
     'By Search Term',
     'Radio',
   ];
 
-  public playlists = [
+  private playlists = [
     'Playlist 1',
     'Playlist 2',
     'Playlist 3',
   ];
+
+  private snackbar = false;
+  @error.State('error') private error!: null | string;
+  @error.State('count') private errorCount!: number;
+  @Watch('errorCount')  private onError() { this.snackbar = true; }
 
 }
 </script>
