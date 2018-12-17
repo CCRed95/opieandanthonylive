@@ -17,8 +17,8 @@
       <v-icon>mdi-step-forward</v-icon>
     </v-btn>
 
-    <v-btn icon disabled>
-      <v-icon>mdi-repeat</v-icon>
+    <v-btn icon @click="toggleRepeat">
+      <v-icon :color="this.repeat ? 'primary' : ''">mdi-repeat</v-icon>
     </v-btn>
 
   </div>
@@ -34,22 +34,32 @@ const audio = namespace('audio');
 @Component
 export default class Controls extends Vue {
 
-  @audio.Action('pause') public pause!: () => Promise<any>;
-  @audio.Action('play')  public play!: () => Promise<any>;
-  @audio.Action('prev')  public prev!: () => Promise<any>;
-  @audio.Action('next')  public next!: () => Promise<any>;
+  @audio.Action('pause') private pause!: () => Promise<any>;
+  @audio.Action('play')  private play!: () => Promise<any>;
+  @audio.Action('prev')  private prev!: () => Promise<any>;
+  @audio.Action('next')  private next!: () => Promise<any>;
 
   @audio.Getter('isLoading') private isLoading!: boolean;
   @audio.Getter('isPlaying') private isPlaying!: boolean;
 
-  get playClass() {
+  @audio.State('shuffle') private shuffle!: boolean;
+  @audio.Mutation('shuffle') private setShuffle!: (v: boolean) => void;
+
+  @audio.State('repeat')  private repeat!: boolean;
+  @audio.Mutation('repeat') private setRepeat!: (v: boolean) => void;
+
+  private get playClass() {
     return this.isPlaying || this.isLoading
       ? 'mdi-pause'
       : 'mdi-play';
   }
 
-  public playOrPause() {
+  private playOrPause() {
     this.isPlaying || this.isLoading ? this.pause() : this.play();
+  }
+
+  private toggleRepeat() {
+    this.setRepeat(!this.repeat);
   }
 
 }

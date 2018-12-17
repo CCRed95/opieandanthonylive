@@ -22,6 +22,7 @@ interface State<M> {
   muted: boolean;
   volume: number;
   playlist: Playlist<M>;
+  repeat: boolean;
 }
 
 const mkGetters = <M>() => ({
@@ -46,6 +47,7 @@ const mkMutations = <M>() => ({
   duration: (s: State<M>, duration: number)       => s.duration = duration,
   muted:    (s: State<M>, b: boolean)             => s.muted = b,
   volume:   (s: State<M>, v: number)              => s.volume = v,
+  repeat:   (s: State<M>, v: boolean)             => s.repeat = v,
 
   prev: (s: State<M>) =>
     s.playlist.index = max(0, s.playlist.index - 1),
@@ -132,7 +134,7 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
     ctx.commit('next');
     audio.src = playlist.tracks[playlist.index].url;
 
-    if (playlist.index > 0) {
+    if (ctx.state.repeat || playlist.index > 0) {
       await ctx.dispatch('play');
     }
   },
@@ -160,6 +162,7 @@ export const mkPlugin = <M>(
     muted:    audio.muted,
     volume:   audio.volume,
     playlist: { index: 0, tracks: [] },
+    repeat:   false,
   };
 
   s.registerModule(moduleName, {
@@ -176,6 +179,8 @@ export const mkPlugin = <M>(
 
   audio.addEventListener('durationchange', () => s.commit(`${moduleName}/duration`, audio.duration));
   audio.addEventListener('timeupdate',     () => s.commit(`${moduleName}/elapsed`, audio.currentTime));
+
+  audio.addEventListener('ended', () => s.dispatch(`${moduleName}/next`));
 
   for (const t of tracks) {
     s.dispatch(`${moduleName}/add`, t);
