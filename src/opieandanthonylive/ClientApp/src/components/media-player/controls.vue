@@ -66,7 +66,6 @@ export default class Controls extends Vue {
     this.setShuffle(!this.shuffle);
   }
 
-
 }
 
 </script>
