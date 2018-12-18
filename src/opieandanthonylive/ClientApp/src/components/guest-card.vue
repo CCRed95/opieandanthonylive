@@ -3,11 +3,9 @@
     <v-responsive :aspect-ratio="1/1">
       <v-img :src="image"></v-img>
     </v-responsive>
-    <v-card-title>
-      <div>
-        <span>{{ name }}</span><br>
-        <span class="grey--text">{{ fmtShows }}</span>
-      </div>
+    <v-card-title style="display: block">
+      <span>{{ name }}</span><br>
+      <span class="grey--text">{{ fmtShows }}</span>
     </v-card-title>
   </v-card>
 </template>

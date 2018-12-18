@@ -16,9 +16,6 @@ import { namespace } from 'vuex-class';
 import GuestCard from '@/components/guest-card.vue';
 import Axios from 'axios';
 
-const initArray = <T>(elem: T, length: number) =>
-  (Array.apply(elem, Array(length)) as T[]).map(() => elem);
-
 interface Artist {
   image: string;
   name: string;
@@ -31,8 +28,7 @@ const unknownArtist: Artist = {
   shows: 0,
 };
 
-const initialArtists =
-  initArray(unknownArtist, 12);
+const initialArtists: Artist[] = [];
 
 const error = namespace('error');
 
