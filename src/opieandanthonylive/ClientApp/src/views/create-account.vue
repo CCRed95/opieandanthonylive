@@ -1,63 +1,33 @@
 <template>
-  <div class="create-account-container">
-    <v-card raised class="create-account">
-      <v-form ref="form" v-model="valid" @submit.prevent="submit">
-        <v-card-text>
-          <v-text-field
-            v-model="username"
-            :rules="usernameRules"
-            label="Username"
-            required />
-          <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            label="E-mail"
-            required />
-          <v-text-field
-            v-model="password"
-            :rules="passwordRules"
-            type="password"
-            label="Password"
-            required />
-          <v-text-field
-            v-model="confirmPassword"
-            :error-messages="passwordMatchError"
-            type="password"
-            label="Confirm password"
-            required />
-        </v-card-text>
+  <v-container fluid fill-height>
+    <v-layout align-center justify-center>
+      <v-flex xs12 sm8 md6 lg4>
 
-        <v-card-actions>
-          <p class="server-validation error--text">{{ serverValidation }}</p>
-          <v-btn color="primary" @click="submit" :loading="isBusy">submit</v-btn>
-        </v-card-actions>
+        <v-card raised class="create-account">
+          <v-form ref="form" v-model="valid" @submit.prevent="submit">
+            <v-card-text>
+              <v-text-field required v-model="username"        prepend-icon="mdi-account" :rules="usernameRules" label="Username" />
+              <v-text-field required v-model="email"           prepend-icon="mdi-email"   :rules="emailRules"    label="E-mail"   />
+              <v-text-field required v-model="password"        prepend-icon="mdi-lock"    :rules="passwordRules" label="Password" type="password"/>
+              <v-text-field required v-model="confirmPassword" prepend-icon="mdi-lock"    :error-messages="passwordMatchError" type="password" label="Confirm password"/>
+            </v-card-text>
 
-      </v-form>
-    </v-card>
-  </div>
+            <v-card-actions>
+              <v-flex>
+                <p class="error--text">{{ serverValidation }}</p>
+              </v-flex>
+              <v-btn color="primary" @click="submit" :loading="isBusy">submit</v-btn>
+            </v-card-actions>
+
+          </v-form>
+        </v-card>
+
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
-<style>
-.create-account-container {
-  display: flex;
-  height: 100%;
-}
-
-.create-account {
-  width: 500px;
-  max-width: 90vw;
-  margin: auto;
-  padding: 10px 25px 25px 25px;
-}
-
-.server-validation {
-  flex: 1;
-}
-</style>
-
-
 <script lang="ts">
-// tslint:disable:typedef-whitespace
 
 import Vue from 'vue';
 import { namespace } from 'vuex-class';

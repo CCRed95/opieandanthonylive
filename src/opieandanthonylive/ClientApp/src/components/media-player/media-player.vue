@@ -52,7 +52,7 @@ export default class MediaPlayerComponent extends Vue {
 
 .media-image {
   background: var(--media-player-primary);
-  border: 2px solid white;
+  border: 1px solid white;
   width: 44px;
   height: 44px;
   margin-right: 10px;

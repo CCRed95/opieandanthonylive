@@ -1,19 +1,9 @@
 <template>
   <v-app dark>
 
-    <v-navigation-drawer app v-model="isDrawerOpen">
+    <v-navigation-drawer fixed app v-model="isDrawerOpen">
 
-      <v-toolbar>
-        <v-list>
-          <v-list-tile>
-            <v-list-tile-title>
-              O&A RADIO
-            </v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-toolbar>
-
-      <v-list>
+      <v-list dense>
         <v-list-group value="true">
           <v-list-tile slot="activator">
             <v-list-tile-title>ARCHIVES</v-list-tile-title>
@@ -25,14 +15,14 @@
         </v-list-group>
       </v-list>
 
-      <v-list>
+      <v-list dense>
         <v-list-tile v-for="(sort, i) in sorts" :key="i">
           <v-list-tile-action />
           <v-list-tile-title v-text="sort" />
         </v-list-tile>
       </v-list>
 
-      <v-list>
+      <v-list dense>
         <v-list-group value="true">
           <v-list-tile slot="activator">
             <v-list-tile-title>PLAYLISTS</v-list-tile-title>
@@ -46,7 +36,7 @@
 
     </v-navigation-drawer>
 
-    <main-toolbar @nav-clicked="isDrawerOpen = !isDrawerOpen"/>
+    <main-toolbar @nav-clicked="isDrawerOpen = !isDrawerOpen" />
 
     <v-content>
       <v-container fluid class="app-container">

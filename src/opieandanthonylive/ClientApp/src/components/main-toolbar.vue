@@ -1,11 +1,11 @@
 <template>
-  <v-toolbar app>
+  <v-toolbar app dark dense color="primary" scroll-off-screen>
 
     <v-toolbar-side-icon
       @click="$emit('nav-clicked')" />
 
     <v-toolbar-title>
-      {{ routeName }}
+      opieandanthonylive
     </v-toolbar-title>
 
     <v-spacer />
@@ -40,12 +40,10 @@ import { Component } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 
 const auth = namespace('auth');
-const route = namespace('route');
 
 @Component
 export default class MainToolbar extends Vue {
   @auth.Mutation('signOut')  public signOut!: () => void;
   @auth.Getter('isSignedIn') public isSignedIn!: boolean;
-  @route.State('name')       public routeName!: string;
 }
 </script>

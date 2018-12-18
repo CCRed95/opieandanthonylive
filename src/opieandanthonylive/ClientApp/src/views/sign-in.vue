@@ -1,55 +1,30 @@
 <template>
-  <div class="sign-in-container">
-    <v-card raised class="sign-in">
-      <v-form ref="form" @submit.prevent="submit">
 
-        <v-card-text class="sign-in-fields">
-          <v-text-field
-            v-model="username"
-            :rules="usernameRules"
-            label="Username"
-            required />
-          <v-text-field
-            v-model="password"
-            :rules="passwordRules"
-            type="password"
-            label="Password"
-            required />
-        </v-card-text>
+  <v-container fluid fill-height>
+    <v-layout align-center justify-center>
 
-        <v-card-actions>
-          <p class="server-validation error--text">{{ serverValidation }}</p>
-          <v-btn color="primary" @click="submit" :loading="isBusy">submit</v-btn>
-        </v-card-actions>
+      <v-flex xs12 sm8 md6 lg4>
+        <v-card raised>
+          <v-form ref="form" @submit.prevent="submit">
+            <v-card-text class="sign-in-fields">
+              <v-text-field v-model="username" label="Username" required prepend-icon="mdi-account" />
+              <v-text-field v-model="password" label="Password" required prepend-icon="mdi-lock" type="password" />
+            </v-card-text>
 
-      </v-form>
-    </v-card>
-  </div>
+            <v-card-actions>
+              <v-flex>
+                <p class="error--text">{{ serverValidation }}</p>
+              </v-flex>
+              <v-btn color="primary" @click="submit" :loading="isBusy">Submit</v-btn>
+            </v-card-actions>
+          </v-form>
+        </v-card>
+      </v-flex>
+
+    </v-layout>
+  </v-container>
 
 </template>
-
-<style>
-.sign-in-container {
-  display: flex;
-  height: 100%;
-}
-
-.sign-in {
-  width: 500px;
-  max-width: 90vw;
-  margin: auto;
-  padding: 10px 25px 25px 25px;
-}
-
-.sign-in-fields {
-  height: 250px;
-  max-height: 80vh;
-}
-
-.server-validation {
-  flex: 1;
-}
-</style>
 
 <script lang="ts">
 import Vue from 'vue';
