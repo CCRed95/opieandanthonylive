@@ -69,7 +69,7 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
     audio.muted = b;
   },
 
-  toggleMute: async (ctx: ActionContext<State<M>, RootState>) =>
+  toggleMuted: async (ctx: ActionContext<State<M>, RootState>) =>
     await ctx.dispatch('muted', !ctx.state.muted),
 
   volume: async (ctx: ActionContext<State<M>, RootState>, v: number) => {

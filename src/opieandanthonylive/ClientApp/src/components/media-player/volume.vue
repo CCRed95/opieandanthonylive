@@ -1,6 +1,6 @@
 <template>
   <div class="media-player-volume">
-    <v-btn icon class="media-player-volume-button" @click="toggleMute">
+    <v-btn icon class="media-player-volume-button" @click="toggleMuted">
       <v-icon>{{ volumeButtonClass }}</v-icon>
     </v-btn>
     <slider class="media-player-volume-slider" :value="volume" @dragging="setVolume" />
@@ -22,10 +22,10 @@ const audio = namespace('audio');
 })
 export default class Volume extends Vue {
 
-  @audio.State('muted')       private isMuted!: boolean;
-  @audio.Action('toggleMute') private toggleMute!: () => Promise<any>;
-  @audio.Getter('volume')     private volume!: number;
-  @audio.Action('volume')     private setVolume!: (v: number) => Promise<any>;
+  @audio.State('muted')        private isMuted!: boolean;
+  @audio.Action('toggleMuted') private toggleMuted!: () => Promise<any>;
+  @audio.Getter('volume')      private volume!: number;
+  @audio.Action('volume')      private setVolume!: (v: number) => Promise<any>;
 
   get volumeButtonClass(): string {
     if (this.isMuted) {
