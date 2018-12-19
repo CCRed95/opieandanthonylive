@@ -5,7 +5,11 @@
     <controls style="margin: 0 10px;"/>
     <volume style="width: 140px; margin: 0 10px;"/>
     <timeline style="flex: 1; margin: 0 10px;"/>
-    <playlist/>
+
+    <v-btn flat icon active-class="primary--text" to="/playlist">
+      <v-icon>mdi-playlist-play</v-icon>
+    </v-btn>
+
   </div>
 
 </template>
@@ -18,7 +22,6 @@ import Controls from './controls.vue';
 import Timeline from './timeline.vue';
 import Volume from './volume.vue';
 import Badge from './badge';
-import Playlist from './playlist';
 
 @Component({
   components: {
@@ -26,7 +29,6 @@ import Playlist from './playlist';
     Timeline,
     Volume,
     Badge,
-    Playlist,
   },
 })
 export default class MediaPlayerComponent extends Vue {

@@ -1,12 +1,11 @@
-// tslint:disable:max-line-length
-
 import Vue from 'vue';
 import Router, {NavigationGuard, RouteConfig } from 'vue-router';
 import { Store } from 'vuex';
 import VueRouter from 'vue-router';
 
-import Home from './views/home.vue';
-import Show from './views/show.vue';
+import Home from '@/views/home.vue';
+import Show from '@/views/show.vue';
+import Playlist from '@/views/playlist.vue';
 
 Vue.use(Router);
 
@@ -25,6 +24,8 @@ export const mkRouter = <S>(store: Store<S>) => {
     { path: '/',            name: 'opieandanthonylive', component: Home },
     { path: SIGN_IN,        name: 'Sign in',        beforeEnter: authGuard, component: () => import(/* webpackChunkName: "sign-in" */        './views/sign-in.vue') },
     { path: CREATE_ACCOUNT, name: 'Create account', beforeEnter: authGuard, component: () => import(/* webpackChunkName: "create-account" */ './views/create-account.vue') },
+
+    { path: '/playlist', name: 'Playlist', component: Playlist },
 
     {
       path: '/shows/:showId',

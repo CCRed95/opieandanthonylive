@@ -8,7 +8,7 @@ export interface Track<M> {
   metadata: M;
 }
 
-interface Playlist<M> {
+export interface Playlist<M> {
   index: number;
   tracks: Array<Track<M>>;
 }
