@@ -117,8 +117,10 @@ export default class App extends Vue {
     window.removeEventListener('keypress', this.onKeyPress);
   }
 
-  @audio.Action('toggleMuted')  private toggleMuted!:  () => Promise<void>;
-  @audio.Action('playOrPause') private playOrPause!: () => Promise<void>;
+  @audio.Action('playOrPause')    private playOrPause!:    () => Promise<void>;
+  @audio.Action('toggleMuted')    private toggleMuted!:    () => Promise<void>;
+  @audio.Action('toggleRepeat')   private toggleRepeat!:   () => Promise<void>;
+  @audio.Action('toggleShuffle')  private toggleShuffle!:  () => Promise<void>;
 
   private onKeyPress(e: KeyboardEvent) {
 
@@ -134,13 +136,10 @@ export default class App extends Vue {
     e.preventDefault();
 
     switch (e.key) {
-      case 'm':
-        this.toggleMuted();
-        break;
-
-      case ' ':
-        this.playOrPause();
-        break;
+      case 'm': this.toggleMuted();   break;
+      case 'r': this.toggleRepeat();  break;
+      case 's': this.toggleShuffle(); break;
+      case ' ': this.playOrPause();   break;
     }
   }
 

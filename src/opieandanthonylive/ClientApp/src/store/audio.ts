@@ -72,6 +72,12 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
   toggleMuted: async (ctx: ActionContext<State<M>, RootState>) =>
     await ctx.dispatch('muted', !ctx.state.muted),
 
+  toggleRepeat: async (ctx: ActionContext<State<M>, RootState>) =>
+    await ctx.commit('repeat', !ctx.state.repeat),
+
+  toggleShuffle: async (ctx: ActionContext<State<M>, RootState>) =>
+    await ctx.commit('shuffle', !ctx.state.shuffle),
+
   volume: async (ctx: ActionContext<State<M>, RootState>, v: number) => {
     const value = clamp(0, v, 1);
     if (value === 0) {
