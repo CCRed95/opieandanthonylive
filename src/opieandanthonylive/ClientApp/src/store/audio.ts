@@ -94,7 +94,7 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
 
   seek: (ctx: ActionContext<State<M>, RootState>, time: number) => {
     audio.currentTime = time;
-    ctx.commit('elapsed', time);
+    ctx.commit('elapsed', clamp(0, time, audio.duration));
   },
 
   play: async (ctx: ActionContext<State<M>, RootState>) => {

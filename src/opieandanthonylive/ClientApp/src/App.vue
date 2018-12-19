@@ -110,17 +110,30 @@ export default class App extends Vue {
   @Watch('errorCount')  private onError() { this.snackbar = true; }
 
   private created() {
+    window.addEventListener('keydown',  this.onKeyDown);
     window.addEventListener('keypress', this.onKeyPress);
   }
 
   private beforeDestroy() {
     window.removeEventListener('keypress', this.onKeyPress);
+    window.removeEventListener('keydown',  this.onKeyDown);
   }
+
+  @audio.State('elapsed') private elapsed!: number;
 
   @audio.Action('playOrPause')    private playOrPause!:    () => Promise<void>;
   @audio.Action('toggleMuted')    private toggleMuted!:    () => Promise<void>;
   @audio.Action('toggleRepeat')   private toggleRepeat!:   () => Promise<void>;
   @audio.Action('toggleShuffle')  private toggleShuffle!:  () => Promise<void>;
+
+  @audio.Action('seek') private seek!: (v: number) => Promise<void>;
+
+  private onKeyDown(e: KeyboardEvent) {
+    switch (e.keyCode) {
+      case 37: this.seek(this.elapsed - 5); break; 
+      case 39: this.seek(this.elapsed + 5); break;
+    }
+  }
 
   private onKeyPress(e: KeyboardEvent) {
 

@@ -9,7 +9,7 @@
       <v-icon>mdi-step-backward</v-icon>
     </v-btn>
 
-    <v-btn :outline="!isLoading" icon @click="playOrPause" :loading="isLoading">
+    <v-btn outline icon @click="playOrPause" :loading="isLoading">
       <v-icon>{{ playClass }}</v-icon>
     </v-btn>
 
