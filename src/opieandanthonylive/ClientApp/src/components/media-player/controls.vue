@@ -54,9 +54,8 @@ export default class Controls extends Vue {
       : 'mdi-play';
   }
 
-  private playOrPause() {
-    this.isPlaying || this.isLoading ? this.pause() : this.play();
-  }
+  @audio.Action('playOrPause')
+  private playOrPause!: () => Promise<void>;
 
   private toggleRepeat() {
     this.setRepeat(!this.repeat);

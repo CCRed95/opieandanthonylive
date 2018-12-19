@@ -99,6 +99,11 @@ const mkActions = <M>(audio: HTMLAudioElement) => ({
     await audio.play();
   },
 
+  playOrPause: async (ctx: ActionContext<State<M>, RootState>) =>
+    ctx.state.status === 'paused'
+      ? await ctx.dispatch('play')
+      : await ctx.dispatch('pause'),
+
   prev: async (ctx: ActionContext<State<M>, RootState>) => {
     const playlist = ctx.state.playlist;
 
@@ -184,7 +189,7 @@ export const mkPlugin = <M>(
     actions: mkActions<M>(audio),
   });
 
-  audio.addEventListener('pause',   () => s.commit(`${moduleName}/status`, 'pause'));
+  audio.addEventListener('pause',   () => s.commit(`${moduleName}/status`, 'paused'));
   audio.addEventListener('playing', () => s.commit(`${moduleName}/status`, 'playing'));
   audio.addEventListener('waiting', () => s.commit(`${moduleName}/status`, 'loading'));
 

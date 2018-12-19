@@ -117,7 +117,8 @@ export default class App extends Vue {
     window.removeEventListener('keypress', this.onKeyPress);
   }
 
-  @audio.Action('toggleMute') private toggleMute!: () => Promise<void>;
+  @audio.Action('toggleMute')  private toggleMute!:  () => Promise<void>;
+  @audio.Action('playOrPause') private playOrPause!: () => Promise<void>;
 
   private onKeyPress(ev: KeyboardEvent) {
     if (ev.target instanceof HTMLInputElement)
@@ -126,6 +127,10 @@ export default class App extends Vue {
     switch (ev.key) {
       case 'm':
         this.toggleMute();
+        break;
+
+      case ' ':
+        this.playOrPause();
         break;
     }
   }
