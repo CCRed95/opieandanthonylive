@@ -70,6 +70,7 @@ import { namespace } from 'vuex-class';
 import MediaPlayer from '@/components/media-player/media-player.vue';
 import MainToolbar from '@/components/main-toolbar.vue';
 
+const audio = namespace('audio');
 const error = namespace('error');
 
 @Component({
@@ -107,6 +108,27 @@ export default class App extends Vue {
   @error.State('error') private error!: null | string;
   @error.State('count') private errorCount!: number;
   @Watch('errorCount')  private onError() { this.snackbar = true; }
+
+  private created() {
+    window.addEventListener('keypress', this.onKeyPress);
+  }
+
+  private beforeDestroy() {
+    window.removeEventListener('keypress', this.onKeyPress);
+  }
+
+  @audio.Action('toggleMute') private toggleMute!: () => Promise<void>;
+
+  private onKeyPress(ev: KeyboardEvent) {
+    if (ev.target instanceof HTMLInputElement)
+      return;
+
+    switch (ev.key) {
+      case 'm':
+        this.toggleMute();
+        break;
+    }
+  }
 
 }
 </script>
