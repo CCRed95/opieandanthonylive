@@ -120,11 +120,20 @@ export default class App extends Vue {
   @audio.Action('toggleMute')  private toggleMute!:  () => Promise<void>;
   @audio.Action('playOrPause') private playOrPause!: () => Promise<void>;
 
-  private onKeyPress(ev: KeyboardEvent) {
-    if (ev.target instanceof HTMLInputElement)
+  private onKeyPress(e: KeyboardEvent) {
+
+    // input elements should get full keyboard events
+    if (e.target instanceof HTMLInputElement)
       return;
 
-    switch (ev.key) {
+    // propagate space/enter to buttons
+    if (e.target instanceof HTMLButtonElement && (e.keyCode === 13 || e.keyCode === 32))
+      return;
+
+    // override everything else
+    e.preventDefault();
+
+    switch (e.key) {
       case 'm':
         this.toggleMute();
         break;
