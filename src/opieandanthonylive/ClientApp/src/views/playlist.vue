@@ -10,7 +10,7 @@
           <v-img :src="track.metadata.artwork" />
         </v-list-tile-avatar>
 
-        <v-list-tile-content :class="{ 'accent--text': track === currentTrack }" class="text--darken-1">
+        <v-list-tile-content :class="{ 'primary--text': track === currentTrack }" class="text--lighten-1">
           <v-list-tile-title>{{ track.metadata.title }}</v-list-tile-title>
           <v-list-tile-sub-title>{{ track.metadata.show }}</v-list-tile-sub-title>
         </v-list-tile-content>

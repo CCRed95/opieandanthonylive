@@ -44,11 +44,9 @@ export const mkRouter = <S>(store: Store<S>) => {
         },
         {
           path: 'by-date',
-          component: Home,
         },
         {
           path: 'by-timeline',
-          component: Home,
         },
       ],
     },
