@@ -1,23 +1,34 @@
 <template>
-  <v-list dense two-line style="padding: 0;">
-    <template v-for="(track, i) in playlist.tracks">
+  <v-list dense two-line>
 
-      <v-divider :key="`${i}-divider`" v-if="i > 0" />
+    <v-divider/>
 
-      <v-list-tile :key="`${i}-tile`" @click="onClick(i)">
+    <draggable v-model="playlist.tracks" :options="{ handle: '.drag-handle', 'animation': 150, 'ghostClass': 'drag-ghost' }">
 
-        <v-list-tile-avatar>
-          <v-img :src="track.metadata.artwork" />
-        </v-list-tile-avatar>
+      <div v-for="(track, i) in playlist.tracks" :key="i">
 
-        <v-list-tile-content :class="{ 'primary--text': track === currentTrack }" class="text--lighten-1">
-          <v-list-tile-title>{{ track.metadata.title }}</v-list-tile-title>
-          <v-list-tile-sub-title>{{ track.metadata.show }}</v-list-tile-sub-title>
-        </v-list-tile-content>
+        <v-list-tile @click="onClick(i)">
+          
+          <v-list-tile-action class="drag-handle">
+            <v-icon>mdi-drag</v-icon>
+          </v-list-tile-action>
+          
+          <v-list-tile-avatar tile>
+            <v-img :src="track.metadata.artwork" />
+          </v-list-tile-avatar>
+          
+          <v-list-tile-content :class="{ 'primary--text': track === currentTrack }" class="text--lighten-1">
+            <v-list-tile-title>{{ track.metadata.title }}</v-list-tile-title>
+            <v-list-tile-sub-title>{{ track.metadata.show }}</v-list-tile-sub-title>
+          </v-list-tile-content>
+          
+        </v-list-tile>
+        <v-divider />
 
-      </v-list-tile>
+      </div>
 
-    </template>
+    </draggable>
+
   </v-list>
 </template>
 
@@ -53,3 +64,12 @@ export default class PlaylistControl extends Vue {
 
 }
 </script>
+
+<style scoped>
+.drag-handle {
+  cursor: move;
+}
+.drag-ghost {
+  opacity: 0.1;
+}
+</style>
