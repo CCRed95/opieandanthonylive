@@ -9,7 +9,7 @@
 
         <v-list-tile @click="onClick(i)">
           
-          <v-list-tile-action class="drag-handle">
+          <v-list-tile-action class="drag-handle" @click.stop>
             <v-icon>mdi-drag</v-icon>
           </v-list-tile-action>
           
