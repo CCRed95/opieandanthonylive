@@ -130,7 +130,7 @@ export default class App extends Vue {
 
   private onKeyDown(e: KeyboardEvent) {
     switch (e.keyCode) {
-      case 37: this.seek(this.elapsed - 5); break; 
+      case 37: this.seek(this.elapsed - 5); break;
       case 39: this.seek(this.elapsed + 5); break;
     }
   }

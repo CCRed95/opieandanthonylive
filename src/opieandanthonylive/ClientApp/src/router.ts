@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 
 import Home from '@/views/home.vue';
 import Show from '@/views/show.vue';
-import Playlist from '@/views/playlist.vue';
+import Playlist from '@/components/media-player/playlist.vue';
 
 Vue.use(Router);
 
