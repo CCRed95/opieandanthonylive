@@ -1,6 +1,6 @@
-﻿using Ccr.Dnc.Data.EntityFrameworkCore;
+﻿using Ccr.Data.EntityFrameworkCore;
+using Ccr.Data.EntityFrameworkCore.Infrastucture;
 using opieandanthonylive.Data.Domain.Complex;
-using Ccr.Dnc.Data.EntityFrameworkCore.Infrastucture;
 
 namespace opieandanthonylive.Data.Domain
 {

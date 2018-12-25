@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ccr.Dnc.Core", "src\Ccr.Dnc.Core\Ccr.Dnc.Core.csproj", "{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data", "src\Data\opieandanthonylive.Data\opieandanthonylive.Data.csproj", "{D294FDD6-29AC-48A1-A440-81F0588BA3F0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Archive", "src\Data\APIs\opieandanthonylive.Data.API.Archive\opieandanthonylive.Data.API.Archive.csproj", "{C6C612D6-2E92-43C2-B9C5-A064763FFA6D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Guests", "src\Data\APIs\opieandanthonylive.Data.API.Guests\opieandanthonylive.Data.API.Guests.csproj", "{C4441488-8F48-4BAD-BF52-03D79A98E81E}"
@@ -16,10 +12,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Audible", "src\Data\APIs\opieandanthonylive.Data.API.Audible\opieandanthonylive.Data.API.Audible.csproj", "{B902051D-93F3-4F78-96DE-547A47B71F1A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API", "src\Data\APIs\opieandanthonylive.Data.API\opieandanthonylive.Data.API.csproj", "{8933434E-5EEB-492A-BE62-47F9F238DE2A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.Domain", "src\Data\opieandanthonylive.Data.Domain\opieandanthonylive.Data.Domain.csproj", "{53A0F2F2-DDDB-42B1-8B3D-0AD4A1642F78}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ccr.Dnc.Data.EntityFrameworkCore", "src\Ccr.Dnc.Data.EntityFrameworkCore\Ccr.Dnc.Data.EntityFrameworkCore.csproj", "{C4D80D2F-4A37-4A01-8BF9-146741089D70}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3257750C-5901-458C-A39A-5DBE87C9F83D}"
 EndProject
@@ -31,7 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.API.Patreon", "src\Data\APIs\opieandanthonylive.Data.API.Patreon\opieandanthonylive.Data.API.Patreon.csproj", "{0BBBBC58-C0EC-4E83-8522-DC928D4DAFD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opieandanthonylive", "src\opieandanthonylive\opieandanthonylive.csproj", "{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive", "src\opieandanthonylive\opieandanthonylive.csproj", "{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data", "src\Data\opieandanthonylive.Data\opieandanthonylive.Data.csproj", "{60DA7026-F6BC-4822-A295-5824BD29A54D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "opieandanthonylive.Data.Domain", "src\Data\opieandanthonylive.Data.Domain\opieandanthonylive.Data.Domain.csproj", "{6A76552D-9DA0-44E6-8A1F-62C4EACAC280}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ccr.Data.EntityFrameworkCore", "src\Data\Ccr.Data.EntityFrameworkCore\Ccr.Data.EntityFrameworkCore.csproj", "{214D698A-4F3F-4382-9CAA-5F72E686159D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{7116B3D0-18C6-4595-83DD-017CE63A4D1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opieandanthonylive", "src\desktop\opieandanthonylive\opieandanthonylive.csproj", "{1307FB29-F0E8-4188-A75E-90F014C7246C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +41,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A280E87-4500-49B6-B9A0-FD116C4A8D9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D294FDD6-29AC-48A1-A440-81F0588BA3F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D294FDD6-29AC-48A1-A440-81F0588BA3F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D294FDD6-29AC-48A1-A440-81F0588BA3F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D294FDD6-29AC-48A1-A440-81F0588BA3F0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C6C612D6-2E92-43C2-B9C5-A064763FFA6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C6C612D6-2E92-43C2-B9C5-A064763FFA6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C612D6-2E92-43C2-B9C5-A064763FFA6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,14 +61,6 @@ Global
 		{8933434E-5EEB-492A-BE62-47F9F238DE2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8933434E-5EEB-492A-BE62-47F9F238DE2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8933434E-5EEB-492A-BE62-47F9F238DE2A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53A0F2F2-DDDB-42B1-8B3D-0AD4A1642F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53A0F2F2-DDDB-42B1-8B3D-0AD4A1642F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53A0F2F2-DDDB-42B1-8B3D-0AD4A1642F78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53A0F2F2-DDDB-42B1-8B3D-0AD4A1642F78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4D80D2F-4A37-4A01-8BF9-146741089D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4D80D2F-4A37-4A01-8BF9-146741089D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4D80D2F-4A37-4A01-8BF9-146741089D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4D80D2F-4A37-4A01-8BF9-146741089D70}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1303347-84DB-4FE0-AF5D-6D095F1273AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1303347-84DB-4FE0-AF5D-6D095F1273AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1303347-84DB-4FE0-AF5D-6D095F1273AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -95,6 +81,22 @@ Global
 		{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27DD0A90-31BE-4EB6-AAD2-627A56DAE71B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60DA7026-F6BC-4822-A295-5824BD29A54D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60DA7026-F6BC-4822-A295-5824BD29A54D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60DA7026-F6BC-4822-A295-5824BD29A54D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60DA7026-F6BC-4822-A295-5824BD29A54D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A76552D-9DA0-44E6-8A1F-62C4EACAC280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A76552D-9DA0-44E6-8A1F-62C4EACAC280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A76552D-9DA0-44E6-8A1F-62C4EACAC280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A76552D-9DA0-44E6-8A1F-62C4EACAC280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{214D698A-4F3F-4382-9CAA-5F72E686159D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{214D698A-4F3F-4382-9CAA-5F72E686159D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{214D698A-4F3F-4382-9CAA-5F72E686159D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{214D698A-4F3F-4382-9CAA-5F72E686159D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1307FB29-F0E8-4188-A75E-90F014C7246C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1307FB29-F0E8-4188-A75E-90F014C7246C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1307FB29-F0E8-4188-A75E-90F014C7246C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1307FB29-F0E8-4188-A75E-90F014C7246C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +105,7 @@ Global
 		{F1303347-84DB-4FE0-AF5D-6D095F1273AE} = {3257750C-5901-458C-A39A-5DBE87C9F83D}
 		{20103E93-53F0-406C-9434-3AE2B92E9EDD} = {3257750C-5901-458C-A39A-5DBE87C9F83D}
 		{36FFCDFF-44C3-408D-8C92-6C20796B7E48} = {3257750C-5901-458C-A39A-5DBE87C9F83D}
+		{1307FB29-F0E8-4188-A75E-90F014C7246C} = {7116B3D0-18C6-4595-83DD-017CE63A4D1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B75EFBE8-60B9-4A10-BC47-4420F391D85E}

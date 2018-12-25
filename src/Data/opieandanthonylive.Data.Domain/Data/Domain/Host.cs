@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Ccr.Dnc.Core.Extensions;
+using Ccr.Std.Core.Extensions;
 using JetBrains.Annotations;
 using opieandanthonylive.Data.Domain.Complex;
 

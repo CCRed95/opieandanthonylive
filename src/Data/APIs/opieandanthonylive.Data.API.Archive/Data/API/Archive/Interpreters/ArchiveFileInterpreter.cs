@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using AngleSharp;
-using Ccr.Dnc.Core.Extensions;
+using Ccr.Std.Core.Extensions;
 using opieandanthonylive.Data.Domain;
 using opieandanthonylive.Data.Domain.Archive;
 

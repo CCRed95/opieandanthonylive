@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ccr.Dnc.Core\Ccr.Dnc.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Dnc\Data\EntityFrameworkCore\StaticSeeding\" />
   </ItemGroup>
 

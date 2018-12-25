@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using Ccr.Dnc.Data.EntityFrameworkCore;
-using Ccr.Dnc.Data.EntityFrameworkCore.Infrastucture;
-using Ccr.Dnc.Data.Extensions;
+using Ccr.Data.EntityFrameworkCore;
+using Ccr.Data.EntityFrameworkCore.Infrastucture;
+using Ccr.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using opieandanthonylive.Data.Context;
 

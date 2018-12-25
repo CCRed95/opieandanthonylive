@@ -1,19 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>opieandanthonylive</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Ccr.Std.Core" Version="1.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Ccr.Dnc.Core\Ccr.Dnc.Core.csproj" />
-    <ProjectReference Include="..\..\Ccr.Dnc.Data.EntityFrameworkCore\Ccr.Dnc.Data.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\APIs\opieandanthonylive.Data.API\opieandanthonylive.Data.API.csproj" />
+    <ProjectReference Include="..\Ccr.Data.EntityFrameworkCore\Ccr.Data.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>

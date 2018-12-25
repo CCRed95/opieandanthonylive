@@ -1,5 +1,5 @@
 ﻿using System;
-using Ccr.Dnc.Data.EntityFrameworkCore.Infrastucture;
+using Ccr.Data.EntityFrameworkCore.Infrastucture;
 
 namespace opieandanthonylive.Data.Domain.Audible
 {

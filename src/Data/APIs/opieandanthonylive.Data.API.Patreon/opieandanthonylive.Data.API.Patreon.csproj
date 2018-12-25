@@ -6,8 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Ccr.Dnc.Core\Ccr.Dnc.Core.csproj" />
-    <ProjectReference Include="..\..\..\Ccr.Dnc.Data.EntityFrameworkCore\Ccr.Dnc.Data.EntityFrameworkCore.csproj" />
+    <PackageReference Include="Ccr.Std.Core" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\opieandanthonylive.Data.Domain\opieandanthonylive.Data.Domain.csproj" />
     <ProjectReference Include="..\..\opieandanthonylive.Data\opieandanthonylive.Data.csproj" />
     <ProjectReference Include="..\opieandanthonylive.Data.API\opieandanthonylive.Data.API.csproj" />

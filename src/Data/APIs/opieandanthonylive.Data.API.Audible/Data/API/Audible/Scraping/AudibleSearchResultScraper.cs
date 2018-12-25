@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using AngleSharp.Dom;
-using Ccr.Dnc.Core.Extensions;
+using Ccr.Std.Core.Extensions;
 using opieandanthonylive.Data.API.Common.Scraping;
 using opieandanthonylive.Data.Domain.Audible;
 

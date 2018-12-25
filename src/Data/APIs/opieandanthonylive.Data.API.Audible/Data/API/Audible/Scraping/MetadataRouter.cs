@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using AngleSharp.Dom;
-using Ccr.Dnc.Core.Extensions;
+using Ccr.Std.Core.Extensions;
 using opieandanthonylive.Data.Domain.Audible;
 
 namespace opieandanthonylive.Data.API.Audible.Scraping

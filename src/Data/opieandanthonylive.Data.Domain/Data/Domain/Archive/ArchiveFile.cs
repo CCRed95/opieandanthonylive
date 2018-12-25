@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using Ccr.Dnc.Core.Extensions;
-using Ccr.Dnc.Data.EntityFrameworkCore.Infrastucture;
+using Ccr.Std.Core.Extensions;
+using Ccr.Data.EntityFrameworkCore.Infrastucture;
 using JetBrains.Annotations;
 
 namespace opieandanthonylive.Data.Domain.Archive

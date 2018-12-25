@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using Ccr.Dnc.Core.Extensions;
-using Ccr.Dnc.Data.EntityFrameworkCore.Infrastucture;
+using Ccr.Data.EntityFrameworkCore.Infrastucture;
+using Ccr.Std.Core.Extensions;
 using JetBrains.Annotations;
 
 namespace opieandanthonylive.Data.Domain.Complex

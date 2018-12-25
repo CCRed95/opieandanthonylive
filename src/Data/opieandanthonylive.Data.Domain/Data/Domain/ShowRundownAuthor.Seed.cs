@@ -1,4 +1,4 @@
-﻿using Ccr.Dnc.Data.EntityFrameworkCore;
+﻿using Ccr.Data.EntityFrameworkCore;
 
 namespace opieandanthonylive.Data.Domain
 {

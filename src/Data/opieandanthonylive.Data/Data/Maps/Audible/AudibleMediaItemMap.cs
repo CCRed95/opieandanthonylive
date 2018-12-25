@@ -1,4 +1,4 @@
-﻿using Ccr.Dnc.Data.Extensions;
+﻿using Ccr.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using opieandanthonylive.Data.Domain.Audible;

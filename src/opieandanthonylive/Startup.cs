@@ -12,7 +12,7 @@ namespace opieandanthonylive
 	using Microsoft.IdentityModel.Tokens;
 	using System.Text;
 	using System;
-  using Ccr.Dnc.Core.Extensions;
+  using Ccr.Std.Core.Extensions;
   using Microsoft.EntityFrameworkCore.Infrastructure;
   using Microsoft.EntityFrameworkCore.Storage;
   using static opieandanthonylive.Configuration.EnvironmentVariables;

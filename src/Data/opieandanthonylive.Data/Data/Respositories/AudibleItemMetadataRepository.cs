@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Ccr.Dnc.Data.EntityFrameworkCore;
+using Ccr.Data.EntityFrameworkCore;
 using opieandanthonylive.Data.Context;
 using opieandanthonylive.Data.Domain.Audible;
 

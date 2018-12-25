@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Ccr.Dnc.Core.Extensions;
+using Ccr.Std.Core.Extensions;
 using JetBrains.Annotations;
+using opieandanthonylive.Extensions;
 
-// ReSharper disable VirtualMemberCallInContructor
+// ReSharper disable VirtualMemberCallInConstructor
 namespace opieandanthonylive.Data.Domain
 {
   public partial class Show

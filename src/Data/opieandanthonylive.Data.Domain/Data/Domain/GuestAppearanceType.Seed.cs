@@ -1,5 +1,5 @@
-﻿using Ccr.Dnc.Data.EntityFrameworkCore;
-using Ccr.Dnc.Data.EntityFrameworkCore.Infrastucture;
+﻿using Ccr.Data.EntityFrameworkCore;
+using Ccr.Data.EntityFrameworkCore.Infrastucture;
 
 namespace opieandanthonylive.Data.Domain
 {

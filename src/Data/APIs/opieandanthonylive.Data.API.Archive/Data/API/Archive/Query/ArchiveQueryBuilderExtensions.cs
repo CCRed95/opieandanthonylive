@@ -1,4 +1,4 @@
-﻿using Ccr.Dnc.Core.Extensions;
+﻿using Ccr.Std.Core.Extensions;
 
 namespace opieandanthonylive.Data.API.Archive.Query
 {

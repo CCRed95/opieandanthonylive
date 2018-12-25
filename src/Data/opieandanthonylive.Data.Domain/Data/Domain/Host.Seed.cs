@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-using Ccr.Dnc.Data.EntityFrameworkCore;
+using Ccr.Data.EntityFrameworkCore;
 using JetBrains.Annotations;
 using opieandanthonylive.Data.Domain.Complex;
 

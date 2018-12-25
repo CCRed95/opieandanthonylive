@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using Ccr.Dnc.Core.Extensions;
+using Ccr.Std.Core.Extensions;
 using opieandanthonylive.Data.API.Common.Query;
 using opieandanthonylive.Data.API.Infrastructure;
 
