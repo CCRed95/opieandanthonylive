@@ -3,7 +3,7 @@
     <div class="slider-center-wrapper">
       <div class="slider-background secondary"></div>
       <div class="slider-value primary"            :style="{ width: valueFmt }"></div>
-      <div class="slider-handle primary lighten-1" :style="{ left: valueFmt }"></div>
+      <div class="slider-handle primary lighten-1" :style="{ left: valueFmt }" v-if="hasHandle"></div>
     </div>
   </div>
 </template>
@@ -16,7 +16,8 @@ import { clamp, drag } from '@/util';
 @Component
 export default class Slider extends Vue {
 
-  @Prop(Number) public value!: number;
+  @Prop(Number)            public value!: number;
+  @Prop({ default: true }) public hasHandle!: boolean;
 
   private dragValue: number = 0.0;
   private isDragging: boolean = false;

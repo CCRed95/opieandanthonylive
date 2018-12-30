@@ -19,6 +19,7 @@
     "max-line-length": false,
     "no-empty": false,
     "member-ordering": false,
-    "curly": false
+    "curly": false,
+    "no-empty-interface": false
   }
 }
