@@ -9,8 +9,8 @@
       <v-icon>mdi-step-backward</v-icon>
     </v-btn>
 
-    <v-btn outline icon @click="playOrPause" :loading="isLoading">
-      <v-icon>{{ playClass }}</v-icon>
+    <v-btn outline icon large @click="playOrPause" :loading="isLoading">
+      <v-icon large>{{ playClass }}</v-icon>
     </v-btn>
 
     <v-btn icon @click="next">
@@ -68,3 +68,9 @@ export default class Controls extends Vue {
 }
 
 </script>
+
+<style>
+.media-player-controls {
+  text-align: center;
+}
+</style>

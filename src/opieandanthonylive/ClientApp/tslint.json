@@ -20,6 +20,7 @@
     "no-empty": false,
     "member-ordering": false,
     "curly": false,
+    "import-spacing": false,
     "no-empty-interface": false
   }
 }
