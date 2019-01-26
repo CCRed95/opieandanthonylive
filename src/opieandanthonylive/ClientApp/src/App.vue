@@ -36,7 +36,7 @@
 
     </v-navigation-drawer>
 
-    <main-toolbar @nav-clicked="isDrawerOpen = !isDrawerOpen" />
+    <main-toolbar @nav-clicked="isDrawerOpen = !isDrawerOpen" inverted-scroll scroll-off-screen :scroll-threshold="0" />
 
     <v-content>
       <v-container fluid class="app-container">
@@ -44,7 +44,7 @@
       </v-container>
     </v-content>
 
-    <v-footer app height="50px">
+    <v-footer app height="50px" v-if="shouldShowFooter">
       <media-player />
     </v-footer>
 
@@ -72,6 +72,7 @@ import MainToolbar from '@/components/main-toolbar.vue';
 
 const audio = namespace('audio');
 const error = namespace('error');
+const ui = namespace('ui');
 
 @Component({
   components: {
@@ -127,6 +128,8 @@ export default class App extends Vue {
   @audio.Action('toggleShuffle')  private toggleShuffle!:  () => Promise<void>;
 
   @audio.Action('seek') private seek!: (v: number) => Promise<void>;
+
+  @ui.Getter('shouldShowFooter') private shouldShowFooter!: boolean;
 
   private onKeyDown(e: KeyboardEvent) {
     switch (e.keyCode) {

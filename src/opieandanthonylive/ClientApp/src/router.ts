@@ -1,11 +1,11 @@
 import Vue from 'vue';
-import Router, {NavigationGuard, RouteConfig } from 'vue-router';
+import Router, {NavigationGuard } from 'vue-router';
 import { Store } from 'vuex';
 import VueRouter from 'vue-router';
 
-import Home from '@/views/home.vue';
-import Show from '@/views/show.vue';
+import Player from '@/views/player.vue';
 import Playlist from '@/components/media-player/playlist.vue';
+import Show from '@/views/show.vue';
 
 Vue.use(Router);
 
@@ -21,11 +21,12 @@ export const mkRouter = <S>(store: Store<S>) => {
       : next();
 
   const routes = [
-    { path: '/',            name: 'opieandanthonylive', component: Home },
+    { path: '/',            name: 'opieandanthonylive' },
     { path: SIGN_IN,        name: 'Sign in',        beforeEnter: authGuard, component: () => import(/* webpackChunkName: "sign-in" */        './views/sign-in.vue') },
     { path: CREATE_ACCOUNT, name: 'Create account', beforeEnter: authGuard, component: () => import(/* webpackChunkName: "create-account" */ './views/create-account.vue') },
 
     { path: '/playlist', name: 'Playlist', component: Playlist },
+    { path: '/player',   name: 'Player',   component: Player },
 
     {
       path: '/shows/:showId',

@@ -21,7 +21,7 @@ import { Component } from 'vue-property-decorator';
 import Controls from './controls.vue';
 import Timeline from './timeline.vue';
 import Volume from './volume.vue';
-import Badge from './badge';
+import Badge from './badge.vue';
 
 @Component({
   components: {

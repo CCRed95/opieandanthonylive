@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import * as audio from './audio';
 import * as auth from './auth';
+import { ui } from './ui';
 import { error } from './error';
 
 Vue.use(Vuex);
@@ -44,6 +45,7 @@ export const store = new Vuex.Store({
   modules: {
     auth: auth.createModule(auth.loadState()),
     error,
+    ui,
   },
 
   plugins: [
