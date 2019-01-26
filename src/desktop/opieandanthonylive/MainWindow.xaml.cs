@@ -30,6 +30,7 @@ namespace opieandanthonylive
 			_context = new CoreContext();
 			var arr = _context.ContentCreators.ToArray();
 
+
 		}
 	}
 }
