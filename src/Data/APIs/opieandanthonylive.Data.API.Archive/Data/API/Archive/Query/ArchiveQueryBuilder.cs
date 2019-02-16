@@ -247,5 +247,10 @@ namespace opieandanthonylive.Data.API.Archive.Query
 
       return uriBuilder.Build();
     }
+
+	  public string BuildRequestUrl(DomainFragment requestBuilder)
+	  {
+		  throw new NotImplementedException();
+	  }
   }
 }

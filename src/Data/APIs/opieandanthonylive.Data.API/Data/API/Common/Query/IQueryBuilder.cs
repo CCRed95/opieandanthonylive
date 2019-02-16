@@ -4,7 +4,7 @@ namespace opieandanthonylive.Data.API.Common.Query
 {
   public interface IQueryBuilder
   {
-    string BuilldRequestUrl(
+    string BuildRequestUrl(
       DomainFragment requestBuilder);
   }
 }

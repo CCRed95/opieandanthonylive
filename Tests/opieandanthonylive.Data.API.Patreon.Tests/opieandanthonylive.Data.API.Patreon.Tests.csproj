@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Data\APIs\opieandanthonylive.Data.API.Patreon\opieandanthonylive.Data.API.Patreon.csproj" />
+    <ProjectReference Include="..\..\src\Data\APIs\opieandanthonylive.Data.API\opieandanthonylive.Data.API.csproj" />
+    <ProjectReference Include="..\..\src\Data\opieandanthonylive.Data.Domain\opieandanthonylive.Data.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Data\opieandanthonylive.Data\opieandanthonylive.Data.csproj" />
+  </ItemGroup>
+
+</Project>

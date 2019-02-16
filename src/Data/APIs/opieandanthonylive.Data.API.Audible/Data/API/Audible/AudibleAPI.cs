@@ -46,7 +46,7 @@ namespace opieandanthonylive.Data.API.Audible
       AudibleQueryBuilder queryBuilder)
     {
       var url = queryBuilder
-        .BuilldRequestUrl(
+        .BuildRequestUrl(
           RequestBuilder);
 
       var context = BrowsingContext

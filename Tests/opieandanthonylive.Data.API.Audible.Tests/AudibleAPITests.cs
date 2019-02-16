@@ -22,8 +22,7 @@ namespace opieandanthonylive.Data.API.Audible.Tests
     [TestMethod]
     public void CanQueryFilesFromAudibleAPI()
     {
-      var archiveAPI = new AudibleAPI();
-
+      var audibleAPI = new AudibleAPI();
       var queryBuilder = new AudibleQueryBuilder()
         .WithSort(
           Publication_Date,
@@ -36,17 +35,15 @@ namespace opieandanthonylive.Data.API.Audible.Tests
           Publication_Date,
           SortDirection.Descending);
 
-      var archiveAlbums = archiveAPI
-        .Query(queryBuilder)
+      var audibleItems = audibleAPI
+				.Query(queryBuilder)
         .Take(5);
 
 
-      foreach (var archiveItem in archiveAlbums)
+      foreach (var audibleItem in audibleItems)
       {
 
       }
-
-
     }
   }
 }

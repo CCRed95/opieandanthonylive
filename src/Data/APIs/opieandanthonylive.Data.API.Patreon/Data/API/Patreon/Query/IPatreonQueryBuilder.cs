@@ -1,6 +1,6 @@
 ﻿namespace opieandanthonylive.Data.API.Patreon.Query
 {
-  internal interface IPatreonQueryBuilder
+	internal interface IPatreonQueryBuilder
   {
 
   }

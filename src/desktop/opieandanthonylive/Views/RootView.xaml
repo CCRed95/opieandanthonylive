@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="opieandanthonylive.Views.RootView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:opieandanthonylive.ViewModels"
+             xmlns:do="clr-namespace:opieandanthonylive.Data.Domain;assembly=opieandanthonylive.Data.Domain"
+             xmlns:vc="clr-namespace:opieandanthonylive.Markup.ValueConverters"
+             cal:Bind.AtDesignTime="True"
+             d:DesignHeight="1080"
+             d:DesignWidth="1920"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:RootViewModel, IsDesignTimeCreatable=True}">
+	<UserControl.Resources>
+		<vc:PathToImageSourceConverter x:Key="p2isc"/>
+	</UserControl.Resources>
+
+	<Grid>
+		<ListView ItemsSource="{Binding Guests}">
+			<!--<ListView.Width>
+				<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType=FrameworkElement}"
+								 Path="ActualWidth"/>
+			</ListView.Width>
+
+			<ListView.Height>
+				<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType=FrameworkElement}"
+								 Path="ActualHeight"/>
+			</ListView.Height>-->
+			<ListView.ItemsPanel>
+				<ItemsPanelTemplate>
+					<UniformGrid Columns="5">
+						<UniformGrid.Width>
+							<Binding Path="ActualWidth"
+							         RelativeSource="{RelativeSource FindAncestor, AncestorType=ListView}"/>
+						</UniformGrid.Width>
+						<!--<UniformGrid.Height>
+							<Binding Path="ActualHeight"
+							         RelativeSource="{RelativeSource FindAncestor, AncestorType=ListView}"/>
+						</UniformGrid.Height>-->
+
+					</UniformGrid>
+				</ItemsPanelTemplate>
+			</ListView.ItemsPanel>
+
+			<ListView.ItemContainerStyle>
+				<Style TargetType="ListViewItem">
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="ListViewItem">
+								<Grid>
+									<ContentPresenter x:Name="PART_ContentPresenter"/>
+								</Grid>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</ListView.ItemContainerStyle>
+
+			<ListView.ItemTemplate>
+				<DataTemplate DataType="do:Guest">
+					<Grid>
+						<Grid.Height>
+							<Binding Path="ActualWidth"
+							         RelativeSource="{RelativeSource Self}"/>
+						</Grid.Height>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+							<Image Grid.RowSpan="2"
+							       Stretch="UniformToFill">
+								<Image.Source>
+									<Binding Path="HeadshotImagePath"
+									         Converter="{StaticResource p2isc}"/>
+								</Image.Source>
+							</Image>
+							<!--<Rectangle Fill="Black">
+								<Rectangle.OpacityMask>
+									<DrawingBrush >
+										<DrawingBrush.Drawing>
+											<GeometryDrawing>
+												<GeometryDrawing.Geometry>
+													<CombinedGeometry>
+														<CombinedGeometry.Geometry1>
+															<RectangleGeometry>
+																<RectangleGeometry.Rect>
+																	<Rect Width=""></Rect>
+																</RectangleGeometry.Rect>
+															</RectangleGeometry>
+														</CombinedGeometry.Geometry1>
+
+														<CombinedGeometry.Geometry2>
+															<EllipseGeometry ></EllipseGeometry>
+														</CombinedGeometry.Geometry2>
+													</CombinedGeometry>
+												</GeometryDrawing.Geometry>
+											</GeometryDrawing>
+										</DrawingBrush.Drawing>
+									</DrawingBrush>
+								</Rectangle.OpacityMask>
+							</Rectangle>-->
+
+							<Grid Row="1">
+								<Grid.Background>
+									<SolidColorBrush Opacity=".6"
+									                 Color="Black"/>
+								</Grid.Background>
+
+								<StackPanel Orientation="Horizontal"
+														HorizontalAlignment="Center"
+														VerticalAlignment="Center">
+									<Label Content="{Binding Path=FirstName}"
+									       Foreground="White"
+									       FontSize="18pt"
+									       FontFamily="Roboto"/>
+
+									<Label Content="{Binding Path=MiddleName}"
+									       Foreground="White"
+									       FontSize="18pt"
+									       FontFamily="Roboto"/>
+
+									<Label Content="{Binding Path=GenderID}"
+									       Foreground="White"
+									       FontSize="18pt"
+									       FontFamily="Roboto"/>
+
+
+									<Ellipse Width="40"
+													 Height="40"
+													 Margin="5" 
+													 StrokeThickness="5">
+										<Ellipse.Style>
+											<Style TargetType="Ellipse">
+												<Setter Property="Stroke" Value="Orange"/>
+												<Style.Triggers>
+													<DataTrigger Binding="{Binding GenderID}" Value="2">
+														<Setter Property="Stroke" Value="DeepSkyBlue"/>
+													</DataTrigger>
+													<DataTrigger Binding="{Binding GenderID}" Value="1">
+														<Setter Property="Stroke" Value="HotPink"/>
+													</DataTrigger>
+												</Style.Triggers>
+											</Style>
+										</Ellipse.Style>
+									</Ellipse>
+								</StackPanel>
+							</Grid>
+						</Grid>
+					</Grid>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</Grid>
+</UserControl>

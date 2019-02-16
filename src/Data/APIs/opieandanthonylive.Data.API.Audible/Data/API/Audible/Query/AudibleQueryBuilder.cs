@@ -20,8 +20,7 @@ namespace opieandanthonylive.Data.API.Audible.Query
     private AudibleQueryField? _searchRankSelectField;
     private SortDirection? _searchRankSelectDirection;
 
-
-
+		
     AudibleQueryBuilder IAudibleQueryBuilder.WithAuthor(
       string author)
     {
@@ -134,7 +133,7 @@ namespace opieandanthonylive.Data.API.Audible.Query
 
     
 
-    public string BuilldRequestUrl(
+    public string BuildRequestUrl(
       DomainFragment requestBuilder)
     {
       var uriBuilder = requestBuilder

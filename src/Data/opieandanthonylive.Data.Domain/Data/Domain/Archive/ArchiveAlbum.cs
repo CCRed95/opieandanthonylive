@@ -40,36 +40,39 @@ namespace opieandanthonylive.Data.Domain.Archive
       get => $"https://www.archive.org/download/{Identifier}/";
     }
 
-    public virtual ICollection<ArchiveFile> ArchiveFiles
-    {
-      get => _archiveFiles
-             ?? (_archiveFiles = _archiveAlbumFilesScraper(this).ToArray());
-    }
+    public virtual ICollection<ArchiveFile> ArchiveFiles { get; set; }
+    //{
+    //  get => _archiveFiles
+    //         ?? (_archiveFiles = _archiveAlbumFilesScraper(this).ToArray());
+    //}
+
 
     private ArchiveAlbum()
     {
     }
 
-    public ArchiveAlbum(
-      [NotNull] string identifier,
-      [CanBeNull] ContentCreator contentCreator,
-      string description,
-      DateTime datePublished,
-      int yearNumber,
-      int monthNumber,
-      Func<ArchiveAlbum, IEnumerable<ArchiveFile>> archiveAlbumFilesScraper)
-        : this()
-    {
-      identifier.IsNotNull(nameof(identifier));
+		public ArchiveAlbum(
+		  [NotNull] string identifier,
+		  [CanBeNull] ContentCreator contentCreator,
+		  string description,
+		  DateTime datePublished,
+		  int yearNumber,
+		  int monthNumber,
+		  Func<ArchiveAlbum, IEnumerable<ArchiveFile>> archiveAlbumFilesScraper)
+				: this()
+	  {
+		  identifier.IsNotNull(nameof(identifier));
 
-      Identifier = identifier;
-      ContentCreator = contentCreator;
-      Description = description;
-      DatePublished = datePublished;
-      YearNumber = yearNumber;
-      MonthNumber = monthNumber;
-      _archiveAlbumFilesScraper = archiveAlbumFilesScraper;
-    }
+		  Identifier = identifier;
+		  ContentCreatorID = contentCreator?.ContentCreatorID;
+		  Description = description;
+		  DatePublished = datePublished;
+		  YearNumber = yearNumber;
+		  MonthNumber = monthNumber;
+		  _archiveAlbumFilesScraper = archiveAlbumFilesScraper;
 
-  }
+		  ArchiveFiles = _archiveAlbumFilesScraper(this)
+			  .ToArray();
+	  }
+	}
 }

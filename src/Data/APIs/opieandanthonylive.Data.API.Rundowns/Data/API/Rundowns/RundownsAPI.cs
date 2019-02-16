@@ -45,7 +45,7 @@ namespace opieandanthonylive.Data.API.Rundowns
       RundownQueryBuilder queryBuilder)
     {
       var url = queryBuilder
-        .BuilldRequestUrl(
+        .BuildRequestUrl(
           RequestBuilder);
 
       var context = BrowsingContext
@@ -59,7 +59,11 @@ namespace opieandanthonylive.Data.API.Rundowns
         .GetAwaiter()
         .GetResult())
       {
-        var showRundownItems = document
+	      var showRundownItems2 = document
+		      .QuerySelector("#content")
+		      .Children;
+
+				var showRundownItems = document
           .QuerySelector("#content")
           .Children
           .First()

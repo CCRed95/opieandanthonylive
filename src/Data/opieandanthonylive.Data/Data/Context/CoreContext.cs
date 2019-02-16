@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Ccr.Data.Extensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using opieandanthonylive.Data.Domain;
 using opieandanthonylive.Data.Domain.Archive;
 using opieandanthonylive.Data.Domain.Audible;
+using opieandanthonylive.Data.Domain.Patreon;
 using opieandanthonylive.Data.Maps;
 using opieandanthonylive.Data.Maps.Archive;
 using opieandanthonylive.Data.Maps.Audible;
+using opieandanthonylive.Data.Maps.Patreon;
 
 namespace opieandanthonylive.Data.Context
 {
@@ -47,8 +50,10 @@ namespace opieandanthonylive.Data.Context
 
     public DbSet<ShowRundownAuthor> ShowRundownAuthors { get; set; }
 
+	  public DbSet<PatreonMediaPost> PatreonMediaPosts { get; set; }
 
-    public CoreContext()
+
+		public CoreContext()
       : this(
         new DbContextOptionsBuilder<CoreContext>().Options)
     {
@@ -70,73 +75,37 @@ namespace opieandanthonylive.Data.Context
 			// var s = Configuration.GetConnectionString("DefaultConnectionString");
 
 			optionsBuilder.UseSqlServer(
-				"Data Source=184.168.47.17;Initial Catalog=opieandanthonylive11;Persist Security Info=True;User ID=oa_backend;Password=S7glr@78");
+				"Data Source=184.168.47.17;Initial Catalog=opieandanthonylive15;Persist Security Info=True;User ID=oa_backend;Password=S7glr@78");
     }
 
     protected override void OnModelCreating(
       ModelBuilder modelBuilder)
     {
-	    modelBuilder.HasDefaultSchema("dbo");
+	    base.OnModelCreating(modelBuilder);
 
-			base.OnModelCreating(modelBuilder);
+	    modelBuilder
+		    .HasDefaultSchema("dbo")
+		    .WithConfiguration<ArchiveAlbum, ArchiveAlbumMap>()
+		    .WithConfiguration<ArchiveFile, ArchiveFileMap>()
+		    .WithConfiguration<ArchiveFileTypeInfo, ArchiveFileTypeInfoMap>()
+		    .WithConfiguration<ContentCreator, ContentCreatorMap>()
+		    .WithConfiguration<AudibleMediaItem, AudibleMediaItemMap>()
+		    .WithConfiguration<EmbeddedContentSource, EmbeddedContentSourceMap>()
+		    .WithConfiguration<Gender, GenderMap>()
+		    .WithConfiguration<Guest, GuestMap>()
+		    .WithConfiguration<GuestAppearance, GuestAppearanceMap>()
+		    .WithConfiguration<GuestAppearanceType, GuestAppearanceTypeMap>()
+		    .WithConfiguration<Host, HostMap>()
+		    .WithConfiguration<Show, ShowMap>()
+		    .WithConfiguration<ShowMediaSegmentContentTag, ShowMediaSegmentContentTagMap>()
+		    .WithConfiguration<ShowHost, ShowHostMap>()
+		    .WithConfiguration<ShowMediaEntry, ShowMediaEntryMap>()
+		    .WithConfiguration<ShowRundown, ShowRundownMap>()
+		    .WithConfiguration<ShowRundownAuthor, ShowRundownAuthorMap>()
+		    .WithConfiguration<PatreonMediaPost, PatreonMediaPostMap>()
+		    .WithConfiguration<ShoutEngineMediaPost, ShoutEngineMediaPostMap>();
 
-
-      modelBuilder.ApplyConfiguration(
-        new ArchiveAlbumMap());
-
-      modelBuilder.ApplyConfiguration(
-        new ArchiveFileMap());
-
-      modelBuilder.ApplyConfiguration(
-        new ArchiveFileTypeInfoMap());
-
-      modelBuilder.ApplyConfiguration(
-        new ContentCreatorMap());
-
-
-      modelBuilder.ApplyConfiguration(
-        new AudibleMediaItemMap());
-
-
-      modelBuilder.ApplyConfiguration(
-        new EmbeddedContentSourceMap());
-
-      modelBuilder.ApplyConfiguration(
-        new GenderMap());
-
-      modelBuilder.ApplyConfiguration(
-        new GuestMap());
-
-      modelBuilder.ApplyConfiguration(
-        new GuestAppearanceMap());
-
-      modelBuilder.ApplyConfiguration(
-        new GuestAppearanceTypeMap());
-
-      modelBuilder.ApplyConfiguration(
-        new HostMap());
-
-      modelBuilder.ApplyConfiguration(
-        new ShowMap());
-
-      modelBuilder.ApplyConfiguration(
-        new ShowMediaSegmentContentTagMap());
-      
-      modelBuilder.ApplyConfiguration(
-        new ShowHostMap());
-
-      modelBuilder.ApplyConfiguration(
-        new ShowMediaEntryMap());
-
-      modelBuilder.ApplyConfiguration(
-        new ShowRundownMap());
-
-      modelBuilder.ApplyConfiguration(
-        new ShowRundownAuthorMap());
-      
-
-
-      modelBuilder.Entity<GuestAppearance>(builder =>
+			modelBuilder.Entity<GuestAppearance>(builder =>
       {
         builder
           .HasOne(t => t.ShowMediaEntry)

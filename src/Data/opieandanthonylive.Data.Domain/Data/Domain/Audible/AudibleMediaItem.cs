@@ -3,7 +3,7 @@ using Ccr.Data.EntityFrameworkCore.Infrastucture;
 
 namespace opieandanthonylive.Data.Domain.Audible
 {
-  public class AudibleMediaItem
+	public class AudibleMediaItem
     : EntityBase
   {
     public int AudibleMediaItemID { get; set; }

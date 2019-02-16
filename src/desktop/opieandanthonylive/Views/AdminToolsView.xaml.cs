@@ -12,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using opieandanthonylive.Data.Context;
 
-namespace opieandanthonylive
+namespace opieandanthonylive.Views
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for AdminToolsView.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class AdminToolsView : UserControl
 	{
-		private readonly CoreContext _context;
-
-
-		public MainWindow()
+		public AdminToolsView()
 		{
 			InitializeComponent();
-			_context = new CoreContext();
-			var arr = _context.ContentCreators.ToArray();
-
-
 		}
 	}
 }

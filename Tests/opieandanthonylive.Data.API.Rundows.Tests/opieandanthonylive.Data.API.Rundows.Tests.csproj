@@ -13,8 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Data\APIs\opieandanthonylive.Data.API.Patreon\opieandanthonylive.Data.API.Patreon.csproj" />
     <ProjectReference Include="..\..\src\Data\APIs\opieandanthonylive.Data.API.Rundowns\opieandanthonylive.Data.API.Rundowns.csproj" />
     <ProjectReference Include="..\..\src\Data\APIs\opieandanthonylive.Data.API\opieandanthonylive.Data.API.csproj" />
+    <ProjectReference Include="..\..\src\Data\opieandanthonylive.Data.Domain\opieandanthonylive.Data.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Data\opieandanthonylive.Data\opieandanthonylive.Data.csproj" />
   </ItemGroup>
 
 </Project>

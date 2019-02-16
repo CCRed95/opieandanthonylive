@@ -19,8 +19,14 @@ namespace opieandanthonylive.Data.Domain
 
     public string Title { get; set; }
 
+	  public string Subtitle { get; set; }
 
-    public string EmbeddedContentSourceUrl { get; set; }
+	  public int? ShowNumber { get; set; }
+
+	  public string ShowIdentifier { get; set; }
+
+
+		public string EmbeddedContentSourceUrl { get; set; }
   
 
     public int? EmbeddedContentSourceID { get; set; }

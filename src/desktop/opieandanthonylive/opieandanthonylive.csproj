@@ -55,18 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Markup\ValueConverters\PathToImageSourceConverter.cs" />
+    <Compile Include="ViewModels\AdminToolsViewModel.cs" />
+    <Compile Include="ViewModels\NotifyFluent.cs" />
+    <Compile Include="ViewModels\RootViewModel.cs" />
+    <Compile Include="Views\AdminToolsView.xaml.cs">
+      <DependentUpon>AdminToolsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RootView.xaml.cs">
+      <DependentUpon>RootView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="Views\AdminToolsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RootView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -113,6 +124,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Caliburn.Micro">
+      <Version>3.2.0</Version>
+    </PackageReference>
     <PackageReference Include="Ccr.Std.Core">
       <Version>1.0.0</Version>
     </PackageReference>
@@ -122,6 +136,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer">
       <Version>2.2.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

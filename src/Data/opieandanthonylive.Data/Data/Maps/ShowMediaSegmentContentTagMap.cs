@@ -13,9 +13,9 @@ namespace opieandanthonylive.Data.Maps
     {
       builder.ToTable("ShowMediaSegmentContentTags");
 
-      builder.HasKey(t => t.ShowMediaContentTagID);
-      builder.Property(t => t.ShowMediaContentTagID)
-        .IsRequired()
+      builder.HasKey(t => t.ShowMediaSegmentContentTagID);
+      builder.Property(t => t.ShowMediaSegmentContentTagID)
+				.IsRequired()
         .ValueGeneratedOnAdd();
       
       builder.Property(t => t.SegmentTimeStart)

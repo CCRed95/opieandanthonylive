@@ -7,7 +7,7 @@ namespace opieandanthonylive.Data.API.Rundowns.Query
     : IRundownQueryBuilder,
       IQueryBuilder
   {
-    public string BuilldRequestUrl(
+    public string BuildRequestUrl(
       DomainFragment requestBuilder)
     {
       return requestBuilder

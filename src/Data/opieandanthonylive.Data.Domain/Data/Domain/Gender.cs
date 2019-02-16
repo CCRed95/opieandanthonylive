@@ -19,7 +19,8 @@ namespace opieandanthonylive.Data.Domain
     
     public Gender(
       [NotNull] string abbreviation,
-      [NotNull] string genderName) : this()
+      [NotNull] string genderName)
+				: this()
     {
       abbreviation.IsNotNull(nameof(abbreviation));
       genderName.IsNotNull(nameof(genderName));
@@ -31,9 +32,10 @@ namespace opieandanthonylive.Data.Domain
     private Gender(
       int genderID,
       [NotNull] string abbreviation,
-      [CallerMemberName] string memberName = "") : this(
-        abbreviation,
-        memberName.Replace('_', ' '))
+      [CallerMemberName] string memberName = "")
+				: this(
+					abbreviation,
+					memberName.Replace('_', ' '))
     {
       GenderID = genderID;
     }

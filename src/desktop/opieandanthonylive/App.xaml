@@ -1,9 +1,18 @@
-﻿<Application x:Class="opieandanthonylive.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:opieandanthonylive"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
+﻿<Application
+	x:Class="opieandanthonylive.App"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="clr-namespace:opieandanthonylive.Data.Domain;assembly=opieandanthonylive.Data.Domain"
+	xmlns:local="clr-namespace:opieandanthonylive">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<!--<ResourceDictionary Source="pack://application:,,,/Ccr.MDHybrid;component/MDHybrid/Themes/Generic.xaml"/>-->
+				<ResourceDictionary>
+					<local:AppBootstrapper x:Key="bootstrapper" />
+
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>
